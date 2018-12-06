@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="library.model.Movie" table="movies">
+        <id name="id" type="int" column="movie_id">
+            <generator class="increment" />
+        </id>
+        <property name="title">
+            <column name="title" />
+        </property>
+        <property name="director">
+            <column name="director" />
+        </property>
+        <property name="releaseDate">
+            <column name="release_date" />
+        </property>
+        <property name="rate">
+            <column name="rate" />
+        </property>
+    </class>
+</hibernate-mapping>
