@@ -1,7 +1,12 @@
 package library.view;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import library.dao.MovieDao;
@@ -17,7 +22,9 @@ public class MovieEditDialogController {
     @FXML
     private TextField releaseDateField;
     @FXML
-    private TextField rateField;
+    private Slider rateSlider;
+    @FXML
+    private Label rateLabel;
 
     private Stage dialogStage;
     private Movie movie;
@@ -26,7 +33,11 @@ public class MovieEditDialogController {
 
     @FXML
     private void initialize() {
-
+        rateSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                rateLabel.setText(String.format("%.2f", new_val));
+            }
+        });
     }
 
     @FXML
@@ -35,7 +46,7 @@ public class MovieEditDialogController {
             movie.setTitle(titleField.getText());
             movie.setDirector(directorField.getText());
             movie.setReleaseDate(Integer.parseInt(releaseDateField.getText()));
-            movie.setRate(Float.parseFloat(rateField.getText()));
+            movie.setRate((float)rateSlider.getValue());
 
             MovieDao dao = new MovieDao();
 
@@ -67,7 +78,7 @@ public class MovieEditDialogController {
         if (!isValidYear(Integer.parseInt(releaseDateField.getText()))) {
             errorMessage += "No valid release date of the movie! Correct date: 1900-" + Year.now().getValue() + ".\n";
         }
-        if (!isValidRate(Float.parseFloat(rateField.getText()))) {
+        if (!isValidRate((float)rateSlider.getValue())) {
             errorMessage += "No valid rate of the movie! Correct rate: 0-10.\n";
         }
 
@@ -104,8 +115,8 @@ public class MovieEditDialogController {
         titleField.setText(movie.getTitle());
         directorField.setText(movie.getDirector());
         releaseDateField.setText(String.valueOf(movie.getReleaseDate()));
-        rateField.setText(String.valueOf(movie.getRate()));
-        rateField.setPromptText("0.00");
+        rateSlider.setValue(movie.getRate());
+        rateLabel.setText(String.valueOf(movie.getRate()));
     }
 
     public boolean isSaveClicked() {

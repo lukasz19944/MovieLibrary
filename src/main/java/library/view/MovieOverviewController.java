@@ -99,6 +99,8 @@ public class MovieOverviewController {
 
             if (saveClicked) {
                 showMovieDetails(selectedMovie);
+
+                movieTable.refresh();
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
