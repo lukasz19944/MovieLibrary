@@ -4,10 +4,12 @@ import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleSetProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import library.MainApp;
+import library.dao.MovieDao;
 import library.model.Movie;
 
 public class MovieOverviewController {
@@ -58,4 +60,56 @@ public class MovieOverviewController {
             rateLabel.setText("");
         }
     }
+
+    @FXML
+    private void handleDeleteMovie() {
+        int selectedIndex = movieTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            movieTable.getItems().remove(selectedIndex);
+
+            MovieDao dao = new MovieDao();
+            dao.deleteMovie(movieTable.getSelectionModel().getSelectedItem().getId() + 1);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Movie Selected");
+            alert.setContentText("Please select a movie in the table.");
+
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void handleNewMovie() {
+        Movie tempMovie = new Movie();
+        boolean saveClicked = mainApp.showMovieEditDialog(tempMovie);
+
+        if (saveClicked) {
+            mainApp.getMovieData().add(tempMovie);
+        }
+    }
+
+    @FXML
+    private void handleEditMovie() {
+        Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
+
+        if (selectedMovie != null) {
+            boolean saveClicked = mainApp.showMovieEditDialog(selectedMovie);
+
+            if (saveClicked) {
+                showMovieDetails(selectedMovie);
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Movie Selected");
+            alert.setContentText("Please select a movie in the table.");
+
+            alert.showAndWait();
+        }
+
+    }
+
 }

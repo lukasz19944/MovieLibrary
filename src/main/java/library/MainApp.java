@@ -8,9 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import library.dao.MovieDao;
 import library.model.Movie;
+import library.view.MovieEditDialogController;
 import library.view.MovieOverviewController;
 import library.view.RootLayoutController;
 
@@ -71,6 +73,38 @@ public class MainApp extends Application {
             controller.setMainApp(this);
         } catch (IOException e){
             e.printStackTrace();
+        }
+    }
+
+    public boolean showMovieEditDialog(Movie movie) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/MovieEditDialog.fxml"));
+            AnchorPane page = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Movie");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            MovieEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setMovie(movie);
+
+            if (movie.getTitle() == null) {
+                controller.setMovieExist(false);
+            } else {
+                controller.setMovieExist(true);
+            }
+
+            dialogStage.showAndWait();
+
+            return controller.isSaveClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
