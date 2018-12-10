@@ -50,7 +50,7 @@ public class MovieOverviewController {
     private void showMovieDetails(Movie movie) {
         if (movie != null) {
             titleLabel.setText(movie.getTitle());
-            directorLabel.setText(movie.getDirector());
+            directorLabel.setText(movie.getDirector().getFirstName() + " " + movie.getDirector().getLastName());
             releaseDateLabel.setText(String.valueOf(movie.getReleaseDate()));
             rateLabel.setText(String.valueOf(movie.getRate()));
         } else {
@@ -64,11 +64,14 @@ public class MovieOverviewController {
     @FXML
     private void handleDeleteMovie() {
         int selectedIndex = movieTable.getSelectionModel().getSelectedIndex();
+        Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
+
         if (selectedIndex >= 0) {
             movieTable.getItems().remove(selectedIndex);
 
             MovieDao dao = new MovieDao();
-            dao.deleteMovie(movieTable.getSelectionModel().getSelectedItem().getId() + 1);
+            System.out.println(selectedMovie.getId());
+            dao.deleteMovie(selectedMovie.getId());
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(mainApp.getPrimaryStage());

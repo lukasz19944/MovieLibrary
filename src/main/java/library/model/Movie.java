@@ -3,7 +3,7 @@ package library.model;
 public class Movie {
     private int id;
     private String title;
-    private String director;
+    private Director director;
     private int releaseDate;
     private float rate;
 
@@ -11,7 +11,7 @@ public class Movie {
 
     }
 
-    public Movie(String title, String director, int releaseDate, float rate) {
+    public Movie(String title, Director director, int releaseDate, float rate) {
         this.title = title;
         this.director = director;
         this.releaseDate = releaseDate;
@@ -34,11 +34,11 @@ public class Movie {
         this.title = title;
     }
 
-    public String getDirector() {
+    public Director getDirector() {
         return director;
     }
 
-    public void setDirector(String director) {
+    public void setDirector(Director director) {
         this.director = director;
     }
 

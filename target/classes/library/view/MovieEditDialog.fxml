@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.MovieEditDialogController">
    <children>
@@ -31,7 +32,10 @@
             <Label text="Release date" GridPane.rowIndex="2" />
             <Label text="Rate" GridPane.rowIndex="3" />
             <TextField fx:id="titleField" GridPane.columnIndex="1" />
-            <TextField fx:id="directorField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="directorField" prefWidth="254.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="32.0" />
+               </GridPane.margin></TextField>
             <TextField fx:id="releaseDateField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Slider fx:id="rateSlider" blockIncrement="1.0" majorTickUnit="0.05" max="10.0" minorTickCount="0" prefHeight="38.0" prefWidth="200.0" snapToTicks="true" value="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
@@ -39,6 +43,14 @@
                </GridPane.margin>
             </Slider>
             <Label fx:id="rateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#handleNewDirector" prefHeight="28.0" prefWidth="28.0" text="+" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="258.0" />
+               </GridPane.margin>
+            </Button>
          </children>
       </GridPane>
       <ButtonBar buttonMinWidth="100.0" layoutX="286.0" layoutY="246.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">

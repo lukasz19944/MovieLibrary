@@ -8,11 +8,9 @@
         <id name="id" type="int" column="movie_id">
             <generator class="increment" />
         </id>
+        <many-to-one name="director" class="library.model.Director" column="director_id" lazy="false" cascade="none" />
         <property name="title">
             <column name="title" />
-        </property>
-        <property name="director">
-            <column name="director" />
         </property>
         <property name="releaseDate">
             <column name="release_date" />

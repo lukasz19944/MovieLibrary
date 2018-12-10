@@ -3,16 +3,23 @@ package library.view;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import library.MainApp;
+import library.dao.DirectorDao;
 import library.dao.MovieDao;
+import library.model.Director;
 import library.model.Movie;
+import org.controlsfx.control.textfield.TextFields;
+
 
 import java.time.Year;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MovieEditDialogController {
     @FXML
@@ -31,6 +38,10 @@ public class MovieEditDialogController {
     private boolean saveClicked = false;
     private boolean movieExist = false;
 
+    private MainApp mainApp;
+
+    private List<String> directors = new ArrayList<>();
+
     @FXML
     private void initialize() {
         rateSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -38,32 +49,77 @@ public class MovieEditDialogController {
                 rateLabel.setText(String.format("%.2f", new_val));
             }
         });
+
+        DirectorDao dao = new DirectorDao();
+
+        for (Director director : dao.getAllDirectors()) {
+            directors.add(director.getFirstName() + " " + director.getLastName());
+        }
+
+        TextFields.bindAutoCompletion(directorField, directors);
+    }
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
     }
 
     @FXML
     private void handleSave() {
         if (isInputValid()) {
-            movie.setTitle(titleField.getText());
-            movie.setDirector(directorField.getText());
-            movie.setReleaseDate(Integer.parseInt(releaseDateField.getText()));
-            movie.setRate((float)rateSlider.getValue());
+            DirectorDao daoD = new DirectorDao();
 
-            MovieDao dao = new MovieDao();
+            if (daoD.getDirectorByName(directorField.getText()) != null) {
+                movie.setDirector(daoD.getDirectorByName(directorField.getText()));
 
-            if (movieExist) {
-                dao.updateMovie(movie);
+                movie.setTitle(titleField.getText());
+
+
+
+                movie.setReleaseDate(Integer.parseInt(releaseDateField.getText()));
+                movie.setRate((float)rateSlider.getValue());
+
+                MovieDao daoM = new MovieDao();
+
+                if (movieExist) {
+                    daoM.updateMovie(movie);
+                } else {
+                    daoM.addMovie(movie);
+                }
+
+                saveClicked = true;
+                dialogStage.close();
             } else {
-                dao.addMovie(movie);
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.initOwner(mainApp.getPrimaryStage());
+                alert.setTitle("No Director");
+                alert.setHeaderText("There is no director like this.");
+                alert.setContentText("Add new director by clicking '+'.");
+
+                alert.showAndWait();
             }
 
-            saveClicked = true;
-            dialogStage.close();
         }
     }
 
     @FXML
     private void handleCancel() {
         dialogStage.close();
+    }
+
+    @FXML
+    private void handleNewDirector() {
+        Director director = new Director();
+        boolean saveClicked = mainApp.showNewDirectorDialog(director);
+
+        if (saveClicked) {
+            DirectorDao dao = new DirectorDao();
+            dao.addDirector(director);
+
+            directorField.setText(director.getFirstName() + " " + director.getLastName());
+
+            directors.add(director.getFirstName() + " " + director.getLastName());
+            TextFields.bindAutoCompletion(directorField, directors);
+        }
     }
 
     private boolean isInputValid() {
@@ -112,11 +168,20 @@ public class MovieEditDialogController {
     public void setMovie(Movie movie) {
         this.movie = movie;
 
-        titleField.setText(movie.getTitle());
-        directorField.setText(movie.getDirector());
-        releaseDateField.setText(String.valueOf(movie.getReleaseDate()));
-        rateSlider.setValue(movie.getRate());
-        rateLabel.setText(String.valueOf(movie.getRate()));
+        // zrobic lepszym sposobem
+        if (this.movie.getDirector() != null) {
+            titleField.setText(movie.getTitle());
+            directorField.setText(movie.getDirector().getFirstName() + " " + movie.getDirector().getLastName());
+            releaseDateField.setText(String.valueOf(movie.getReleaseDate()));
+            rateSlider.setValue(movie.getRate());
+            rateLabel.setText(String.valueOf(movie.getRate()));
+        } else {
+            titleField.setText("");
+            directorField.setText("");
+            releaseDateField.setText("");
+            rateSlider.setValue(5);
+            rateLabel.setText("5");
+        }
     }
 
     public boolean isSaveClicked() {
