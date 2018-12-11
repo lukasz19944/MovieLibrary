@@ -11,10 +11,6 @@ import library.MainApp;
 import library.dao.DirectorDao;
 import library.model.Director;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class NewDirectorDialogController {
     @FXML
     private TextField firstNameField;

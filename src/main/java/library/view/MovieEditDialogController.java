@@ -1,13 +1,12 @@
 package library.view;
 
-import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import library.MainApp;
 import library.dao.DirectorDao;
@@ -15,7 +14,6 @@ import library.dao.MovieDao;
 import library.model.Director;
 import library.model.Movie;
 import org.controlsfx.control.textfield.TextFields;
-
 
 import java.time.Year;
 import java.util.ArrayList;
@@ -53,7 +51,7 @@ public class MovieEditDialogController {
         DirectorDao dao = new DirectorDao();
 
         for (Director director : dao.getAllDirectors()) {
-            directors.add(director.getFirstName() + " " + director.getLastName());
+            directors.add(director.getName());
         }
 
         TextFields.bindAutoCompletion(directorField, directors);
@@ -122,9 +120,9 @@ public class MovieEditDialogController {
             DirectorDao dao = new DirectorDao();
             dao.addDirector(director);
 
-            directorField.setText(director.getFirstName() + " " + director.getLastName());
+            directorField.setText(director.getName());
 
-            directors.add(director.getFirstName() + " " + director.getLastName());
+            directors.add(director.getName());
             TextFields.bindAutoCompletion(directorField, directors);
 
         }
@@ -181,7 +179,7 @@ public class MovieEditDialogController {
         // zrobic lepszym sposobem
         if (this.movie.getDirector() != null) {
             titleField.setText(movie.getTitle());
-            directorField.setText(movie.getDirector().getFirstName() + " " + movie.getDirector().getLastName());
+            directorField.setText(movie.getDirector().getName());
             releaseDateField.setText(String.valueOf(movie.getReleaseDate()));
             rateSlider.setValue(movie.getRate());
             rateLabel.setText(String.valueOf(movie.getRate()));

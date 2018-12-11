@@ -1,7 +1,6 @@
 package library.view;
 
 import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleSetProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -50,7 +49,7 @@ public class MovieOverviewController {
     private void showMovieDetails(Movie movie) {
         if (movie != null) {
             titleLabel.setText(movie.getTitle());
-            directorLabel.setText(movie.getDirector().getFirstName() + " " + movie.getDirector().getLastName());
+            directorLabel.setText(movie.getDirector().getName());
             releaseDateLabel.setText(String.valueOf(movie.getReleaseDate()));
             rateLabel.setText(String.valueOf(movie.getRate()));
         } else {

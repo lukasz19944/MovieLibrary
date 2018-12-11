@@ -58,6 +58,7 @@ public class Movie {
         this.rate = rate;
     }
 
+
     @Override
     public String toString() {
         return "Movie{" +
