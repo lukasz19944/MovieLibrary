@@ -152,4 +152,22 @@ public class DirectorDao {
 
         return true;
     }
+
+    public void deleteAllDirectors() {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            session.createQuery("delete from Director").executeUpdate();
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }

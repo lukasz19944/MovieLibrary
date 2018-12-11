@@ -40,7 +40,7 @@
                         <Label fx:id="rateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
-                  <ToolBar layoutX="398.0" layoutY="30.0" orientation="VERTICAL" prefHeight="166.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <ToolBar layoutX="398.0" layoutY="30.0" orientation="VERTICAL" prefHeight="166.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <items>
                       <Button mnemonicParsing="false" onAction="#handleNewMovie" prefHeight="40.0" prefWidth="100.0" text="NEW" />
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleEditMovie" prefHeight="40.0" prefWidth="100.0" text="EDIT" />

@@ -131,4 +131,22 @@ public class MovieDao {
 
         return true;
     }
+
+    public void deleteAllMovies() {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            session.createQuery("delete from Movie").executeUpdate();
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }

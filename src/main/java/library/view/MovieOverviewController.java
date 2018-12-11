@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import library.MainApp;
 import library.dao.MovieDao;
 import library.model.Movie;
+import library.util.WarningAlert;
 
 public class MovieOverviewController {
     @FXML
@@ -72,13 +73,12 @@ public class MovieOverviewController {
             System.out.println(selectedMovie.getId());
             dao.deleteMovie(selectedMovie.getId());
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Movie Selected");
-            alert.setContentText("Please select a movie in the table.");
-
-            alert.showAndWait();
+            WarningAlert.showWarningAlert(
+                    mainApp,
+                    "No Selection",
+                    "No Movie Selected.",
+                    "Please select a movie in the table."
+            );
         }
     }
 
@@ -105,15 +105,12 @@ public class MovieOverviewController {
                 movieTable.refresh();
             }
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Movie Selected");
-            alert.setContentText("Please select a movie in the table.");
-
-            alert.showAndWait();
+            WarningAlert.showWarningAlert(
+                    mainApp,
+                    "No Selection",
+                    "No Movie Selected.",
+                    "Please select a movie in the table."
+            );
         }
-
     }
-
 }

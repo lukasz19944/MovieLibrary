@@ -13,6 +13,7 @@ import library.dao.DirectorDao;
 import library.dao.MovieDao;
 import library.model.Director;
 import library.model.Movie;
+import library.util.WarningAlert;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.time.Year;
@@ -70,7 +71,7 @@ public class MovieEditDialogController {
                 movie.setDirector(daoD.getDirectorByName(directorField.getText()));
                 movie.setTitle(titleField.getText());
                 movie.setReleaseDate(Integer.parseInt(releaseDateField.getText()));
-                movie.setRate((float)rateSlider.getValue());
+                movie.setRate((float) rateSlider.getValue());
 
                 MovieDao daoM = new MovieDao();
 
@@ -85,24 +86,21 @@ public class MovieEditDialogController {
                     saveClicked = true;
                     dialogStage.close();
                 } else {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.initOwner(mainApp.getPrimaryStage());
-                    alert.setTitle("Movie exists");
-                    alert.setHeaderText("Movie already exsists in database.");
-                    alert.setContentText("");
-
-                    alert.showAndWait();
+                    WarningAlert.showWarningAlert(
+                            mainApp,
+                            "Movie exists",
+                            "Movie already exists in database.",
+                            ""
+                    );
                 }
             } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.initOwner(mainApp.getPrimaryStage());
-                alert.setTitle("No Director");
-                alert.setHeaderText("There is no director like this.");
-                alert.setContentText("Add new director by clicking '+'.");
-
-                alert.showAndWait();
+                WarningAlert.showWarningAlert(
+                        mainApp,
+                        "No Director",
+                        "There is no director like this.",
+                        "Add new director by clicking '+'."
+                );
             }
-
         }
     }
 
@@ -142,20 +140,19 @@ public class MovieEditDialogController {
         } else if (!isValidYear(Integer.parseInt(releaseDateField.getText()))) {
             errorMessage += "No valid release date of the movie! Correct date: 1900-" + Year.now().getValue() + ".\n";
         }
-        if (!isValidRate((float)rateSlider.getValue())) {
+        if (!isValidRate((float) rateSlider.getValue())) {
             errorMessage += "No valid rate of the movie! Correct rate: 0-10.\n";
         }
 
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(dialogStage);
-            alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
-            alert.setContentText(errorMessage);
-
-            alert.showAndWait();
+            WarningAlert.showWarningAlert(
+                    mainApp,
+                    "Invalid Fields",
+                    "Please correct invalid fields.",
+                    errorMessage
+            );
 
             return false;
         }

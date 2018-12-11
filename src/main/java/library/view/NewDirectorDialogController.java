@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import library.MainApp;
 import library.dao.DirectorDao;
 import library.model.Director;
+import library.util.WarningAlert;
 
 public class NewDirectorDialogController {
     @FXML
@@ -46,13 +47,12 @@ public class NewDirectorDialogController {
             saveClicked = true;
             dialogStage.close();
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("Director exists");
-            alert.setHeaderText("Director already exsists in database.");
-            alert.setContentText("");
-
-            alert.showAndWait();
+            WarningAlert.showWarningAlert(
+                    mainApp,
+                    "Director exists",
+                    "Director already exists in database.",
+                    ""
+            );
         }
     }
 
