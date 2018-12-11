@@ -1,5 +1,6 @@
 package library.dao;
 
+import library.model.Director;
 import library.model.Movie;
 import library.util.HibernateUtil;
 import org.hibernate.Session;
@@ -103,5 +104,32 @@ public class MovieDao {
         }
 
         return movie;
+    }
+
+    public boolean movieExists(Movie movie) {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            String hql = "from Movie where title = :title and director_id = :director " +
+                         "and release_date = :rDate and rate = :rate";
+            Query query = session.createQuery(hql);
+            query.setString("title", movie.getTitle());
+            query.setInteger("director", movie.getDirector().getId());
+            query.setInteger("rDate", movie.getReleaseDate());
+            query.setFloat("rate", movie.getRate());
+            movie = (Movie) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        if (movie == null) {
+            return false;
+        }
+
+        return true;
     }
 }

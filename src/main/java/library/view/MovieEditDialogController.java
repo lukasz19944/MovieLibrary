@@ -70,24 +70,31 @@ public class MovieEditDialogController {
 
             if (daoD.getDirectorByName(directorField.getText()) != null) {
                 movie.setDirector(daoD.getDirectorByName(directorField.getText()));
-
                 movie.setTitle(titleField.getText());
-
-
-
                 movie.setReleaseDate(Integer.parseInt(releaseDateField.getText()));
                 movie.setRate((float)rateSlider.getValue());
 
                 MovieDao daoM = new MovieDao();
 
-                if (movieExist) {
-                    daoM.updateMovie(movie);
-                } else {
-                    daoM.addMovie(movie);
-                }
+                if (!daoM.movieExists(movie)) {
 
-                saveClicked = true;
-                dialogStage.close();
+                    if (movieExist) {
+                        daoM.updateMovie(movie);
+                    } else {
+                        daoM.addMovie(movie);
+                    }
+
+                    saveClicked = true;
+                    dialogStage.close();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.initOwner(mainApp.getPrimaryStage());
+                    alert.setTitle("Movie exists");
+                    alert.setHeaderText("Movie already exsists in database.");
+                    alert.setContentText("");
+
+                    alert.showAndWait();
+                }
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.initOwner(mainApp.getPrimaryStage());
@@ -119,6 +126,7 @@ public class MovieEditDialogController {
 
             directors.add(director.getFirstName() + " " + director.getLastName());
             TextFields.bindAutoCompletion(directorField, directors);
+
         }
     }
 
@@ -131,7 +139,9 @@ public class MovieEditDialogController {
         if (directorField.getText() == null || directorField.getText().length() == 0) {
             errorMessage += "No valid director of the movie!\n";
         }
-        if (!isValidYear(Integer.parseInt(releaseDateField.getText()))) {
+        if (releaseDateField.getText() == null || releaseDateField.getText().length() == 0) {
+            errorMessage += "No valid release date of the movie!\n";
+        } else if (!isValidYear(Integer.parseInt(releaseDateField.getText()))) {
             errorMessage += "No valid release date of the movie! Correct date: 1900-" + Year.now().getValue() + ".\n";
         }
         if (!isValidRate((float)rateSlider.getValue())) {

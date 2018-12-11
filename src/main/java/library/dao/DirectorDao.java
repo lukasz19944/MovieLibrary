@@ -125,4 +125,31 @@ public class DirectorDao {
 
         return director;
     }
+
+    public boolean directorExists(Director director) {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            String hql = "from Director where first_name = :fName and last_name = :lName " +
+                         "and gender = :gender and nationality = :nationality";
+            Query query = session.createQuery(hql);
+            query.setString("fName", director.getFirstName());
+            query.setString("lName", director.getLastName());
+            query.setString("gender", director.getGender());
+            query.setString("nationality", director.getNationality());
+            director = (Director) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        if (director == null) {
+            return false;
+        }
+
+        return true;
+    }
 }

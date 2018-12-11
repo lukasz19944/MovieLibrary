@@ -127,6 +127,7 @@ public class MainApp extends Application {
             NewDirectorDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setDirector(director);
+            controller.setMainApp(this);
 
             dialogStage.showAndWait();
 
