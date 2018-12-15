@@ -1,11 +1,14 @@
 package library.model;
 
+import java.util.Set;
+
 public class Movie {
     private int id;
     private String title;
     private Director director;
     private int releaseDate;
     private float rate;
+    private Set actors;
 
     public Movie() {
 
@@ -16,6 +19,14 @@ public class Movie {
         this.director = director;
         this.releaseDate = releaseDate;
         this.rate = rate;
+    }
+
+    public Movie(String title, Director director, int releaseDate, float rate, Set actors) {
+        this.title = title;
+        this.director = director;
+        this.releaseDate = releaseDate;
+        this.rate = rate;
+        this.actors = actors;
     }
 
     public int getId() {
@@ -58,15 +69,23 @@ public class Movie {
         this.rate = rate;
     }
 
+    public Set getActors() {
+        return actors;
+    }
+
+    public void setActors(Set actors) {
+        this.actors = actors;
+    }
 
     @Override
     public String toString() {
         return "Movie{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", director='" + director + '\'' +
+                ", director=" + director +
                 ", releaseDate=" + releaseDate +
                 ", rate=" + rate +
+                ", actors=" + actors +
                 '}';
     }
 }

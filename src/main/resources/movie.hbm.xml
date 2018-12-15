@@ -18,5 +18,11 @@
         <property name="rate">
             <column name="rate" />
         </property>
+        <set name="actors" cascade="save-update" table="movie_actor">
+            <key column="movie_id" />
+            <composite-element class="library.model.MovieActor">
+                <many-to-one name="actor" column="actor_id" class="library.model.Actor" />
+            </composite-element>
+        </set>
     </class>
 </hibernate-mapping>

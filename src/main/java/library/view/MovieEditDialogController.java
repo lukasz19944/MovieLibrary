@@ -10,9 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import library.MainApp;
 import library.dao.DirectorDao;
+import library.dao.MovieActorDao;
 import library.dao.MovieDao;
 import library.model.Director;
 import library.model.Movie;
+import library.util.ActorSet;
 import library.util.WarningAlert;
 import org.controlsfx.control.textfield.TextFields;
 
@@ -31,6 +33,8 @@ public class MovieEditDialogController {
     private Slider rateSlider;
     @FXML
     private Label rateLabel;
+    @FXML
+    private Label actorsLabel;
 
     private Stage dialogStage;
     private Movie movie;
@@ -72,6 +76,7 @@ public class MovieEditDialogController {
                 movie.setTitle(titleField.getText());
                 movie.setReleaseDate(Integer.parseInt(releaseDateField.getText()));
                 movie.setRate((float) rateSlider.getValue());
+
 
                 MovieDao daoM = new MovieDao();
 
@@ -124,6 +129,11 @@ public class MovieEditDialogController {
             TextFields.bindAutoCompletion(directorField, directors);
 
         }
+    }
+
+    @FXML
+    private void handleEditActors() {
+        boolean saveClicked = mainApp.showEditActorsDialog(movie);
     }
 
     private boolean isInputValid() {
@@ -180,12 +190,17 @@ public class MovieEditDialogController {
             releaseDateField.setText(String.valueOf(movie.getReleaseDate()));
             rateSlider.setValue(movie.getRate());
             rateLabel.setText(String.valueOf(movie.getRate()));
+
+            MovieActorDao dao = new MovieActorDao();
+
+            actorsLabel.setText(ActorSet.listActors(dao.getActorsByMovie(movie.getId())));
         } else {
             titleField.setText("");
             directorField.setText("");
             releaseDateField.setText("");
             rateSlider.setValue(5);
             rateLabel.setText("5");
+            actorsLabel.setText("");
         }
     }
 

@@ -8,8 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import library.MainApp;
+import library.dao.MovieActorDao;
 import library.dao.MovieDao;
 import library.model.Movie;
+import library.model.MovieActor;
+import library.util.ActorSet;
 import library.util.WarningAlert;
 
 public class MovieOverviewController {
@@ -28,6 +31,8 @@ public class MovieOverviewController {
     private Label releaseDateLabel;
     @FXML
     private Label rateLabel;
+    @FXML
+    private Label actorsLabel;
 
     private MainApp mainApp;
 
@@ -53,11 +58,16 @@ public class MovieOverviewController {
             directorLabel.setText(movie.getDirector().getName());
             releaseDateLabel.setText(String.valueOf(movie.getReleaseDate()));
             rateLabel.setText(String.valueOf(movie.getRate()));
+
+            MovieActorDao dao = new MovieActorDao();
+
+            actorsLabel.setText(ActorSet.listActors(dao.getActorsByMovie(movie.getId())));
         } else {
             titleLabel.setText("");
             directorLabel.setText("");
             releaseDateLabel.setText("");
             rateLabel.setText("");
+            actorsLabel.setText("");
         }
     }
 

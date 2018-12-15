@@ -24,7 +24,9 @@
 
         <!-- Mapping With Model Class -->
         <mapping resource="director.hbm.xml" />
+        <mapping resource="actor.hbm.xml" />
         <mapping resource="movie.hbm.xml" />
+        <mapping class="library.model.MovieActor" />
 
     </session-factory>
 </hibernate-configuration>

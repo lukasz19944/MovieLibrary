@@ -12,10 +12,7 @@ import javafx.stage.Stage;
 import library.dao.MovieDao;
 import library.model.Director;
 import library.model.Movie;
-import library.view.MovieEditDialogController;
-import library.view.MovieOverviewController;
-import library.view.NewDirectorDialogController;
-import library.view.RootLayoutController;
+import library.view.*;
 
 import java.io.IOException;
 
@@ -126,6 +123,32 @@ public class MainApp extends Application {
             NewDirectorDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setDirector(director);
+            controller.setMainApp(this);
+
+            dialogStage.showAndWait();
+
+            return controller.isSaveClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean showEditActorsDialog(Movie movie) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/EditActorsDialog.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Actors");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            EditActorsDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setMovie(movie);
             controller.setMainApp(this);
 
             dialogStage.showAndWait();
