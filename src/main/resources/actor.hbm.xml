@@ -20,8 +20,8 @@
         <property name="nationality">
             <column name="nationality" />
         </property>
-        <!--<property name="dateOfBirth">-->
-            <!--<column name="date_of_birth" />-->
-        <!--</property>-->
+        <property name="dateOfBirth">
+            <column name="date_of_birth" />
+        </property>
     </class>
 </hibernate-mapping>

@@ -3,13 +3,11 @@ package library.view;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import library.MainApp;
 import library.dao.MovieActorDao;
 import library.dao.MovieDao;
+import library.model.Actor;
 import library.model.Movie;
 import library.model.MovieActor;
 import library.util.ActorSet;
@@ -80,7 +78,7 @@ public class MovieOverviewController {
             movieTable.getItems().remove(selectedIndex);
 
             MovieDao dao = new MovieDao();
-            System.out.println(selectedMovie.getId());
+
             dao.deleteMovie(selectedMovie.getId());
         } else {
             WarningAlert.showWarningAlert(

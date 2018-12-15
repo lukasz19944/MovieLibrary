@@ -180,6 +180,10 @@ public class MovieEditDialogController {
         this.dialogStage = dialogStage;
     }
 
+    public void setActorsLabel(String actors) {
+        actorsLabel.setText(actors);
+    }
+
     public void setMovie(Movie movie) {
         this.movie = movie;
 

@@ -32,4 +32,30 @@ public class MovieActorDao {
 
         return actors;
     }
+
+    public void deleteActorFromMovie(int movieId, int actorId) {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            //MovieActor movieActor = (MovieActor) session.load(MovieActor.class, new Integer(movieId));
+
+            String hql = "delete from MovieActor ma " +
+                         " where ma.movie = :m and ma.actor = :a";
+            Query query = session.createQuery(hql);
+            query.setInteger("m", movieId);
+            query.setInteger("a", actorId);
+            query.executeUpdate();
+
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }

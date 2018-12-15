@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import library.dao.MovieDao;
+import library.model.Actor;
 import library.model.Director;
 import library.model.Movie;
 import library.view.*;
