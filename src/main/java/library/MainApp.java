@@ -161,6 +161,39 @@ public class MainApp extends Application {
         }
     }
 
+    public boolean showActorEditDialog(Actor actor, Movie movie) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/ActorEditDialog.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Actor");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            ActorEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setActor(actor);
+            controller.setMovie(movie);
+            controller.setMainApp(this);
+
+            if (actor.getFirstName() == null) {
+                controller.setActorExist(false);
+            } else {
+                controller.setActorExist(true);
+            }
+
+            dialogStage.showAndWait();
+
+            return controller.isSaveClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }

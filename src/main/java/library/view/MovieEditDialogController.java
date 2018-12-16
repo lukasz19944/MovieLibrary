@@ -3,7 +3,6 @@ package library.view;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -60,10 +59,6 @@ public class MovieEditDialogController {
         }
 
         TextFields.bindAutoCompletion(directorField, directors);
-    }
-
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
     }
 
     @FXML
@@ -166,6 +161,11 @@ public class MovieEditDialogController {
 
             return false;
         }
+    }
+
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
     }
 
     private boolean isValidYear(int year) {

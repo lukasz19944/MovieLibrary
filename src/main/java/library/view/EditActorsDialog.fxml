@@ -50,8 +50,8 @@
       <ButtonBar buttonMinWidth="100.0" layoutX="14.0" layoutY="306.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
         <buttons>
           <Button mnemonicParsing="false" onAction="#handleDeleteActor" prefHeight="30.0" text="Delete" />
-            <Button layoutX="135.0" layoutY="17.0" mnemonicParsing="false" prefHeight="30.0" text="Edit" />
-            <Button layoutX="135.0" layoutY="17.0" mnemonicParsing="false" prefHeight="30.0" text="New" />
+            <Button layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleEditActor" prefHeight="30.0" text="Edit" />
+            <Button layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleNewActor" prefHeight="30.0" text="New" />
         </buttons>
       </ButtonBar>
       <ButtonBar buttonMinWidth="100.0" layoutX="300.0" layoutY="304.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">

@@ -1,27 +1,17 @@
 package library.view;
 
-import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import library.MainApp;
 import library.dao.MovieActorDao;
 import library.model.Actor;
 import library.model.Movie;
-import library.model.MovieActor;
-import library.util.ActorSet;
 import library.util.DateUtil;
 import library.util.WarningAlert;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class EditActorsDialogController {
 
@@ -85,12 +75,32 @@ public class EditActorsDialogController {
 
     @FXML
     private void handleNewActor() {
+        Actor tempActor = new Actor();
+        boolean saveClicked = mainApp.showActorEditDialog(tempActor, movie);
 
+        if (saveClicked) {
+            actorTable.getItems().add(tempActor);
+        }
     }
 
     @FXML
     private void handleEditActor() {
+        Actor selectedActor = actorTable.getSelectionModel().getSelectedItem();
 
+        if (selectedActor != null) {
+            boolean saveClicked = mainApp.showActorEditDialog(selectedActor, movie);
+
+            if (saveClicked) {
+                showActorDetails(selectedActor);
+            }
+        } else {
+            WarningAlert.showWarningAlert(
+                    mainApp,
+                    "No Selection",
+                    "No Actor Selected.",
+                    "Please select an actor in the table."
+            );
+        }
     }
 
     @FXML
