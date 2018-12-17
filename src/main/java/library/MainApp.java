@@ -175,8 +175,8 @@ public class MainApp extends Application {
 
             ActorEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setActor(actor);
             controller.setMovie(movie);
+            controller.setActor(actor);
             controller.setMainApp(this);
 
             if (actor.getFirstName() == null) {

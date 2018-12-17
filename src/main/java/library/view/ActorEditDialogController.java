@@ -1,9 +1,13 @@
 package library.view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import library.MainApp;
@@ -26,6 +30,10 @@ public class ActorEditDialogController {
     private TextField nationalityField;
     @FXML
     private TextField dateOfBirthField;
+    @FXML
+    private Slider rateSlider;
+    @FXML
+    private Label rateLabel;
 
 
     private Stage dialogStage;
@@ -42,6 +50,12 @@ public class ActorEditDialogController {
     @FXML
     private void initialize() {
         genderComboBox.setItems(genders);
+
+        rateSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                rateLabel.setText(String.format("%.2f", new_val));
+            }
+        });
     }
 
     @FXML
@@ -53,11 +67,14 @@ public class ActorEditDialogController {
             actor.setNationality(nationalityField.getText());
             actor.setDateOfBirth(DateUtil.parse(dateOfBirthField.getText()));
 
+
             ActorDao dao = new ActorDao();
             MovieActorDao maDao = new MovieActorDao();
 
             if (actorExist) {
                 dao.updateActor(actor);
+
+                maDao.updateActorRate(movie.getId(), actor.getId(), (float) rateSlider.getValue());
 
                 saveClicked = true;
                 dialogStage.close();
@@ -65,7 +82,7 @@ public class ActorEditDialogController {
                 if (!dao.actorExists(actor)) {
                     dao.addActor(actor);
 
-                    MovieActor movieActorRelation = new MovieActor(movie, actor);
+                    MovieActor movieActorRelation = new MovieActor(movie, actor, (float) rateSlider.getValue());
 
                     maDao.addActorToMovie(movieActorRelation);
 
@@ -92,6 +109,8 @@ public class ActorEditDialogController {
     public void setActor(Actor actor) {
         this.actor = actor;
 
+        MovieActorDao maDao = new MovieActorDao();
+
         if (this.actor.getFirstName() != null) {
             firstNameField.setText(actor.getFirstName());
             lastNameField.setText(actor.getLastName());
@@ -99,6 +118,8 @@ public class ActorEditDialogController {
             nationalityField.setText(actor.getNationality());
             dateOfBirthField.setText(DateUtil.format(actor.getDateOfBirth()));
             dateOfBirthField.setPromptText("dd.mm.yyyy");
+            rateSlider.setValue(maDao.getActorRate(movie.getId(), actor.getId()));
+            rateLabel.setText(String.valueOf(maDao.getActorRate(movie.getId(), actor.getId())));
         } else {
             firstNameField.setText("");
             lastNameField.setText("");
@@ -106,6 +127,8 @@ public class ActorEditDialogController {
             nationalityField.setText("");
             dateOfBirthField.setText("");
             dateOfBirthField.setPromptText("dd.mm.yyyy");
+            rateSlider.setValue(5);
+            rateLabel.setText("5");
         }
     }
 

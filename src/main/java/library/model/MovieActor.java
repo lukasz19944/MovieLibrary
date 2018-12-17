@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class MovieActor implements Serializable {
     private Movie movie;
     private Actor actor;
+    private float rate;
 
     public MovieActor() {
 
@@ -16,6 +17,12 @@ public class MovieActor implements Serializable {
     public MovieActor(Movie movie, Actor actor) {
         this.movie = movie;
         this.actor = actor;
+    }
+
+    public MovieActor(Movie movie, Actor actor, float rate) {
+        this.movie = movie;
+        this.actor = actor;
+        this.rate = rate;
     }
 
     @Id
@@ -38,5 +45,14 @@ public class MovieActor implements Serializable {
 
     public void setActor(Actor actor) {
         this.actor = actor;
+    }
+
+    @JoinColumn(name = "rate")
+    public float getRate() {
+        return rate;
+    }
+
+    public void setRate(float rate) {
+        this.rate = rate;
     }
 }

@@ -1,6 +1,7 @@
 package library.dao;
 
 import library.model.Actor;
+import library.model.Movie;
 import library.model.MovieActor;
 import library.util.HibernateUtil;
 import org.hibernate.Session;
@@ -66,6 +67,63 @@ public class MovieActorDao {
         try {
             transaction = session.beginTransaction();
             session.save(movieActorRelation);
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public Float getActorRate(int movieId, int actorId) {
+        Float rate = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+
+            String hql = "select rate from MovieActor ma " +
+                    " where ma.movie = :m and ma.actor = :a";
+            Query query = session.createQuery(hql);
+            query.setInteger("m", movieId);
+            query.setInteger("a", actorId);
+
+            rate = (Float) query.getSingleResult();
+
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return rate;
+    }
+
+    public void updateActorRate(int movieId, int actorId, float rate) {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+
+            String hql = "update from MovieActor ma " +
+                    " set rate = :r " +
+                    " where ma.movie = :m and ma.actor = :a";
+            Query query = session.createQuery(hql);
+            query.setInteger("m", movieId);
+            query.setInteger("a", actorId);
+            query.setFloat("r", rate);
+            query.executeUpdate();
+
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (transaction != null) {

@@ -1,9 +1,11 @@
 package library.view;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -39,6 +41,8 @@ public class EditActorsDialogController {
     private Label nationalityLabel;
     @FXML
     private Label dateOfBirthLabel;
+    @FXML
+    private Label rateLabel;
 
     @FXML
     private TextField actorField;
@@ -84,12 +88,17 @@ public class EditActorsDialogController {
             genderLabel.setText(actor.getGender());
             nationalityLabel.setText(actor.getNationality());
             dateOfBirthLabel.setText(DateUtil.format(actor.getDateOfBirth()));
+
+            MovieActorDao dao = new MovieActorDao();
+
+            rateLabel.setText(dao.getActorRate(movie.getId(), actor.getId()).toString());
         } else {
             firstNameLabel.setText("");
             lastNameLabel.setText("");
             genderLabel.setText("");
             nationalityLabel.setText("");
             dateOfBirthLabel.setText("");
+            rateLabel.setText("");
         }
     }
 

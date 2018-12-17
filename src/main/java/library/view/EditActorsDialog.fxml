@@ -34,6 +34,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="First Name" />
@@ -46,6 +47,8 @@
             <Label fx:id="genderLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="nationalityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label fx:id="dateOfBirthLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Rate" GridPane.rowIndex="5" />
+            <Label fx:id="rateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <ButtonBar buttonMinWidth="100.0" layoutX="14.0" layoutY="306.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
