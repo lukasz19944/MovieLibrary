@@ -15,8 +15,6 @@ import library.model.MovieActor;
 import library.util.DateUtil;
 import library.util.WarningAlert;
 
-import java.time.Year;
-
 public class ActorEditDialogController {
     @FXML
     private TextField firstNameField;
@@ -48,27 +46,41 @@ public class ActorEditDialogController {
 
     @FXML
     private void handleSave() {
-        actor.setFirstName(firstNameField.getText());
-        actor.setLastName(lastNameField.getText());
-        actor.setGender(genderComboBox.getValue());
-        actor.setNationality(nationalityField.getText());
-        actor.setDateOfBirth(DateUtil.parse(dateOfBirthField.getText()));
+        if (isInputValid()) {
+            actor.setFirstName(firstNameField.getText());
+            actor.setLastName(lastNameField.getText());
+            actor.setGender(genderComboBox.getValue());
+            actor.setNationality(nationalityField.getText());
+            actor.setDateOfBirth(DateUtil.parse(dateOfBirthField.getText()));
 
-        ActorDao dao = new ActorDao();
-        MovieActorDao maDao = new MovieActorDao();
+            ActorDao dao = new ActorDao();
+            MovieActorDao maDao = new MovieActorDao();
 
-        if (actorExist) {
-            dao.updateActor(actor);
-        } else {
-            dao.addActor(actor);
+            if (actorExist) {
+                dao.updateActor(actor);
 
-            MovieActor movieActorRelation = new MovieActor(movie, actor);
+                saveClicked = true;
+                dialogStage.close();
+            } else {
+                if (!dao.actorExists(actor)) {
+                    dao.addActor(actor);
 
-            maDao.addActorToMovie(movieActorRelation);
+                    MovieActor movieActorRelation = new MovieActor(movie, actor);
+
+                    maDao.addActorToMovie(movieActorRelation);
+
+                    saveClicked = true;
+                    dialogStage.close();
+                } else {
+                    WarningAlert.showWarningAlert(
+                            mainApp,
+                            "Actor exists",
+                            "Actor already exists in database.",
+                            ""
+                    );
+                }
+            }
         }
-
-        saveClicked = true;
-        dialogStage.close();
     }
 
     @FXML

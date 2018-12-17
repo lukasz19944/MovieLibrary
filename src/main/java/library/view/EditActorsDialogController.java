@@ -112,6 +112,8 @@ public class EditActorsDialogController {
 
             if (saveClicked) {
                 showActorDetails(selectedActor);
+
+                actorTable.refresh();
             }
         } else {
             WarningAlert.showWarningAlert(
@@ -159,17 +161,27 @@ public class EditActorsDialogController {
             Actor actor;
 
             ActorDao dao = new ActorDao();
-            actor = dao.getActorByName(actorField.getText());
 
-            actorTable.getItems().add(actor);
+            if (dao.getActorByName(actorField.getText()) != null) {
+                actor = dao.getActorByName(actorField.getText());
 
-            MovieActorDao maDao = new MovieActorDao();
+                actorTable.getItems().add(actor);
 
-            MovieActor movieActorRelation = new MovieActor(movie, actor);
+                MovieActorDao maDao = new MovieActorDao();
 
-            maDao.addActorToMovie(movieActorRelation);
+                MovieActor movieActorRelation = new MovieActor(movie, actor);
 
-            actorField.clear();
+                maDao.addActorToMovie(movieActorRelation);
+
+                actorField.clear();
+            } else {
+                WarningAlert.showWarningAlert(
+                        mainApp,
+                        "No actor",
+                        "There is no actor like this.",
+                        "Add new actor."
+                );
+            }
         }
     }
 
