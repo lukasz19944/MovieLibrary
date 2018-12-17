@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -59,7 +60,7 @@
           <Button mnemonicParsing="false" onAction="#handleClose" prefHeight="30.0" text="Close" />
         </buttons>
       </ButtonBar>
-      <TableView fx:id="actorTable" layoutX="10.0" layoutY="28.0" prefHeight="200.0" prefWidth="230.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0">
+      <TableView fx:id="actorTable" layoutX="10.0" layoutY="28.0" prefHeight="200.0" prefWidth="230.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0">
         <columns>
           <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="First Name" />
           <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Last Name" />
@@ -68,5 +69,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <TextField fx:id="actorField" layoutX="10.0" layoutY="260.0" onKeyPressed="#handleEnter" prefHeight="26.0" prefWidth="230.0" AnchorPane.leftAnchor="10.0" />
    </children>
 </AnchorPane>

@@ -13,6 +13,9 @@ import library.model.Actor;
 import library.model.Movie;
 import library.model.MovieActor;
 import library.util.DateUtil;
+import library.util.WarningAlert;
+
+import java.time.Year;
 
 public class ActorEditDialogController {
     @FXML
@@ -83,12 +86,48 @@ public class ActorEditDialogController {
             genderComboBox.setValue(actor.getGender());
             nationalityField.setText(actor.getNationality());
             dateOfBirthField.setText(DateUtil.format(actor.getDateOfBirth()));
+            dateOfBirthField.setPromptText("dd.mm.yyyy");
         } else {
             firstNameField.setText("");
             lastNameField.setText("");
             genderComboBox.setValue("");
             nationalityField.setText("");
             dateOfBirthField.setText("");
+            dateOfBirthField.setPromptText("dd.mm.yyyy");
+        }
+    }
+
+    private boolean isInputValid() {
+        String errorMessage = "";
+
+        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
+            errorMessage += "No valid first name of the actor!\n";
+        }
+        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
+            errorMessage += "No valid last name of the actor!\n";
+        }
+        if (nationalityField.getText() == null || nationalityField.getText().length() == 0) {
+            errorMessage += "No valid nationality of the actor!\n";
+        }
+        if (dateOfBirthField.getText() == null || dateOfBirthField.getText().length() == 0) {
+            errorMessage += "No valid date of birth!\n";
+        } else {
+            if (!DateUtil.validDate(dateOfBirthField.getText())) {
+                errorMessage += "No valid date of birth. Use the format dd.mm.yyyy!\n";
+            }
+        }
+
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            WarningAlert.showWarningAlert(
+                    mainApp,
+                    "Invalid Fields",
+                    "Please correct invalid fields.",
+                    errorMessage
+            );
+
+            return false;
         }
     }
 

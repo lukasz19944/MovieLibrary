@@ -1,17 +1,24 @@
 package library.view;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import library.MainApp;
+import library.dao.ActorDao;
 import library.dao.MovieActorDao;
 import library.model.Actor;
 import library.model.Movie;
+import library.model.MovieActor;
 import library.util.DateUtil;
 import library.util.WarningAlert;
+import org.controlsfx.control.textfield.TextFields;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EditActorsDialogController {
 
@@ -33,15 +40,28 @@ public class EditActorsDialogController {
     @FXML
     private Label dateOfBirthLabel;
 
+    @FXML
+    private TextField actorField;
+
     private Stage dialogStage;
     private Movie movie;
     private boolean saveClicked = false;
 
     private MainApp mainApp;
 
+    private List<String> actors = new ArrayList<>();
+
     @FXML
     private void initialize() {
         showActorDetails(null);
+
+        ActorDao dao = new ActorDao();
+
+        for (Actor actor : dao.getAllActors()) {
+            actors.add(actor.getName());
+        }
+
+        TextFields.bindAutoCompletion(actorField, actors);
     }
 
     public void setMovie(Movie movie) {
@@ -129,6 +149,28 @@ public class EditActorsDialogController {
     @FXML
     private void handleClose() {
         dialogStage.close();
+    }
+
+    @FXML
+    public void handleEnter(KeyEvent e)
+    {
+        if(e.getCode() == KeyCode.ENTER)
+        {
+            Actor actor;
+
+            ActorDao dao = new ActorDao();
+            actor = dao.getActorByName(actorField.getText());
+
+            actorTable.getItems().add(actor);
+
+            MovieActorDao maDao = new MovieActorDao();
+
+            MovieActor movieActorRelation = new MovieActor(movie, actor);
+
+            maDao.addActorToMovie(movieActorRelation);
+
+            actorField.clear();
+        }
     }
 
     public void setDialogStage(Stage dialogStage) {

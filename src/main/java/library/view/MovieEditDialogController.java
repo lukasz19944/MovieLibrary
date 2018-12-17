@@ -72,26 +72,27 @@ public class MovieEditDialogController {
                 movie.setReleaseDate(Integer.parseInt(releaseDateField.getText()));
                 movie.setRate((float) rateSlider.getValue());
 
-
                 MovieDao daoM = new MovieDao();
 
-                if (!daoM.movieExists(movie)) {
-
-                    if (movieExist) {
-                        daoM.updateMovie(movie);
-                    } else {
-                        daoM.addMovie(movie);
-                    }
+                if (movieExist) {
+                    daoM.updateMovie(movie);
 
                     saveClicked = true;
                     dialogStage.close();
                 } else {
-                    WarningAlert.showWarningAlert(
-                            mainApp,
-                            "Movie exists",
-                            "Movie already exists in database.",
-                            ""
-                    );
+                    if (!daoM.movieExists(movie)) {
+                        daoM.addMovie(movie);
+
+                        saveClicked = true;
+                        dialogStage.close();
+                    } else {
+                        WarningAlert.showWarningAlert(
+                                mainApp,
+                                "Movie exists",
+                                "Movie already exists in database.",
+                                ""
+                        );
+                    }
                 }
             } else {
                 WarningAlert.showWarningAlert(
