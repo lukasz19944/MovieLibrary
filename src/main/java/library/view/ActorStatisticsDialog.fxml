@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.ActorStatisticsDialogController">
+   <children>
+      <Label text="Movie Statistics" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="movieTable" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+        <columns>
+          <TableColumn fx:id="titleColumn" prefWidth="276.7999143600464" text="Title" />
+          <TableColumn fx:id="releaseDateColumn" minWidth="0.0" prefWidth="88.800048828125" text="Release date" />
+            <TableColumn fx:id="directorColumn" prefWidth="204.79998779296875" text="Director" />
+            <TableColumn fx:id="rateColumn" prefWidth="60.7999267578125" text="Rate" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

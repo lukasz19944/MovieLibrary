@@ -48,4 +48,19 @@ public class RootLayoutController {
         alert.showAndWait();
     }
 
+    @FXML
+    private void handleMovieStatistics() {
+        mainApp.showMovieStatistics();
+    }
+
+    @FXML
+    private void handleDirectorStatistics() {
+
+    }
+
+    @FXML
+    private void hanldeActorStatistics() {
+
+    }
+
 }
