@@ -24,7 +24,7 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#handleMovieStatistics" text="Movies" />
                   <MenuItem mnemonicParsing="false" onAction="#handleDirectorStatistics" text="Directors" />
-                  <MenuItem mnemonicParsing="false" onAction="#hanldeActorStatistics" text="Actors" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleActorStatistics" text="Actors" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" onAction="#handleAbout" text="Help">

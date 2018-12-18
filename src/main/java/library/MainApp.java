@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import library.dao.DirectorDao;
 import library.dao.MovieDao;
 import library.model.Actor;
 import library.model.Director;
@@ -22,11 +23,14 @@ public class MainApp extends Application {
     private BorderPane rootLayout;
 
     private ObservableList<Movie> movieData = FXCollections.observableArrayList();
+    private ObservableList<Director> directorData = FXCollections.observableArrayList();
 
     public MainApp() {
         MovieDao dao = new MovieDao();
+        DirectorDao dDao = new DirectorDao();
 
         movieData.addAll(dao.getAllMovies());
+        directorData.addAll(dDao.getAllDirectors());
     }
 
     public static void main(String[] args) {
@@ -197,16 +201,38 @@ public class MainApp extends Application {
     public void showMovieStatistics() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/ActorStatisticsDialog.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/MovieStatisticsDialog.fxml"));
             AnchorPane page = loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Actor Statistics");
+            dialogStage.setTitle("Movie Statistics");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            ActorStatisticsDialogController controller = loader.getController();
+            MovieStatisticsDialogController controller = loader.getController();
+            controller.setMainApp(this);
+
+            dialogStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showDirectorStatistics() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/DirectorStatisticsDialog.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Director Statistics");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            DirectorStatisticsDialogController controller = loader.getController();
             controller.setMainApp(this);
 
             dialogStage.showAndWait();
@@ -222,5 +248,9 @@ public class MainApp extends Application {
 
     public ObservableList<Movie> getMovieData() {
         return movieData;
+    }
+
+    public ObservableList<Director> getDirectorData() {
+        return directorData;
     }
 }

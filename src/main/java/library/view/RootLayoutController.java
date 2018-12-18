@@ -55,11 +55,11 @@ public class RootLayoutController {
 
     @FXML
     private void handleDirectorStatistics() {
-
+        mainApp.showDirectorStatistics();
     }
 
     @FXML
-    private void hanldeActorStatistics() {
+    private void handleActorStatistics() {
 
     }
 

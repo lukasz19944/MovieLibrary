@@ -170,4 +170,29 @@ public class DirectorDao {
             session.close();
         }
     }
+
+    public Float averageDirectorRate(Director director) {
+        Double avgRate = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            String hql = "select avg(rate) from Movie where director = :dir";
+            Query query = session.createQuery(hql);
+            query.setEntity("dir", director);
+            avgRate = (Double) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        if (avgRate != null) {
+            return avgRate.floatValue();
+        } else {
+            return 0f;
+        }
+    }
 }

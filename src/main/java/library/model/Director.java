@@ -1,5 +1,7 @@
 package library.model;
 
+import library.dao.DirectorDao;
+
 public class Director {
     private int id;
     private String firstName;
@@ -60,6 +62,12 @@ public class Director {
 
     public String getName() {
         return firstName + " " + lastName;
+    }
+
+    public Float getAverageRate() {
+        DirectorDao dao = new DirectorDao();
+
+        return dao.averageDirectorRate(this);
     }
 
     @Override
