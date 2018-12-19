@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import library.MainApp;
 import library.dao.ActorDao;
 import library.dao.MovieActorDao;
+import library.dao.MovieDao;
 import library.model.Actor;
 import library.model.Movie;
 import library.model.MovieActor;
@@ -70,6 +71,7 @@ public class ActorEditDialogController {
 
             ActorDao dao = new ActorDao();
             MovieActorDao maDao = new MovieActorDao();
+            MovieDao mDao = new MovieDao();
 
             if (actorExist) {
                 dao.updateActor(actor);
@@ -82,6 +84,7 @@ public class ActorEditDialogController {
                 if (!dao.actorExists(actor)) {
                     dao.addActor(actor);
 
+                    // zle, proba zapisu do bazy w momencie gdy movie nie ma jeszcze w bazie
                     MovieActor movieActorRelation = new MovieActor(movie, actor, (float) rateSlider.getValue());
 
                     maDao.addActorToMovie(movieActorRelation);

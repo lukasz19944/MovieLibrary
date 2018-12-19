@@ -29,6 +29,10 @@ public class MovieEditDialogController {
     @FXML
     private TextField releaseDateField;
     @FXML
+    private TextField genreField;
+    @FXML
+    private TextField countryField;
+    @FXML
     private Slider rateSlider;
     @FXML
     private Label rateLabel;
@@ -70,6 +74,8 @@ public class MovieEditDialogController {
                 movie.setDirector(daoD.getDirectorByName(directorField.getText()));
                 movie.setTitle(titleField.getText());
                 movie.setReleaseDate(Integer.parseInt(releaseDateField.getText()));
+                movie.setGenre(genreField.getText());
+                movie.setCountry(countryField.getText());
                 movie.setRate((float) rateSlider.getValue());
 
                 MovieDao daoM = new MovieDao();
@@ -146,6 +152,12 @@ public class MovieEditDialogController {
         } else if (!isValidYear(Integer.parseInt(releaseDateField.getText()))) {
             errorMessage += "No valid release date of the movie! Correct date: 1900-" + Year.now().getValue() + ".\n";
         }
+        if (genreField.getText() == null || genreField.getText().length() == 0) {
+            errorMessage += "No valid genre of the movie!\n";
+        }
+        if (countryField.getText() == null || countryField.getText().length() == 0) {
+            errorMessage += "No valid country of the movie!\n";
+        }
         if (!isValidRate((float) rateSlider.getValue())) {
             errorMessage += "No valid rate of the movie! Correct rate: 0-10.\n";
         }
@@ -193,6 +205,8 @@ public class MovieEditDialogController {
             titleField.setText(movie.getTitle());
             directorField.setText(movie.getDirector().getName());
             releaseDateField.setText(String.valueOf(movie.getReleaseDate()));
+            genreField.setText(movie.getGenre());
+            countryField.setText(movie.getCountry());
             rateSlider.setValue(movie.getRate());
             rateLabel.setText(String.valueOf(movie.getRate()));
 
@@ -203,6 +217,8 @@ public class MovieEditDialogController {
             titleField.setText("");
             directorField.setText("");
             releaseDateField.setText("");
+            genreField.setText("");
+            countryField.setText("");
             rateSlider.setValue(5);
             rateLabel.setText("5");
             actorsLabel.setText("");

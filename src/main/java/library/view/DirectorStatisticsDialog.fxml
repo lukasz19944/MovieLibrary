@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.DirectorStatisticsDialogController">
+<AnchorPane prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.DirectorStatisticsDialogController">
    <children>
       <Label text="Director Statistics" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
@@ -15,11 +15,11 @@
       </Label>
       <TableView fx:id="directorTable" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
          <columns>
-            <TableColumn fx:id="firstNameColumn" prefWidth="176.00000286102295" text="First Name" />
-            <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="165.59996032714844" text="Last Name" />
-            <TableColumn fx:id="genderColumn" prefWidth="79.99993896484375" text="Gender" />
-            <TableColumn fx:id="nationalityColumn" prefWidth="128.0" text="Nationality" />
-            <TableColumn fx:id="averageRateColumn" text="Average Rate" />
+            <TableColumn fx:id="firstNameColumn" prefWidth="188.79995727539062" text="First Name" />
+            <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="196.0" text="Last Name" />
+            <TableColumn fx:id="genderColumn" prefWidth="163.20001220703125" text="Gender" />
+            <TableColumn fx:id="nationalityColumn" prefWidth="129.60003662109375" text="Nationality" />
+            <TableColumn fx:id="averageRateColumn" prefWidth="103.20001220703125" text="Average Rate" />
          </columns>
       </TableView>
    </children>

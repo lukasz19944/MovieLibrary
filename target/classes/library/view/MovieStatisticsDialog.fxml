@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.MovieStatisticsDialogController">
+<AnchorPane prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.MovieStatisticsDialogController">
    <children>
       <Label text="Movie Statistics" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
@@ -16,10 +15,12 @@
       </Label>
       <TableView fx:id="movieTable" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
         <columns>
-          <TableColumn fx:id="titleColumn" prefWidth="276.7999143600464" text="Title" />
-          <TableColumn fx:id="releaseDateColumn" minWidth="0.0" prefWidth="88.800048828125" text="Release date" />
-            <TableColumn fx:id="directorColumn" prefWidth="204.79998779296875" text="Director" />
-            <TableColumn fx:id="rateColumn" prefWidth="60.7999267578125" text="Rate" />
+          <TableColumn fx:id="titleColumn" prefWidth="243.19998168945312" text="Title" />
+          <TableColumn fx:id="releaseDateColumn" minWidth="0.0" prefWidth="76.0" text="Release date" />
+            <TableColumn fx:id="directorColumn" prefWidth="160.79998779296875" text="Director" />
+            <TableColumn fx:id="genreColumn" prefWidth="144.0" text="Genre" />
+            <TableColumn fx:id="countryColumn" prefWidth="103.199951171875" text="Country" />
+            <TableColumn fx:id="rateColumn" prefWidth="56.0" text="Rate" />
         </columns>
       </TableView>
    </children>

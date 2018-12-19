@@ -19,6 +19,10 @@ public class MovieStatisticsDialogController {
     @FXML
     private TableColumn<Movie, String> directorColumn;
     @FXML
+    private TableColumn<Movie, String> genreColumn;
+    @FXML
+    private TableColumn<Movie, String> countryColumn;
+    @FXML
     private TableColumn<Movie, Float> rateColumn;
 
     private MainApp mainApp;
@@ -28,6 +32,8 @@ public class MovieStatisticsDialogController {
         titleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
         releaseDateColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getReleaseDate()).asObject());
         directorColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDirector().getName()));
+        genreColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGenre()));
+        countryColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCountry()));
         rateColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getRate()).asObject());
     }
 

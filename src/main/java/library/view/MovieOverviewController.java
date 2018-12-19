@@ -28,6 +28,10 @@ public class MovieOverviewController {
     @FXML
     private Label releaseDateLabel;
     @FXML
+    private Label genreLabel;
+    @FXML
+    private Label countryLabel;
+    @FXML
     private Label rateLabel;
     @FXML
     private Label actorsLabel;
@@ -55,6 +59,8 @@ public class MovieOverviewController {
             titleLabel.setText(movie.getTitle());
             directorLabel.setText(movie.getDirector().getName());
             releaseDateLabel.setText(String.valueOf(movie.getReleaseDate()));
+            genreLabel.setText(movie.getGenre());
+            countryLabel.setText(movie.getCountry());
             rateLabel.setText(String.valueOf(movie.getRate()));
 
             MovieActorDao dao = new MovieActorDao();
@@ -64,6 +70,8 @@ public class MovieOverviewController {
             titleLabel.setText("");
             directorLabel.setText("");
             releaseDateLabel.setText("");
+            genreLabel.setText("");
+            countryLabel.setText("");
             rateLabel.setText("");
             actorsLabel.setText("");
         }

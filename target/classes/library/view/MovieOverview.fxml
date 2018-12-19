@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.MovieOverviewController">
+<AnchorPane prefHeight="650.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.MovieOverviewController">
    <children>
       <SplitPane dividerPositions="0.35" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -27,6 +27,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
@@ -34,13 +36,17 @@
                         <Label text="Title" />
                         <Label text="Director" GridPane.rowIndex="1" />
                         <Label text="Release date" GridPane.rowIndex="2" />
-                        <Label text="Rate" GridPane.rowIndex="3" />
+                        <Label text="Rate" GridPane.rowIndex="5" />
                         <Label fx:id="titleLabel" text="Label" GridPane.columnIndex="1" />
                         <Label fx:id="directorLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="releaseDateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="rateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Actors" GridPane.rowIndex="4" />
-                        <Label fx:id="actorsLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="rateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="Actors" GridPane.rowIndex="6" />
+                        <Label fx:id="actorsLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label text="Genre" GridPane.rowIndex="3" />
+                        <Label text="Country" GridPane.rowIndex="4" />
+                        <Label fx:id="genreLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="countryLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                   <ToolBar layoutX="398.0" layoutY="30.0" orientation="VERTICAL" prefHeight="166.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -59,8 +65,8 @@
                <children>
                   <TableView fx:id="movieTable" prefHeight="386.4" prefWidth="598.4" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <columns>
-                      <TableColumn fx:id="titleColumn" prefWidth="432.79996967315674" text="Title" />
-                      <TableColumn fx:id="rateColumn" prefWidth="143.20001220703125" text="Rate" />
+                      <TableColumn fx:id="titleColumn" prefWidth="470.4000186920166" text="Title" />
+                      <TableColumn fx:id="rateColumn" prefWidth="256.00006103515625" text="Rate" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

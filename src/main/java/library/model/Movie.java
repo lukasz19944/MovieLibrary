@@ -7,6 +7,8 @@ public class Movie {
     private String title;
     private Director director;
     private int releaseDate;
+    private String genre;
+    private String country;
     private float rate;
     private Set actors;
 
@@ -25,6 +27,16 @@ public class Movie {
         this.title = title;
         this.director = director;
         this.releaseDate = releaseDate;
+        this.rate = rate;
+        this.actors = actors;
+    }
+
+    public Movie(String title, Director director, int releaseDate, String genre, String country, float rate, Set actors) {
+        this.title = title;
+        this.director = director;
+        this.releaseDate = releaseDate;
+        this.genre = genre;
+        this.country = country;
         this.rate = rate;
         this.actors = actors;
     }
@@ -61,6 +73,22 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public float getRate() {
         return rate;
     }
@@ -84,6 +112,8 @@ public class Movie {
                 ", title='" + title + '\'' +
                 ", director=" + director +
                 ", releaseDate=" + releaseDate +
+                ", genre='" + genre + '\'' +
+                ", country='" + country + '\'' +
                 ", rate=" + rate +
                 ", actors=" + actors +
                 '}';

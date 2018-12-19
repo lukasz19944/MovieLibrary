@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.ActorStatisticsDialogController">
+<AnchorPane prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.ActorStatisticsDialogController">
    <children>
       <Label text="Actor Statistics" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
@@ -15,12 +15,12 @@
       </Label>
       <TableView fx:id="actorTable" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
          <columns>
-            <TableColumn fx:id="firstNameColumn" prefWidth="159.19995403289795" text="First Name" />
-            <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="143.99998474121094" text="Last Name" />
-            <TableColumn fx:id="genderColumn" prefWidth="80.79998779296875" text="Gender" />
-            <TableColumn fx:id="nationalityColumn" prefWidth="102.4000244140625" text="Nationality" />
-            <TableColumn fx:id="ageColumn" prefWidth="42.4000244140625" text="Age" />
-            <TableColumn fx:id="averageRateColumn" prefWidth="98.79998779296875" text="Average Rate" />
+            <TableColumn fx:id="firstNameColumn" prefWidth="182.39999389648438" text="First Name" />
+            <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="172.79998779296875" text="Last Name" />
+            <TableColumn fx:id="genderColumn" prefWidth="96.0" text="Gender" />
+            <TableColumn fx:id="nationalityColumn" prefWidth="138.40008544921875" text="Nationality" />
+            <TableColumn fx:id="ageColumn" prefWidth="79.20001220703125" text="Age" />
+            <TableColumn fx:id="averageRateColumn" prefWidth="111.99993896484375" text="Average Rate" />
          </columns>
       </TableView>
    </children>

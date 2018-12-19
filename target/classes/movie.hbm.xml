@@ -15,6 +15,12 @@
         <property name="releaseDate">
             <column name="release_date" />
         </property>
+        <property name="genre">
+            <column name="genre" />
+        </property>
+        <property name="country">
+            <column name="country" />
+        </property>
         <property name="rate">
             <column name="rate" />
         </property>
