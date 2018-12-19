@@ -6,21 +6,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.ActorStatisticsDialogController">
    <children>
-      <Label text="Movie Statistics" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <Label text="Actor Statistics" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="movieTable" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
-        <columns>
-          <TableColumn fx:id="titleColumn" prefWidth="276.7999143600464" text="Title" />
-          <TableColumn fx:id="releaseDateColumn" minWidth="0.0" prefWidth="88.800048828125" text="Release date" />
-            <TableColumn fx:id="directorColumn" prefWidth="204.79998779296875" text="Director" />
-            <TableColumn fx:id="rateColumn" prefWidth="60.7999267578125" text="Rate" />
-        </columns>
+      <TableView fx:id="actorTable" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+         <columns>
+            <TableColumn fx:id="firstNameColumn" prefWidth="159.19995403289795" text="First Name" />
+            <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="143.99998474121094" text="Last Name" />
+            <TableColumn fx:id="genderColumn" prefWidth="80.79998779296875" text="Gender" />
+            <TableColumn fx:id="nationalityColumn" prefWidth="102.4000244140625" text="Nationality" />
+            <TableColumn fx:id="ageColumn" prefWidth="42.4000244140625" text="Age" />
+            <TableColumn fx:id="averageRateColumn" prefWidth="98.79998779296875" text="Average Rate" />
+         </columns>
       </TableView>
    </children>
 </AnchorPane>

@@ -1,5 +1,11 @@
 package library.model;
 
+import library.dao.ActorDao;
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class Actor {
@@ -72,6 +78,23 @@ public class Actor {
 
     public String getName() {
         return firstName + " " + lastName;
+    }
+
+    public Integer calculateAge() {
+        Date currentDate = new Date();
+        if (dateOfBirth != null) {
+            LocalDate dob = Instant.ofEpochMilli(dateOfBirth.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate now = Instant.ofEpochMilli(currentDate.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+            return Period.between(dob, now).getYears();
+        } else {
+            return 0;
+        }
+    }
+
+    public Float getAverageRate() {
+        ActorDao dao = new ActorDao();
+
+        return dao.averageActorRate(this);
     }
 
     @Override

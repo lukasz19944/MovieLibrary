@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import library.dao.ActorDao;
 import library.dao.DirectorDao;
 import library.dao.MovieDao;
 import library.model.Actor;
@@ -24,13 +25,16 @@ public class MainApp extends Application {
 
     private ObservableList<Movie> movieData = FXCollections.observableArrayList();
     private ObservableList<Director> directorData = FXCollections.observableArrayList();
+    private ObservableList<Actor> actorData = FXCollections.observableArrayList();
 
     public MainApp() {
         MovieDao dao = new MovieDao();
         DirectorDao dDao = new DirectorDao();
+        ActorDao aDao = new ActorDao();
 
         movieData.addAll(dao.getAllMovies());
         directorData.addAll(dDao.getAllDirectors());
+        actorData.addAll(aDao.getAllActors());
     }
 
     public static void main(String[] args) {
@@ -242,6 +246,28 @@ public class MainApp extends Application {
         }
     }
 
+    public void showActorStatistics() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/ActorStatisticsDialog.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Actor Statistics");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            ActorStatisticsDialogController controller = loader.getController();
+            controller.setMainApp(this);
+
+            dialogStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -252,5 +278,9 @@ public class MainApp extends Application {
 
     public ObservableList<Director> getDirectorData() {
         return directorData;
+    }
+
+    public ObservableList<Actor> getActorData() {
+        return actorData;
     }
 }

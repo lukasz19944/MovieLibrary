@@ -7,33 +7,39 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import library.MainApp;
-import library.model.Movie;
+import library.model.Actor;
 
 public class ActorStatisticsDialogController {
     @FXML
-    private TableView<Movie> movieTable;
+    private TableView<Actor> actorTable;
     @FXML
-    private TableColumn<Movie, String> titleColumn;
+    private TableColumn<Actor, String> firstNameColumn;
     @FXML
-    private TableColumn<Movie, Integer> releaseDateColumn;
+    private TableColumn<Actor, String> lastNameColumn;
     @FXML
-    private TableColumn<Movie, String> directorColumn;
+    private TableColumn<Actor, String> genderColumn;
     @FXML
-    private TableColumn<Movie, Float> rateColumn;
+    private TableColumn<Actor, String> nationalityColumn;
+    @FXML
+    private TableColumn<Actor, Integer> ageColumn;
+    @FXML
+    private TableColumn<Actor, Float> averageRateColumn;
 
     private MainApp mainApp;
 
     @FXML
     private void initialize() {
-        titleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
-        releaseDateColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getReleaseDate()).asObject());
-        directorColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDirector().getName()));
-        rateColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getRate()).asObject());
+        firstNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFirstName()));
+        lastNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLastName()));
+        genderColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGender()));
+        nationalityColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNationality()));
+        ageColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().calculateAge()).asObject());
+        averageRateColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getAverageRate()).asObject());
     }
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
-        movieTable.setItems(mainApp.getMovieData());
+        actorTable.setItems(mainApp.getActorData());
     }
 }

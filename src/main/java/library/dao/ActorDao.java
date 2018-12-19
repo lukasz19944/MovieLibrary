@@ -171,4 +171,30 @@ public class ActorDao {
             session.close();
         }
     }
+
+    public Float averageActorRate(Actor actor) {
+        Double avgRate = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            String hql = "select avg(ma.rate) from Actor a, MovieActor ma " +
+                    "where ma.actor = a.id and a.id = :act";
+            Query query = session.createQuery(hql);
+            query.setEntity("act", actor);
+            avgRate = (Double) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        if (avgRate != null) {
+            return avgRate.floatValue();
+        } else {
+            return 0f;
+        }
+    }
 }

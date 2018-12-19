@@ -60,7 +60,7 @@ public class RootLayoutController {
 
     @FXML
     private void handleActorStatistics() {
-
+        mainApp.showActorStatistics();
     }
 
 }
