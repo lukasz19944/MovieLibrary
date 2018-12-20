@@ -1,19 +1,22 @@
 package library.view;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import library.MainApp;
+import library.dao.ActorDao;
 import library.dao.DirectorDao;
 import library.dao.MovieActorDao;
 import library.dao.MovieDao;
+import library.model.Actor;
 import library.model.Director;
 import library.model.Movie;
-import library.util.ActorSet;
+import library.model.MovieActor;
 import library.util.WarningAlert;
 import org.controlsfx.control.textfield.TextFields;
 
@@ -37,7 +40,14 @@ public class MovieEditDialogController {
     @FXML
     private Label rateLabel;
     @FXML
-    private Label actorsLabel;
+    private TextField actorField;
+
+    @FXML
+    private TableView<Actor> actorTable;
+    @FXML
+    private TableColumn<Actor, String> firstNameColumn;
+    @FXML
+    private TableColumn<Actor, String> lastNameColumn;
 
     private Stage dialogStage;
     private Movie movie;
@@ -47,6 +57,7 @@ public class MovieEditDialogController {
     private MainApp mainApp;
 
     private List<String> directors = new ArrayList<>();
+    private List<String> actors = new ArrayList<>();
 
     @FXML
     private void initialize() {
@@ -56,13 +67,27 @@ public class MovieEditDialogController {
             }
         });
 
-        DirectorDao dao = new DirectorDao();
+        DirectorDao daoD = new DirectorDao();
+        ActorDao daoA = new ActorDao();
 
-        for (Director director : dao.getAllDirectors()) {
+        for (Director director : daoD.getAllDirectors()) {
             directors.add(director.getName());
         }
 
+        for (Actor actor : daoA.getAllActors()) {
+            actors.add(actor.getName());
+        }
+
         TextFields.bindAutoCompletion(directorField, directors);
+        TextFields.bindAutoCompletion(actorField, actors);
+
+        firstNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFirstName()));
+        lastNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLastName()));
+
+        //MovieActorDao daoMa = new MovieActorDao();
+        //actorTable.getItems().addAll(daoMa.getActorsByMovie(movie.getId()));
+
+        //actorTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showActorDetails(newValue));
     }
 
     @FXML
@@ -79,24 +104,27 @@ public class MovieEditDialogController {
                 movie.setRate((float) rateSlider.getValue());
 
                 MovieDao daoM = new MovieDao();
+                MovieActorDao daoMa = new MovieActorDao();
 
                 if (movieExist) {
-                    Movie m = daoM.getMovieById(movie.getId());
+                    daoM.updateMovie(movie);
 
-                    m.setDirector(daoD.getDirectorByName(directorField.getText()));
-                    m.setTitle(titleField.getText());
-                    m.setReleaseDate(Integer.parseInt(releaseDateField.getText()));
-                    m.setGenre(genreField.getText());
-                    m.setCountry(countryField.getText());
-                    m.setRate((float) rateSlider.getValue());
-
-                    daoM.updateMovie(m);
+                    for (Actor actor : actorTable.getItems()) {
+                        MovieActor movieActorRelation = new MovieActor(movie, actor);
+                        daoMa.addActorToMovie(movieActorRelation);
+                    }
 
                     saveClicked = true;
                     dialogStage.close();
                 } else {
                     if (!daoM.movieExists(movie)) {
                         daoM.addMovie(movie);
+
+                        for (Actor actor : actorTable.getItems()) {
+                            MovieActor movieActorRelation = new MovieActor(movie, actor);
+                            daoMa.addActorToMovie(movieActorRelation);
+                        }
+
 
                         saveClicked = true;
                         dialogStage.close();
@@ -142,12 +170,43 @@ public class MovieEditDialogController {
     }
 
     @FXML
-    private void handleEditActors() {
-        MovieDao mDao = new MovieDao();
+    private void handleNewActor() {
+        Actor actor = new Actor();
+        boolean saveClicked = mainApp.showNewActorDialog(actor);
 
-        //mDao.addMovie(movie);
-        movieExist = true;
-        boolean saveClicked = mainApp.showEditActorsDialog(movie);
+        if (saveClicked) {
+            ActorDao dao = new ActorDao();
+            dao.addActor(actor);
+
+            actorField.setText(actor.getName());
+
+            actors.add(actor.getName());
+            TextFields.bindAutoCompletion(actorField, actors);
+        }
+    }
+
+    @FXML
+    private void handleEnter(KeyEvent e) {
+        if(e.getCode() == KeyCode.ENTER) {
+            Actor actor;
+
+            ActorDao dao = new ActorDao();
+
+            if (dao.getActorByName(actorField.getText()) != null) {
+                actor = dao.getActorByName(actorField.getText());
+
+                actorTable.getItems().add(actor);
+
+                actorField.clear();
+            } else {
+                WarningAlert.showWarningAlert(
+                        mainApp,
+                        "No actor",
+                        "There is no actor like this.",
+                        "Add new actor."
+                );
+            }
+        }
     }
 
     private boolean isInputValid() {
@@ -205,10 +264,6 @@ public class MovieEditDialogController {
         this.dialogStage = dialogStage;
     }
 
-    public void setActorsLabel(String actors) {
-        actorsLabel.setText(actors);
-    }
-
     public void setMovie(Movie movie) {
         this.movie = movie;
 
@@ -223,8 +278,7 @@ public class MovieEditDialogController {
             rateLabel.setText(String.valueOf(movie.getRate()));
 
             MovieActorDao dao = new MovieActorDao();
-
-            actorsLabel.setText(ActorSet.listActors(dao.getActorsByMovie(movie.getId())));
+            actorTable.getItems().addAll(dao.getActorsByMovie(movie.getId()));
         } else {
             titleField.setText("");
             directorField.setText("");
@@ -233,7 +287,8 @@ public class MovieEditDialogController {
             countryField.setText("");
             rateSlider.setValue(5);
             rateLabel.setText("5");
-            actorsLabel.setText("");
+
+
         }
     }
 
@@ -243,5 +298,9 @@ public class MovieEditDialogController {
 
     public void setMovieExist(boolean movieExist) {
         this.movieExist = movieExist;
+    }
+
+    public List<String> getActors() {
+        return actors;
     }
 }

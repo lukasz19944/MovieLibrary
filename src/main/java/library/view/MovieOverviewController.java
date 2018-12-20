@@ -101,7 +101,7 @@ public class MovieOverviewController {
 
     @FXML
     private void handleNewMovie() {
-        Movie tempMovie = new Movie("", null, 0, 0);
+        Movie tempMovie = new Movie();
 
         boolean saveClicked = mainApp.showMovieEditDialog(tempMovie);
 

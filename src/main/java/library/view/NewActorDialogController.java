@@ -7,11 +7,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import library.MainApp;
-import library.dao.DirectorDao;
-import library.model.Director;
+import library.dao.ActorDao;
+import library.model.Actor;
+import library.util.DateUtil;
 import library.util.WarningAlert;
 
-public class NewDirectorDialogController {
+public class NewActorDialogController {
     @FXML
     private TextField firstNameField;
     @FXML
@@ -20,9 +21,11 @@ public class NewDirectorDialogController {
     private ComboBox genderComboBox;
     @FXML
     private TextField nationalityField;
+    @FXML
+    private TextField dateOfBirthField;
 
     private Stage dialogStage;
-    private Director director;
+    private Actor actor;
     private boolean saveClicked = false;
 
     private MainApp mainApp;
@@ -36,20 +39,21 @@ public class NewDirectorDialogController {
 
     @FXML
     private void handleSave() {
-        DirectorDao dao = new DirectorDao();
-        director.setFirstName(firstNameField.getText());
-        director.setLastName(lastNameField.getText());
-        director.setGender(genderComboBox.getValue().toString());
-        director.setNationality(nationalityField.getText());
+        ActorDao dao = new ActorDao();
+        actor.setFirstName(firstNameField.getText());
+        actor.setLastName(lastNameField.getText());
+        actor.setGender(genderComboBox.getValue().toString());
+        actor.setNationality(nationalityField.getText());
+        actor.setDateOfBirth(DateUtil.parse(dateOfBirthField.getText()));
 
-        if (!dao.directorExists(director)) {
+        if (!dao.actorExists(actor)) {
             saveClicked = true;
             dialogStage.close();
         } else {
             WarningAlert.showWarningAlert(
                     mainApp,
-                    "Director exists",
-                    "Director already exists in database.",
+                    "Actor exists",
+                    "Actor already exists in database.",
                     ""
             );
         }
@@ -68,8 +72,9 @@ public class NewDirectorDialogController {
         return saveClicked;
     }
 
-    public void setDirector(Director director) {
-        this.director = director;
+    public void setActor(Actor actor) {
+        this.actor = actor;
+
     }
 
     public void setMainApp(MainApp mainApp) {

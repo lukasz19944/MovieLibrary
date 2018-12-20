@@ -103,37 +103,37 @@ public class EditActorsDialogController {
         }
     }
 
-    @FXML
-    private void handleNewActor() {
-        Actor tempActor = new Actor();
-        boolean saveClicked = mainApp.showActorEditDialog(tempActor, movie);
-
-        if (saveClicked) {
-            actorTable.getItems().add(tempActor);
-        }
-    }
-
-    @FXML
-    private void handleEditActor() {
-        Actor selectedActor = actorTable.getSelectionModel().getSelectedItem();
-
-        if (selectedActor != null) {
-            boolean saveClicked = mainApp.showActorEditDialog(selectedActor, movie);
-
-            if (saveClicked) {
-                showActorDetails(selectedActor);
-
-                actorTable.refresh();
-            }
-        } else {
-            WarningAlert.showWarningAlert(
-                    mainApp,
-                    "No Selection",
-                    "No Actor Selected.",
-                    "Please select an actor in the table."
-            );
-        }
-    }
+//    @FXML
+//    private void handleNewActor() {
+//        Actor tempActor = new Actor();
+//        boolean saveClicked = mainApp.showActorEditDialog(tempActor, movie);
+//
+//        if (saveClicked) {
+//            actorTable.getItems().add(tempActor);
+//        }
+//    }
+//
+//    @FXML
+//    private void handleEditActor() {
+//        Actor selectedActor = actorTable.getSelectionModel().getSelectedItem();
+//
+//        if (selectedActor != null) {
+//            boolean saveClicked = mainApp.showActorEditDialog(selectedActor, movie);
+//
+//            if (saveClicked) {
+//                showActorDetails(selectedActor);
+//
+//                actorTable.refresh();
+//            }
+//        } else {
+//            WarningAlert.showWarningAlert(
+//                    mainApp,
+//                    "No Selection",
+//                    "No Actor Selected.",
+//                    "Please select an actor in the table."
+//            );
+//        }
+//    }
 
     @FXML
     private void handleDeleteActor() {
@@ -188,8 +188,6 @@ public class EditActorsDialogController {
                 MovieActor movieActorRelation = new MovieActor(movie, actor);
 
                 maDao.addActorToMovie(movieActorRelation);
-
-                System.out.println("XXXX");
 
                 actorField.clear();
             } else {

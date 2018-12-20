@@ -143,6 +143,33 @@ public class MainApp extends Application {
         }
     }
 
+    public boolean showNewActorDialog(Actor actor) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/NewActorDialog.fxml"));
+            AnchorPane page = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Add Actor");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            NewActorDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setActor(actor);
+            controller.setMainApp(this);
+
+            dialogStage.showAndWait();
+
+            return controller.isSaveClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean showEditActorsDialog(Movie movie) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -169,38 +196,38 @@ public class MainApp extends Application {
         }
     }
 
-    public boolean showActorEditDialog(Actor actor, Movie movie) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/ActorEditDialog.fxml"));
-            AnchorPane page = loader.load();
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Actor");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-
-            ActorEditDialogController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setMovie(movie);
-            controller.setActor(actor);
-            controller.setMainApp(this);
-
-            if (actor.getFirstName() == null) {
-                controller.setActorExist(false);
-            } else {
-                controller.setActorExist(true);
-            }
-
-            dialogStage.showAndWait();
-
-            return controller.isSaveClicked();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+//    public boolean showActorEditDialog(Actor actor, Movie movie) {
+//        try {
+//            FXMLLoader loader = new FXMLLoader();
+//            loader.setLocation(MainApp.class.getResource("view/ActorEditDialog.fxml"));
+//            AnchorPane page = loader.load();
+//            Stage dialogStage = new Stage();
+//            dialogStage.setTitle("Edit Actor");
+//            dialogStage.initModality(Modality.WINDOW_MODAL);
+//            dialogStage.initOwner(primaryStage);
+//            Scene scene = new Scene(page);
+//            dialogStage.setScene(scene);
+//
+//            ActorEditDialogController controller = loader.getController();
+//            controller.setDialogStage(dialogStage);
+//            controller.setMovie(movie);
+//            controller.setActor(actor);
+//            controller.setMainApp(this);
+//
+//            if (actor.getFirstName() == null) {
+//                controller.setActorExist(false);
+//            } else {
+//                controller.setActorExist(true);
+//            }
+//
+//            dialogStage.showAndWait();
+//
+//            return controller.isSaveClicked();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
 
     public void showMovieStatistics() {
         try {
