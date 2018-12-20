@@ -6,8 +6,17 @@ import java.io.Serializable;
 @Entity
 @Table(name = "movie_actor")
 public class MovieActor implements Serializable {
+    @Id
+    @ManyToOne
+    @JoinColumn(name="movie_id")
     private Movie movie;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "actor_id")
     private Actor actor;
+
+    @JoinColumn(name = "rate")
     private float rate;
 
     public MovieActor() {
@@ -25,9 +34,6 @@ public class MovieActor implements Serializable {
         this.rate = rate;
     }
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name="movie_id")
     public Movie getMovie() {
         return movie;
     }
@@ -36,9 +42,6 @@ public class MovieActor implements Serializable {
         this.movie = movie;
     }
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "actor_id")
     public Actor getActor() {
         return actor;
     }
@@ -47,7 +50,6 @@ public class MovieActor implements Serializable {
         this.actor = actor;
     }
 
-    @JoinColumn(name = "rate")
     public float getRate() {
         return rate;
     }

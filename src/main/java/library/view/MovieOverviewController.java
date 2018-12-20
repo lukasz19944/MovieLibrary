@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import library.MainApp;
 import library.dao.MovieActorDao;
 import library.dao.MovieDao;
+import library.model.Director;
 import library.model.Movie;
 import library.util.ActorSet;
 import library.util.WarningAlert;
@@ -100,7 +101,8 @@ public class MovieOverviewController {
 
     @FXML
     private void handleNewMovie() {
-        Movie tempMovie = new Movie();
+        Movie tempMovie = new Movie("", null, 0, 0);
+
         boolean saveClicked = mainApp.showMovieEditDialog(tempMovie);
 
         if (saveClicked) {

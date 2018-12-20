@@ -81,7 +81,16 @@ public class MovieEditDialogController {
                 MovieDao daoM = new MovieDao();
 
                 if (movieExist) {
-                    daoM.updateMovie(movie);
+                    Movie m = daoM.getMovieById(movie.getId());
+
+                    m.setDirector(daoD.getDirectorByName(directorField.getText()));
+                    m.setTitle(titleField.getText());
+                    m.setReleaseDate(Integer.parseInt(releaseDateField.getText()));
+                    m.setGenre(genreField.getText());
+                    m.setCountry(countryField.getText());
+                    m.setRate((float) rateSlider.getValue());
+
+                    daoM.updateMovie(m);
 
                     saveClicked = true;
                     dialogStage.close();
@@ -129,12 +138,15 @@ public class MovieEditDialogController {
 
             directors.add(director.getName());
             TextFields.bindAutoCompletion(directorField, directors);
-
         }
     }
 
     @FXML
     private void handleEditActors() {
+        MovieDao mDao = new MovieDao();
+
+        //mDao.addMovie(movie);
+        movieExist = true;
         boolean saveClicked = mainApp.showEditActorsDialog(movie);
     }
 

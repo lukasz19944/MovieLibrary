@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import library.MainApp;
 import library.dao.ActorDao;
 import library.dao.MovieActorDao;
+import library.dao.MovieDao;
 import library.model.Actor;
 import library.model.Movie;
 import library.model.MovieActor;
@@ -170,6 +171,12 @@ public class EditActorsDialogController {
             Actor actor;
 
             ActorDao dao = new ActorDao();
+            MovieDao mDao = new MovieDao();
+
+            if (!mDao.movieExists(movie)) {
+                mDao.addMovie(movie);
+            }
+
 
             if (dao.getActorByName(actorField.getText()) != null) {
                 actor = dao.getActorByName(actorField.getText());
@@ -181,6 +188,8 @@ public class EditActorsDialogController {
                 MovieActor movieActorRelation = new MovieActor(movie, actor);
 
                 maDao.addActorToMovie(movieActorRelation);
+
+                System.out.println("XXXX");
 
                 actorField.clear();
             } else {

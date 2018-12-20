@@ -71,7 +71,6 @@ public class ActorEditDialogController {
 
             ActorDao dao = new ActorDao();
             MovieActorDao maDao = new MovieActorDao();
-            MovieDao mDao = new MovieDao();
 
             if (actorExist) {
                 dao.updateActor(actor);
