@@ -134,4 +134,47 @@ public class MovieActorDao {
             session.close();
         }
     }
+
+    public boolean relationExists(int movieId, int actorId) {
+        MovieActor relation = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            String hql = "from MovieActor where movie = :m and actor = :a";
+            Query query = session.createQuery(hql);
+            query.setInteger("m", movieId);
+            query.setInteger("a", actorId);
+
+            relation = (MovieActor) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        if (relation == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public void deleteAllActorsFromMovie(int movieId) {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            String hql = "delete from MovieActor where movie = :m";
+            Query query = session.createQuery(hql);
+            query.setInteger("m", movieId);
+            query.executeUpdate();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }

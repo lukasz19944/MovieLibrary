@@ -2,6 +2,7 @@ package library.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "movie_actor")
@@ -56,5 +57,20 @@ public class MovieActor implements Serializable {
 
     public void setRate(float rate) {
         this.rate = rate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MovieActor that = (MovieActor) o;
+        return Objects.equals(movie, that.movie) &&
+                Objects.equals(actor, that.actor);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(movie, actor);
     }
 }

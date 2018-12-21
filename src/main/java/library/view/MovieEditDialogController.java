@@ -1,13 +1,19 @@
 package library.view;
 
+import com.sun.prism.impl.Disposer;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import library.MainApp;
 import library.dao.ActorDao;
 import library.dao.DirectorDao;
@@ -84,10 +90,38 @@ public class MovieEditDialogController {
         firstNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFirstName()));
         lastNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLastName()));
 
-        //MovieActorDao daoMa = new MovieActorDao();
-        //actorTable.getItems().addAll(daoMa.getActorsByMovie(movie.getId()));
 
-        //actorTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showActorDetails(newValue));
+        TableColumn deleteColumn = new TableColumn("Delete");
+        deleteColumn.setStyle("-fx-alignment: CENTER;");
+        deleteColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.19));
+
+        firstNameColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.4));
+        lastNameColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.4));
+
+        firstNameColumn.setResizable(false);
+        lastNameColumn.setResizable(false);
+        deleteColumn.setResizable(false);
+
+        actorTable.getColumns().add(deleteColumn);
+
+        deleteColumn.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
+
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+
+        deleteColumn.setCellFactory(
+            new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new ButtonCell();
+            }
+
+        });
     }
 
     @FXML
@@ -109,9 +143,13 @@ public class MovieEditDialogController {
                 if (movieExist) {
                     daoM.updateMovie(movie);
 
+                    daoMa.deleteAllActorsFromMovie(movie.getId());
+
                     for (Actor actor : actorTable.getItems()) {
-                        MovieActor movieActorRelation = new MovieActor(movie, actor);
-                        daoMa.addActorToMovie(movieActorRelation);
+                        if (!daoMa.relationExists(movie.getId(), actor.getId())) {
+                            MovieActor movieActorRelation = new MovieActor(movie, actor);
+                            daoMa.addActorToMovie(movieActorRelation);
+                        }
                     }
 
                     saveClicked = true;
@@ -195,9 +233,10 @@ public class MovieEditDialogController {
             if (dao.getActorByName(actorField.getText()) != null) {
                 actor = dao.getActorByName(actorField.getText());
 
-                actorTable.getItems().add(actor);
-
-                actorField.clear();
+                if (!actorTable.getItems().contains(actor)) {
+                    actorTable.getItems().add(actor);
+                    actorField.clear();
+                }
             } else {
                 WarningAlert.showWarningAlert(
                         mainApp,
@@ -302,5 +341,31 @@ public class MovieEditDialogController {
 
     public List<String> getActors() {
         return actors;
+    }
+
+
+    private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
+        final Button cellButton = new Button("X");
+
+        ButtonCell(){
+            cellButton.setOnAction(new EventHandler<ActionEvent>(){
+
+                @Override
+                public void handle(ActionEvent t) {
+                    Actor currentActor = (Actor) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
+                    actorTable.getItems().remove(currentActor);
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if(!empty){
+                setGraphic(cellButton);
+            } else {
+                setGraphic(null);
+            }
+        }
     }
 }

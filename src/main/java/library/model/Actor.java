@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Objects;
 
 public class Actor {
     private int id;
@@ -107,5 +108,24 @@ public class Actor {
                 ", nationality='" + nationality + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Actor actor = (Actor) o;
+        return id == actor.id &&
+                Objects.equals(firstName, actor.firstName) &&
+                Objects.equals(lastName, actor.lastName) &&
+                Objects.equals(gender, actor.gender) &&
+                Objects.equals(nationality, actor.nationality) &&
+                Objects.equals(dateOfBirth, actor.dateOfBirth);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, firstName, lastName, gender, nationality, dateOfBirth);
     }
 }

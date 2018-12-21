@@ -1,5 +1,6 @@
 package library.model;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class Movie {
@@ -117,5 +118,24 @@ public class Movie {
                 ", rate=" + rate +
                 ", actors=" + actors +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return id == movie.id &&
+                releaseDate == movie.releaseDate &&
+                Objects.equals(title, movie.title) &&
+                Objects.equals(director, movie.director) &&
+                Objects.equals(genre, movie.genre) &&
+                Objects.equals(country, movie.country);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, title, director, releaseDate, genre, country);
     }
 }

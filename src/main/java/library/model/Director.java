@@ -2,6 +2,8 @@ package library.model;
 
 import library.dao.DirectorDao;
 
+import java.util.Objects;
+
 public class Director {
     private int id;
     private String firstName;
@@ -79,5 +81,23 @@ public class Director {
                 ", gender='" + gender + '\'' +
                 ", nationality='" + nationality + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Director director = (Director) o;
+        return id == director.id &&
+                Objects.equals(firstName, director.firstName) &&
+                Objects.equals(lastName, director.lastName) &&
+                Objects.equals(gender, director.gender) &&
+                Objects.equals(nationality, director.nationality);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, firstName, lastName, gender, nationality);
     }
 }
