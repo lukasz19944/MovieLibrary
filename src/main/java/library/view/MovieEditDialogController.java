@@ -1,19 +1,24 @@
 package library.view;
 
+import com.sun.glass.ui.Application;
 import com.sun.prism.impl.Disposer;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.converter.FloatStringConverter;
 import library.MainApp;
 import library.dao.ActorDao;
 import library.dao.DirectorDao;
@@ -28,7 +33,9 @@ import org.controlsfx.control.textfield.TextFields;
 
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MovieEditDialogController {
     @FXML
@@ -55,6 +62,8 @@ public class MovieEditDialogController {
     @FXML
     private TableColumn<Actor, String> lastNameColumn;
 
+    private Map<Actor, Float> actorRateMap = new HashMap<>();
+
     private Stage dialogStage;
     private Movie movie;
     private boolean saveClicked = false;
@@ -64,6 +73,8 @@ public class MovieEditDialogController {
 
     private List<String> directors = new ArrayList<>();
     private List<String> actors = new ArrayList<>();
+
+    TableColumn<Actor, Float> rateColumn = new TableColumn("Rate");
 
     @FXML
     private void initialize() {
@@ -75,6 +86,7 @@ public class MovieEditDialogController {
 
         DirectorDao daoD = new DirectorDao();
         ActorDao daoA = new ActorDao();
+
 
         for (Director director : daoD.getAllDirectors()) {
             directors.add(director.getName());
@@ -93,16 +105,22 @@ public class MovieEditDialogController {
 
         TableColumn deleteColumn = new TableColumn("Delete");
         deleteColumn.setStyle("-fx-alignment: CENTER;");
-        deleteColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.19));
+        deleteColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.17));
 
-        firstNameColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.4));
-        lastNameColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.4));
+
+        rateColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.18));
+
+        firstNameColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.32));
+        lastNameColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.32));
 
         firstNameColumn.setResizable(false);
         lastNameColumn.setResizable(false);
         deleteColumn.setResizable(false);
+        rateColumn.setResizable(false);
 
+        actorTable.getColumns().add(rateColumn);
         actorTable.getColumns().add(deleteColumn);
+
 
         deleteColumn.setCellValueFactory(
             new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
@@ -122,6 +140,18 @@ public class MovieEditDialogController {
             }
 
         });
+
+        actorTable.setEditable(true);
+
+        rateColumn.setCellFactory(TextFieldTableCell.<Actor, Float>forTableColumn(new FloatStringConverter()));
+        rateColumn.setOnEditCommit(
+            (TableColumn.CellEditEvent<Actor, Float> t) -> {
+                actorRateMap.replace(t.getRowValue(), t.getNewValue());
+            }
+        );
+
+
+
     }
 
     @FXML
@@ -147,7 +177,8 @@ public class MovieEditDialogController {
 
                     for (Actor actor : actorTable.getItems()) {
                         if (!daoMa.relationExists(movie.getId(), actor.getId())) {
-                            MovieActor movieActorRelation = new MovieActor(movie, actor);
+                            System.out.println(actorRateMap.get(actor));
+                            MovieActor movieActorRelation = new MovieActor(movie, actor, actorRateMap.get(actor));
                             daoMa.addActorToMovie(movieActorRelation);
                         }
                     }
@@ -159,7 +190,7 @@ public class MovieEditDialogController {
                         daoM.addMovie(movie);
 
                         for (Actor actor : actorTable.getItems()) {
-                            MovieActor movieActorRelation = new MovieActor(movie, actor);
+                            MovieActor movieActorRelation = new MovieActor(movie, actor, actorRateMap.get(actor));
                             daoMa.addActorToMovie(movieActorRelation);
                         }
 
@@ -236,6 +267,8 @@ public class MovieEditDialogController {
                 if (!actorTable.getItems().contains(actor)) {
                     actorTable.getItems().add(actor);
                     actorField.clear();
+
+                    actorRateMap.put(actor, 0f);
                 }
             } else {
                 WarningAlert.showWarningAlert(
@@ -329,6 +362,14 @@ public class MovieEditDialogController {
 
 
         }
+        MovieActorDao maDao = new MovieActorDao();
+
+        for (Actor actor : actorTable.getItems()) {
+            actorRateMap.put(actor, maDao.getActorRate(movie.getId(), actor.getId()));
+        }
+
+        rateColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(actorRateMap.get(cellData.getValue())).asObject());
+
     }
 
     public boolean isSaveClicked() {

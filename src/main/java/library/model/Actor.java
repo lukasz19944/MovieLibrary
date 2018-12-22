@@ -1,6 +1,7 @@
 package library.model;
 
 import library.dao.ActorDao;
+import library.dao.MovieActorDao;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -96,6 +97,12 @@ public class Actor {
         ActorDao dao = new ActorDao();
 
         return dao.averageActorRate(this);
+    }
+
+    public void updateActorRate(int movieId, Float rate) {
+        MovieActorDao dao = new MovieActorDao();
+
+        dao.updateActorRate(movieId, this.getId(), rate);
     }
 
     @Override
