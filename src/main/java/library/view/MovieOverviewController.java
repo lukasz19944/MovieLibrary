@@ -9,7 +9,6 @@ import javafx.scene.control.TableView;
 import library.MainApp;
 import library.dao.MovieActorDao;
 import library.dao.MovieDao;
-import library.model.Director;
 import library.model.Movie;
 import library.util.ActorSet;
 import library.util.WarningAlert;

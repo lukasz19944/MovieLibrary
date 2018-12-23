@@ -170,65 +170,6 @@ public class MainApp extends Application {
         }
     }
 
-    public boolean showEditActorsDialog(Movie movie) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/EditActorsDialog.fxml"));
-            AnchorPane page = loader.load();
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Actors");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-
-            EditActorsDialogController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setMovie(movie);
-            controller.setMainApp(this);
-
-            dialogStage.showAndWait();
-
-            return controller.isSaveClicked();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-//    public boolean showActorEditDialog(Actor actor, Movie movie) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(MainApp.class.getResource("view/ActorEditDialog.fxml"));
-//            AnchorPane page = loader.load();
-//            Stage dialogStage = new Stage();
-//            dialogStage.setTitle("Edit Actor");
-//            dialogStage.initModality(Modality.WINDOW_MODAL);
-//            dialogStage.initOwner(primaryStage);
-//            Scene scene = new Scene(page);
-//            dialogStage.setScene(scene);
-//
-//            ActorEditDialogController controller = loader.getController();
-//            controller.setDialogStage(dialogStage);
-//            controller.setMovie(movie);
-//            controller.setActor(actor);
-//            controller.setMainApp(this);
-//
-//            if (actor.getFirstName() == null) {
-//                controller.setActorExist(false);
-//            } else {
-//                controller.setActorExist(true);
-//            }
-//
-//            dialogStage.showAndWait();
-//
-//            return controller.isSaveClicked();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
-
     public void showMovieStatistics() {
         try {
             FXMLLoader loader = new FXMLLoader();

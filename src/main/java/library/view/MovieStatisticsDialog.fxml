@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.MovieStatisticsDialogController">
@@ -13,7 +17,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="movieTable" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+      <TableView fx:id="movieTable" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
         <columns>
           <TableColumn fx:id="titleColumn" prefWidth="243.19998168945312" text="Title" />
           <TableColumn fx:id="releaseDateColumn" minWidth="0.0" prefWidth="76.0" text="Release date" />
@@ -23,5 +27,18 @@
             <TableColumn fx:id="rateColumn" prefWidth="56.0" text="Rate" />
         </columns>
       </TableView>
+      <HBox fx:id="box" layoutX="14.0" layoutY="37.0" prefHeight="100.0" prefWidth="712.0" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <ButtonBar prefHeight="100.0" prefWidth="18.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ButtonBar>
+         </children>
+      </HBox>
+      <Button layoutX="736.0" layoutY="116.0" mnemonicParsing="false" onAction="#handleFilterButton" prefHeight="26.0" prefWidth="70.0" text="Filter" AnchorPane.bottomAnchor="510.0" AnchorPane.rightAnchor="10.0" />
+      <Label fx:id="rateLabelLowValue" alignment="TOP_RIGHT" layoutX="720.0" layoutY="36.0" text="1900" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="40.0" />
+      <Label alignment="CENTER" layoutX="751.0" layoutY="35.0" prefHeight="18.0" prefWidth="8.0" text="-" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="40.0" />
+      <Label fx:id="rateLabelHighValue" alignment="TOP_LEFT" layoutX="763.0" layoutY="36.0" text="2018" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
    </children>
 </AnchorPane>
