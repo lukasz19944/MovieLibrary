@@ -7,17 +7,16 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Box;
 import library.MainApp;
+import library.dao.MovieDao;
 import library.model.Movie;
 import org.controlsfx.control.RangeSlider;
 
@@ -47,6 +46,9 @@ public class MovieStatisticsDialogController {
     private Label rateLabelLowValue;
     @FXML
     private Label rateLabelHighValue;
+
+    @FXML
+    private ComboBox genreComboBox;
 
     private ObservableList<Movie> movieData = FXCollections.observableArrayList();
 
@@ -88,28 +90,42 @@ public class MovieStatisticsDialogController {
             }
         });
 
+        MovieDao mDao = new MovieDao();
+
+        ObservableSet<String> genres = FXCollections.observableSet(mDao.getAllGenres().split(", "));
+
+        genreComboBox.setItems(FXCollections.observableArrayList(genres));
     }
 
     @FXML
     public void handleFilterButton() {
+        filterByDateOfRelease();
+        filterByGenre();
+
+    }
+
+    public void filterByDateOfRelease() {
         List<Movie> moviesByYear = movieData.stream()
                 .filter(m -> (m.getReleaseDate() >= dateOfReleaseSlider.getLowValue() &&
                         m.getReleaseDate() <= dateOfReleaseSlider.getHighValue())).collect(Collectors.toList());
 
 
         movieTable.getItems().clear();
-
         movieTable.getItems().addAll(moviesByYear);
+    }
 
+    public void filterByGenre() {
+        List<Movie> moviesByGenre = movieData.stream()
+                .filter(m -> m.getGenre().contains(genreComboBox.getValue().toString())).collect(Collectors.toList());
 
+        movieTable.getItems().clear();
+        movieTable.getItems().addAll(moviesByGenre);
     }
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
         movieTable.setItems(mainApp.getMovieData());
-
-        //System.out.println(movieTable);
 
         movieData.addAll(movieTable.getItems());
     }

@@ -149,4 +149,26 @@ public class MovieDao {
             session.close();
         }
     }
+
+    public String getAllGenres() {
+        List<String> genres = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("select genre from Movie");
+            genres = query.getResultList();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return String.join(", ", genres);
+    }
 }
