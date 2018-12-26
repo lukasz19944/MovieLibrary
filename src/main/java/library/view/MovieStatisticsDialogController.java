@@ -7,20 +7,21 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
-import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
-import javafx.scene.shape.Box;
 import library.MainApp;
 import library.dao.MovieDao;
 import library.model.Movie;
+import library.util.WarningAlert;
 import org.controlsfx.control.RangeSlider;
+import org.controlsfx.control.textfield.TextFields;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MovieStatisticsDialogController {
@@ -43,14 +44,20 @@ public class MovieStatisticsDialogController {
     private HBox box;
 
     @FXML
-    private Label rateLabelLowValue;
-    @FXML
-    private Label rateLabelHighValue;
+    private FlowPane genreFlowPane;
 
     @FXML
-    private ComboBox genreComboBox;
+    private Label dateLabelLowValue;
+    @FXML
+    private Label dateLabelHighValue;
+
+    @FXML
+    private TextField genreField;
 
     private ObservableList<Movie> movieData = FXCollections.observableArrayList();
+
+    private Set<String> genres;
+
 
     RangeSlider dateOfReleaseSlider;
 
@@ -79,47 +86,70 @@ public class MovieStatisticsDialogController {
         dateOfReleaseSlider.lowValueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
                 dateOfReleaseSlider.setLowValue(new_val.intValue());
-                rateLabelLowValue.setText(Integer.toString(new_val.intValue()));
+                dateLabelLowValue.setText(Integer.toString(new_val.intValue()));
             }
         });
 
         dateOfReleaseSlider.highValueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
                 dateOfReleaseSlider.setHighValue(new_val.intValue());
-                rateLabelHighValue.setText(Integer.toString(new_val.intValue()));
+                dateLabelHighValue.setText(Integer.toString(new_val.intValue()));
             }
         });
 
         MovieDao mDao = new MovieDao();
 
-        ObservableSet<String> genres = FXCollections.observableSet(mDao.getAllGenres().split(", "));
+        genres = new HashSet<>(Arrays.asList(mDao.getAllGenres().split(", ")));
 
-        genreComboBox.setItems(FXCollections.observableArrayList(genres));
+        TextFields.bindAutoCompletion(genreField, genres);
+
     }
 
     @FXML
     public void handleFilterButton() {
-        filterByDateOfRelease();
-        filterByGenre();
+        Set<String> genreSet = new HashSet<>();
+        for (Node node : genreFlowPane.getChildren()) {
+            genreSet.add(((Label)node).getText());
+        }
 
-    }
-
-    public void filterByDateOfRelease() {
         List<Movie> moviesByYear = movieData.stream()
                 .filter(m -> (m.getReleaseDate() >= dateOfReleaseSlider.getLowValue() &&
-                        m.getReleaseDate() <= dateOfReleaseSlider.getHighValue())).collect(Collectors.toList());
+                        m.getReleaseDate() <= dateOfReleaseSlider.getHighValue()))
+                .filter(m -> !Collections.disjoint(new ArrayList<String>(Arrays.asList(m.getGenre().split(", "))), genreSet)).collect(Collectors.toList());
 
 
         movieTable.getItems().clear();
         movieTable.getItems().addAll(moviesByYear);
+
     }
 
-    public void filterByGenre() {
-        List<Movie> moviesByGenre = movieData.stream()
-                .filter(m -> m.getGenre().contains(genreComboBox.getValue().toString())).collect(Collectors.toList());
+    @FXML
+    public void handleResetFilter() {
+        dateOfReleaseSlider.setLowValue(1900);
+        dateOfReleaseSlider.setHighValue(2018);
+        dateLabelLowValue.setText(String.valueOf(1900));
+        dateLabelHighValue.setText(String.valueOf(2018));
 
-        movieTable.getItems().clear();
-        movieTable.getItems().addAll(moviesByGenre);
+    }
+
+    @FXML
+    public void handleEnter(KeyEvent e) {
+        if(e.getCode() == KeyCode.ENTER) {
+            if (genres.contains(genreField.getText())) {
+                genreFlowPane.getChildren().add(new Label(genreField.getText()));
+
+                genreField.clear();
+
+            } else {
+                WarningAlert.showWarningAlert(
+                        mainApp,
+                        "No actor",
+                        "There is no actor like this.",
+                        "Add new actor."
+                );
+            }
+        }
+
     }
 
     public void setMainApp(MainApp mainApp) {
@@ -129,7 +159,6 @@ public class MovieStatisticsDialogController {
 
         movieData.addAll(movieTable.getItems());
     }
-
 
 
 }
