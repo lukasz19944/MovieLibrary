@@ -35,8 +35,8 @@
       <file leaf-file-name="MovieStatisticsDialogController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="143" lean-forward="true" selection-start-line="142" selection-start-column="32" selection-end-line="143" />
+            <state relative-caret-position="200">
+              <caret line="136" column="36" lean-forward="true" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -124,8 +124,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="27" />
-    <option name="y" value="161" />
+    <option name="x" value="-24" />
+    <option name="y" value="186" />
     <option name="width" value="1705" />
     <option name="height" value="795" />
   </component>
@@ -138,7 +138,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -213,6 +212,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -340,7 +340,8 @@
       <workItem from="1545506959439" duration="6494000" />
       <workItem from="1545589532192" duration="12786000" />
       <workItem from="1545845702697" duration="6549000" />
-      <workItem from="1545904263175" duration="1747000" />
+      <workItem from="1545904263175" duration="9517000" />
+      <workItem from="1545925432332" duration="2159000" />
     </task>
     <task id="LOCAL-00001" summary="usprawnione ocenianie aktorów w filmach">
       <created>1545513449942</created>
@@ -370,14 +371,28 @@
       <option name="project" value="LOCAL" />
       <updated>1545853001889</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="reset filtrów">
+      <created>1545906270082</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1545906270082</updated>
+    </task>
+    <task id="LOCAL-00006" summary="filtrowanie według reżysera, kraju i oceny (nie działa jeszcze dla wartości ALL), usprawnione filtrowanie według gatunku (możliwość wybrania kilku gatunków)">
+      <created>1545914759549</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1545914759549</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194236000" />
+    <option name="totallyTimeSpent" value="204165000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="22" y="129" width="1364" height="636" extended-state="0" />
+    <frame x="-19" y="149" width="1364" height="636" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -391,12 +406,12 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49923313" visible="true" weight="0.228" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49923313" visible="true" weight="0.228" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.328" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Persistence" order="2" sideWeight="0.50793654" side_tool="true" weight="0.24693252" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4920635" visible="true" weight="0.24233128" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4920635" visible="true" weight="0.24616565" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" sideWeight="0.50793654" side_tool="true" weight="0.24693252" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -433,7 +448,9 @@
     <MESSAGE value="prowizoryczne filtrowanie filmów względem roku produkcji" />
     <MESSAGE value="filtrowanie filmów według gatunku (nie działa jeszcze filtrowanie łączone)" />
     <MESSAGE value="filtrowanie łączone" />
-    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie łączone" />
+    <MESSAGE value="reset filtrów" />
+    <MESSAGE value="filtrowanie według reżysera, kraju i oceny (nie działa jeszcze dla wartości ALL), usprawnione filtrowanie według gatunku (możliwość wybrania kilku gatunków)" />
+    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie według reżysera, kraju i oceny (nie działa jeszcze dla wartości ALL), usprawnione filtrowanie według gatunku (możliwość wybrania kilku gatunków)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -740,13 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/MovieDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2652">
-          <caret line="163" column="38" selection-start-line="163" selection-start-column="38" selection-end-line="163" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieOverviewController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -758,6 +768,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
           <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/MovieDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1778">
+          <caret line="187" column="13" lean-forward="true" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -773,8 +790,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="143" lean-forward="true" selection-start-line="142" selection-start-column="32" selection-end-line="143" />
+        <state relative-caret-position="200">
+          <caret line="136" column="36" lean-forward="true" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
         </state>
       </provider>
     </entry>

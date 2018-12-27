@@ -183,8 +183,8 @@ public class MovieStatisticsDialogController {
                 .filter(m -> (m.getReleaseDate() >= dateOfReleaseSlider.getLowValue() &&
                         m.getReleaseDate() <= dateOfReleaseSlider.getHighValue()))
                 .filter(m -> !Collections.disjoint(new ArrayList<>(Arrays.asList(m.getGenre().split(", "))), genreSet))
-                .filter(m -> (m.getDirector().getName().equals(directorComboBox.getValue())))
-                .filter(m -> (m.getCountry().equals(countryComboBox.getValue())))
+                .filter(m -> (directorComboBox.getValue().equals("ALL")) || (m.getDirector().getName().equals(directorComboBox.getValue())))
+                .filter(m -> (countryComboBox.getValue().equals("ALL")) || (m.getCountry().equals(countryComboBox.getValue())))
                 .filter(m -> (m.getRate() >= rateSlider.getLowValue() &&
                         m.getRate() <= rateSlider.getHighValue())).collect(Collectors.toList());
 
