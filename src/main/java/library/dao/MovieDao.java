@@ -171,4 +171,26 @@ public class MovieDao {
 
         return String.join(", ", genres);
     }
+
+    public List<String> getAllCountries() {
+        List<String> countries = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("select distinct(country) from Movie");
+            countries = query.getResultList();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return countries;
+    }
 }
