@@ -57,6 +57,7 @@ public class MovieStatisticsDialogController {
     private ObservableList<Movie> movieData = FXCollections.observableArrayList();
 
     private Set<String> genres;
+    private Set<String> genreSet;
 
 
     RangeSlider dateOfReleaseSlider;
@@ -101,21 +102,29 @@ public class MovieStatisticsDialogController {
 
         genres = new HashSet<>(Arrays.asList(mDao.getAllGenres().split(", ")));
 
+        genreSet = new HashSet<>();
+
         TextFields.bindAutoCompletion(genreField, genres);
 
     }
 
     @FXML
     public void handleFilterButton() {
-        Set<String> genreSet = new HashSet<>();
-        for (Node node : genreFlowPane.getChildren()) {
-            genreSet.add(((Label)node).getText());
+
+        if (genreFlowPane.getChildren().size() > 0) {
+            genreSet.clear();
+            for (Node node : genreFlowPane.getChildren()) {
+                genreSet.add(((Label) node).getText());
+            }
+        } else {
+            genreSet.addAll(genres);
         }
+
 
         List<Movie> moviesByYear = movieData.stream()
                 .filter(m -> (m.getReleaseDate() >= dateOfReleaseSlider.getLowValue() &&
                         m.getReleaseDate() <= dateOfReleaseSlider.getHighValue()))
-                .filter(m -> !Collections.disjoint(new ArrayList<String>(Arrays.asList(m.getGenre().split(", "))), genreSet)).collect(Collectors.toList());
+                .filter(m -> !Collections.disjoint(new ArrayList<>(Arrays.asList(m.getGenre().split(", "))), genreSet)).collect(Collectors.toList());
 
 
         movieTable.getItems().clear();
@@ -130,6 +139,11 @@ public class MovieStatisticsDialogController {
         dateLabelLowValue.setText(String.valueOf(1900));
         dateLabelHighValue.setText(String.valueOf(2018));
 
+        genreFlowPane.getChildren().clear();
+        genreSet.addAll(genres);
+
+        movieTable.getItems().clear();
+        movieTable.getItems().addAll(movieData);
     }
 
     @FXML
