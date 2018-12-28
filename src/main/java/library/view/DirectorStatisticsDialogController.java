@@ -60,9 +60,12 @@ public class DirectorStatisticsDialogController {
     @FXML
     private Label avgRateLabelHighValue;
 
-    RangeSlider avgRateSlider;
+    private RangeSlider avgRateSlider;
 
     private ObservableList<Director> directorData = FXCollections.observableArrayList();
+
+    private ObservableList<String> genders = FXCollections.observableArrayList("BOTH", "Male", "Female");
+    private ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
 
     private MainApp mainApp;
 
@@ -96,13 +99,23 @@ public class DirectorStatisticsDialogController {
                 ageLabelHighValue.setText(Integer.toString(new_val.intValue()));
             }
         });
+
+        genderComboBox.getSelectionModel().select("BOTH");
+        genderComboBox.setItems(genders);
+
+        aliveComboBox.getSelectionModel().select("BOTH");
+        aliveComboBox.setItems(isAlive);
     }
 
     @FXML
     private void handleFilterButton() {
         List<Director> filteredDirectors = directorData.stream()
                 .filter(d -> (d.calculateAge() >= ageSlider.getLowValue() &&
-                        d.calculateAge() <= ageSlider.getHighValue())).collect(Collectors.toList());
+                        d.calculateAge() <= ageSlider.getHighValue()))
+                .filter(d -> (genderComboBox.getValue().equals("BOTH")) || d.getGender().equals(genderComboBox.getValue()))
+                .filter(d -> (aliveComboBox.getValue().equals("BOTH")) || d.isAlive().equals(aliveComboBox.getValue()))
+                .collect(Collectors.toList());
+
 
         directorTable.getItems().clear();
         directorTable.getItems().addAll(filteredDirectors);
@@ -114,6 +127,9 @@ public class DirectorStatisticsDialogController {
         ageSlider.setHighValue(100);
         ageLabelLowValue.setText(String.valueOf(0));
         ageLabelHighValue.setText(String.valueOf(100));
+
+        genderComboBox.setValue("BOTH");
+        aliveComboBox.setValue("BOTH");
 
         directorTable.getItems().clear();
         directorTable.getItems().addAll(directorData);

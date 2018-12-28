@@ -61,13 +61,13 @@ public class ActorStatisticsDialogController {
     @FXML
     private Label avgRateLabelHighValue;
 
-    RangeSlider avgRateSlider;
+    private RangeSlider avgRateSlider;
 
     private ObservableList<Actor> actorData = FXCollections.observableArrayList();
 
-    ObservableList<String> genders = FXCollections.observableArrayList("BOTH", "Male", "Female");
-    ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
-    ObservableList<String> nationalities = FXCollections.observableArrayList();
+    private ObservableList<String> genders = FXCollections.observableArrayList("BOTH", "Male", "Female");
+    private ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
+    private ObservableList<String> nationalities = FXCollections.observableArrayList();
 
     private MainApp mainApp;
 
