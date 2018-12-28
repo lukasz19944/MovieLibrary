@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import library.MainApp;
 import library.dao.DirectorDao;
 import library.model.Director;
+import library.util.DateUtil;
 import library.util.WarningAlert;
 
 public class NewDirectorDialogController {
@@ -20,6 +21,10 @@ public class NewDirectorDialogController {
     private ComboBox genderComboBox;
     @FXML
     private TextField nationalityField;
+    @FXML
+    private TextField dateOfBirthField;
+    @FXML
+    private TextField dateOfDeathField;
 
     private Stage dialogStage;
     private Director director;
@@ -41,6 +46,8 @@ public class NewDirectorDialogController {
         director.setLastName(lastNameField.getText());
         director.setGender(genderComboBox.getValue().toString());
         director.setNationality(nationalityField.getText());
+        director.setDateOfBirth(DateUtil.parse(dateOfBirthField.getText()));
+        director.setDateOfDeath(DateUtil.parse(dateOfDeathField.getText()));
 
         if (!dao.directorExists(director)) {
             saveClicked = true;

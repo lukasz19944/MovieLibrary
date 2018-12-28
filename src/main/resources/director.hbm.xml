@@ -20,5 +20,11 @@
         <property name="nationality">
             <column name="nationality" />
         </property>
+        <property name="dateOfBirth">
+            <column name="date_of_birth" />
+        </property>
+        <property name="dateOfDeath">
+            <column name="date_of_death" />
+        </property>
     </class>
 </hibernate-mapping>

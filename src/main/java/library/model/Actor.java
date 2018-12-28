@@ -115,12 +115,6 @@ public class Actor {
         return dao.averageActorRate(this);
     }
 
-    public void updateActorRate(int movieId, Float rate) {
-        MovieActorDao dao = new MovieActorDao();
-
-        dao.updateActorRate(movieId, this.getId(), rate);
-    }
-
     public String isAlive() {
         return dateOfDeath == null ? "Yes" : "No";
     }
@@ -142,12 +136,14 @@ public class Actor {
                 '}';
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Actor actor = (Actor) o;
-        return Objects.equals(firstName, actor.firstName) &&
+        return id == actor.id &&
+                Objects.equals(firstName, actor.firstName) &&
                 Objects.equals(lastName, actor.lastName) &&
                 Objects.equals(gender, actor.gender) &&
                 Objects.equals(nationality, actor.nationality) &&
@@ -158,6 +154,6 @@ public class Actor {
     @Override
     public int hashCode() {
 
-        return Objects.hash(firstName, lastName, gender, nationality, dateOfBirth, dateOfDeath);
+        return Objects.hash(id, firstName, lastName, gender, nationality, dateOfBirth, dateOfDeath);
     }
 }
