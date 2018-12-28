@@ -195,4 +195,24 @@ public class DirectorDao {
             return 0f;
         }
     }
+
+    public List<String> getAllNationalities() {
+        List<String> nationalities = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            String hql = "select distinct(nationality) from Director";
+            Query query = session.createQuery(hql);
+            nationalities = query.getResultList();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return nationalities;
+    }
 }

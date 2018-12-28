@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72ec9956-cb61-440a-9648-677bc2027ae3" name="Default" comment="">
+    <list default="true" id="72ec9956-cb61-440a-9648-677bc2027ae3" name="Default" comment="filtrowanie reżyserów według narodowości oraz tego czy wciąż żyje">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/model/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/model/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/model/Director.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/model/Director.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/DirectorStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/DirectorStatisticsDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/dao/DirectorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/dao/DirectorDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/view/DirectorStatisticsDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/DirectorStatisticsDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/MovieEditDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/MovieEditDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/NewDirectorDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/NewDirectorDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/NewDirectorDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/NewDirectorDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/director.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/director.hbm.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -48,8 +42,8 @@
       <file leaf-file-name="DirectorStatisticsDialogController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/DirectorStatisticsDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="25" column="58" lean-forward="true" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+            <state relative-caret-position="100">
+              <caret line="141" column="44" selection-start-line="141" selection-start-column="44" selection-end-line="141" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -57,8 +51,8 @@
       <file leaf-file-name="ActorStatisticsDialogController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1281">
-              <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
+            <state relative-caret-position="120">
+              <caret line="118" column="45" lean-forward="true" selection-start-line="118" selection-start-column="45" selection-end-line="118" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,7 +98,6 @@
         <option value="$PROJECT_DIR$/src/main/java/library/view/ShowActorDialogController.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/util/DateUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/DirectorStatisticsDialog.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/library/dao/DirectorDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialog.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/RootLayoutController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/movie.hbm.xml" />
@@ -122,12 +115,13 @@
         <option value="$PROJECT_DIR$/src/main/java/library/view/NewActorDialogController.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/dao/ActorDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialogController.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/model/Actor.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/model/Director.java" />
         <option value="$PROJECT_DIR$/src/main/resources/director.hbm.xml" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/MovieEditDialogController.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/NewDirectorDialogController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialogController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/library/dao/DirectorDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/DirectorStatisticsDialogController.java" />
       </list>
     </option>
@@ -149,8 +143,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-25" />
-    <option name="y" value="185" />
+    <option name="x" value="85" />
+    <option name="y" value="20" />
     <option name="width" value="1705" />
     <option name="height" value="795" />
   </component>
@@ -374,7 +368,7 @@
       <workItem from="1545845702697" duration="6549000" />
       <workItem from="1545904263175" duration="9517000" />
       <workItem from="1545925432332" duration="4440000" />
-      <workItem from="1545993156381" duration="10453000" />
+      <workItem from="1545993156381" duration="11812000" />
     </task>
     <task id="LOCAL-00001" summary="usprawnione ocenianie aktorów w filmach">
       <created>1545513449942</created>
@@ -460,15 +454,28 @@
       <option name="project" value="LOCAL" />
       <updated>1546003690909</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="dodanie dwóch pól dla reżysera (data narodzin i śmierci), filtrowanie reżyserów według wieku">
+      <created>1546006750556</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1546006750556</updated>
+    </task>
+    <task id="LOCAL-00014" summary="filtrowanie reżyserów według narodowości oraz tego czy wciąż żyje">
+      <created>1546007999554</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1546007999554</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="216899000" />
+    <option name="totallyTimeSpent" value="218258000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-20" y="148" width="1364" height="636" extended-state="0" />
-    <editor active="true" />
+    <frame x="68" y="16" width="1364" height="636" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -481,8 +488,8 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49923313" visible="true" weight="0.228" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.328" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49923313" weight="0.228" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.328" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Persistence" order="2" sideWeight="0.50793654" side_tool="true" weight="0.24693252" />
       <window_info id="Designer" order="2" />
@@ -531,7 +538,10 @@
     <MESSAGE value="filtrowanie aktorów w zależności czy wciąż żyją" />
     <MESSAGE value="filtrowanie aktorów według narodowości" />
     <MESSAGE value="filtrowanie aktorów według średniej ocen" />
-    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie aktorów według średniej ocen" />
+    <MESSAGE value="filtrowanie reżyserów według wieku" />
+    <MESSAGE value="dodanie dwóch pól dla reżysera (data narodzin i śmierci), filtrowanie reżyserów według wieku" />
+    <MESSAGE value="filtrowanie reżyserów według narodowości oraz tego czy wciąż żyje" />
+    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie reżyserów według narodowości oraz tego czy wciąż żyje" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -755,13 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/ActorDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="217" column="29" selection-start-line="217" selection-start-column="29" selection-end-line="217" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/model/Actor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -840,13 +843,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/DirectorDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
@@ -881,10 +877,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/ActorDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="218" column="5" lean-forward="true" selection-start-line="200" selection-start-column="4" selection-end-line="218" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/DirectorDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="208" column="50" lean-forward="true" selection-start-line="208" selection-start-column="50" selection-end-line="208" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1281">
-          <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
+        <state relative-caret-position="120">
+          <caret line="118" column="45" lean-forward="true" selection-start-line="118" selection-start-column="45" selection-end-line="118" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -893,8 +903,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/DirectorStatisticsDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="25" column="58" lean-forward="true" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+        <state relative-caret-position="100">
+          <caret line="141" column="44" selection-start-line="141" selection-start-column="44" selection-end-line="141" selection-end-column="44" />
         </state>
       </provider>
     </entry>

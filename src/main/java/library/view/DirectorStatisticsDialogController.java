@@ -13,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import library.MainApp;
+import library.dao.DirectorDao;
 import library.model.Director;
 import org.controlsfx.control.RangeSlider;
 
@@ -66,6 +67,7 @@ public class DirectorStatisticsDialogController {
 
     private ObservableList<String> genders = FXCollections.observableArrayList("BOTH", "Male", "Female");
     private ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
+    private ObservableList<String> nationalities = FXCollections.observableArrayList();
 
     private MainApp mainApp;
 
@@ -105,6 +107,12 @@ public class DirectorStatisticsDialogController {
 
         aliveComboBox.getSelectionModel().select("BOTH");
         aliveComboBox.setItems(isAlive);
+
+        DirectorDao dDao = new DirectorDao();
+        nationalities.addAll(dDao.getAllNationalities());
+        nationalityComboBox.getItems().add("ALL");
+        nationalityComboBox.getItems().addAll(nationalities);
+        nationalityComboBox.getSelectionModel().select("ALL");
     }
 
     @FXML
@@ -114,6 +122,7 @@ public class DirectorStatisticsDialogController {
                         d.calculateAge() <= ageSlider.getHighValue()))
                 .filter(d -> (genderComboBox.getValue().equals("BOTH")) || d.getGender().equals(genderComboBox.getValue()))
                 .filter(d -> (aliveComboBox.getValue().equals("BOTH")) || d.isAlive().equals(aliveComboBox.getValue()))
+                .filter(d -> (nationalityComboBox.getValue().equals("ALL")) || d.getNationality().equals(nationalityComboBox.getValue()))
                 .collect(Collectors.toList());
 
 
@@ -130,6 +139,7 @@ public class DirectorStatisticsDialogController {
 
         genderComboBox.setValue("BOTH");
         aliveComboBox.setValue("BOTH");
+        nationalityComboBox.setValue("ALL");
 
         directorTable.getItems().clear();
         directorTable.getItems().addAll(directorData);
