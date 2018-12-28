@@ -3,7 +3,9 @@ package library.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import library.MainApp;
+import library.dao.ActorDao;
 import library.dao.DirectorDao;
+import library.dao.MovieActorDao;
 import library.dao.MovieDao;
 
 public class RootLayoutController {
@@ -18,22 +20,25 @@ public class RootLayoutController {
         System.exit(0);
     }
 
-    @FXML void handleDeleteAllMovies() {
-        MovieDao dao = new MovieDao();
-        dao.deleteAllMovies();
-
-        mainApp.getMovieData().clear();
-    }
-
     @FXML
     private void handleDeleteAll() {
-        MovieDao daoM = new MovieDao();
-        daoM.deleteAllMovies();
+        MovieActorDao maDao = new MovieActorDao();
+        maDao.deleteAllActorMovieRelation();
+
+        MovieDao mDao = new MovieDao();
+        mDao.deleteAllMovies();
 
         mainApp.getMovieData().clear();
 
-        DirectorDao daoD = new DirectorDao();
-        daoD.deleteAllDirectors();
+        DirectorDao dDao = new DirectorDao();
+        dDao.deleteAllDirectors();
+
+        mainApp.getDirectorData().clear();
+
+        ActorDao aDao = new ActorDao();
+        aDao.deleteAllActors();
+
+        mainApp.getActorData().clear();
     }
 
     @FXML

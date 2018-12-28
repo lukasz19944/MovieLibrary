@@ -177,4 +177,20 @@ public class MovieActorDao {
             session.close();
         }
     }
+
+    public void deleteAllActorMovieRelation() {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            String hql = "delete from MovieActor";
+            Query query = session.createQuery(hql);
+            query.executeUpdate();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }

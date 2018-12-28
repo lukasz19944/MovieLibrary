@@ -232,6 +232,7 @@ public class MovieEditDialogController {
 
             directors.add(director.getName());
             TextFields.bindAutoCompletion(directorField, directors);
+            mainApp.getDirectorData().add(director);
         }
     }
 
@@ -248,6 +249,7 @@ public class MovieEditDialogController {
 
             actors.add(actor.getName());
             TextFields.bindAutoCompletion(actorField, actors);
+            mainApp.getActorData().add(actor);
         }
     }
 
