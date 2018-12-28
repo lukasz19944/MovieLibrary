@@ -64,7 +64,8 @@ public class ActorStatisticsDialogController {
 
     private ObservableList<Actor> actorData = FXCollections.observableArrayList();
 
-    ObservableList<String> genders =FXCollections.observableArrayList("Male", "Female", "BOTH");
+    ObservableList<String> genders = FXCollections.observableArrayList("Male", "Female", "BOTH");
+    ObservableList<String> isAlive = FXCollections.observableArrayList("Yes", "No", "BOTH");
 
     private MainApp mainApp;
 
@@ -101,6 +102,9 @@ public class ActorStatisticsDialogController {
 
         genderComboBox.setItems(genders);
         genderComboBox.getSelectionModel().select("BOTH");
+
+        aliveComboBox.setItems(isAlive);
+        aliveComboBox.getSelectionModel().select("BOTH");
     }
 
     @FXML
@@ -108,7 +112,8 @@ public class ActorStatisticsDialogController {
         List<Actor> filteredActors = actorData.stream()
                 .filter(a -> (a.calculateAge() >= ageSlider.getLowValue() &&
                         a.calculateAge() <= ageSlider.getHighValue()))
-                .filter(a -> (genderComboBox.getValue().equals("BOTH")) || a.getGender().equals(genderComboBox.getValue())).collect(Collectors.toList());
+                .filter(a -> (genderComboBox.getValue().equals("BOTH")) || a.getGender().equals(genderComboBox.getValue()))
+                .filter(a -> (aliveComboBox.getValue().equals("BOTH")) || a.isAlive().equals(aliveComboBox.getValue())).collect(Collectors.toList());
 
         actorTable.getItems().clear();
         actorTable.getItems().addAll(filteredActors);
@@ -122,6 +127,7 @@ public class ActorStatisticsDialogController {
         ageLabelHighValue.setText(String.valueOf(100));
 
         genderComboBox.setValue("BOTH");
+        aliveComboBox.setValue("BOTH");
 
         actorTable.getItems().clear();
         actorTable.getItems().addAll(actorData);

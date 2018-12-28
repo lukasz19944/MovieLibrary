@@ -27,7 +27,7 @@ public class NewDirectorDialogController {
 
     private MainApp mainApp;
 
-    ObservableList<String> genders =FXCollections.observableArrayList("Male", "Female");
+    ObservableList<String> genders = FXCollections.observableArrayList("Male", "Female");
 
     @FXML
     private void initialize() {

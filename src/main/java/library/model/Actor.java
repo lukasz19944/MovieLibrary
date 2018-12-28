@@ -121,11 +121,12 @@ public class Actor {
         dao.updateActorRate(movieId, this.getId(), rate);
     }
 
+    public String isAlive() {
+        return dateOfDeath == null ? "Yes" : "No";
+    }
+
     public String deathSign() {
-        if (dateOfDeath != null) {
-            return " [*]";
-        }
-        return "";
+        return isAlive().equals("Yes") ? "" : " [*]";
     }
 
     @Override
