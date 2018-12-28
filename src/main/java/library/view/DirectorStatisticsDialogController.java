@@ -34,7 +34,7 @@ public class DirectorStatisticsDialogController {
     @FXML
     private TableColumn<Director, String> ageColumn;
     @FXML
-    private TableColumn<Director, Float> averageRateColumn;
+    private TableColumn<Director, String> averageRateColumn;
 
     @FXML
     private HBox ageHBox;
@@ -78,7 +78,7 @@ public class DirectorStatisticsDialogController {
         genderColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGender()));
         nationalityColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNationality()));
         ageColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().calculateAge().toString() + cellData.getValue().deathSign()));
-        averageRateColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getAverageRate()).asObject());
+        averageRateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getAverageRate())));
 
         ageSlider = new RangeSlider(0, 100, 0, 100);
         ageSlider.setShowTickLabels(true);

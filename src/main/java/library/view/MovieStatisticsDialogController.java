@@ -237,9 +237,9 @@ public class MovieStatisticsDialogController {
             } else {
                 WarningAlert.showWarningAlert(
                         mainApp,
-                        "No actor",
-                        "There is no actor like this.",
-                        "Add new actor."
+                        "No genre",
+                        "There is no genre like this.",
+                        ""
                 );
             }
         }

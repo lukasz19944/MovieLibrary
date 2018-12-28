@@ -41,30 +41,72 @@ public class NewActorDialogController {
 
     @FXML
     private void handleSave() {
-        ActorDao dao = new ActorDao();
-        actor.setFirstName(firstNameField.getText());
-        actor.setLastName(lastNameField.getText());
-        actor.setGender(genderComboBox.getValue().toString());
-        actor.setNationality(nationalityField.getText());
-        actor.setDateOfBirth(DateUtil.parse(dateOfBirthField.getText()));
-        actor.setDateOfDeath(DateUtil.parse(dateOfDeathField.getText()));
+        if (isInputValid()) {
+            ActorDao dao = new ActorDao();
+            actor.setFirstName(firstNameField.getText());
+            actor.setLastName(lastNameField.getText());
+            actor.setGender(genderComboBox.getValue().toString());
+            actor.setNationality(nationalityField.getText());
+            actor.setDateOfBirth(DateUtil.parse(dateOfBirthField.getText()));
+            actor.setDateOfDeath(DateUtil.parse(dateOfDeathField.getText()));
 
-        if (!dao.actorExists(actor)) {
-            saveClicked = true;
-            dialogStage.close();
-        } else {
-            WarningAlert.showWarningAlert(
-                    mainApp,
-                    "Actor exists",
-                    "Actor already exists in database.",
-                    ""
-            );
+            if (!dao.actorExists(actor)) {
+                saveClicked = true;
+                dialogStage.close();
+            } else {
+                WarningAlert.showWarningAlert(
+                        mainApp,
+                        "Actor exists",
+                        "Actor already exists in database.",
+                        ""
+                );
+            }
         }
     }
 
     @FXML
     private void handleCancel() {
         dialogStage.close();
+    }
+
+    private boolean isInputValid() {
+        String errorMessage = "";
+
+        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
+            errorMessage += "No valid first name of the actor!\n";
+        }
+        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
+            errorMessage += "No valid last name of the actor!\n";
+        }
+        if (nationalityField.getText() == null || nationalityField.getText().length() == 0) {
+            errorMessage += "No valid nationality of the actor!\n";
+        }
+        if (dateOfBirthField.getText() == null || dateOfBirthField.getText().length() == 0) {
+            errorMessage += "No valid date of birth of the actor!\n";
+        } else {
+            if (!DateUtil.validDate(dateOfBirthField.getText())) {
+                errorMessage += "No valid date of birth of the actor! Correct format: dd.mm.yyyy.\n";
+            }
+        }
+        if (dateOfDeathField.getText().length() != 0) {
+            if (!DateUtil.validDate(dateOfDeathField.getText())) {
+                errorMessage += "No valid date of death of the actor! Correct format: dd.mm.yyyy.\n";
+            }
+        }
+
+
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            WarningAlert.showWarningAlert(
+                    mainApp,
+                    "Invalid Fields",
+                    "Please correct invalid fields.",
+                    errorMessage
+            );
+
+            return false;
+        }
     }
 
     public void setDialogStage(Stage dialogStage) {
