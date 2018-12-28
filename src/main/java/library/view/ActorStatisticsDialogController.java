@@ -13,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import library.MainApp;
+import library.dao.ActorDao;
 import library.model.Actor;
 import org.controlsfx.control.RangeSlider;
 
@@ -66,6 +67,7 @@ public class ActorStatisticsDialogController {
 
     ObservableList<String> genders = FXCollections.observableArrayList("Male", "Female", "BOTH");
     ObservableList<String> isAlive = FXCollections.observableArrayList("Yes", "No", "BOTH");
+    ObservableList<String> nationalities = FXCollections.observableArrayList();
 
     private MainApp mainApp;
 
@@ -105,6 +107,12 @@ public class ActorStatisticsDialogController {
 
         aliveComboBox.setItems(isAlive);
         aliveComboBox.getSelectionModel().select("BOTH");
+
+        ActorDao aDao = new ActorDao();
+        nationalities.addAll(aDao.getAllNationalities());
+        nationalityComboBox.setItems(nationalities);
+        nationalityComboBox.getItems().add("ALL");
+        nationalityComboBox.getSelectionModel().select("ALL");
     }
 
     @FXML
@@ -113,7 +121,8 @@ public class ActorStatisticsDialogController {
                 .filter(a -> (a.calculateAge() >= ageSlider.getLowValue() &&
                         a.calculateAge() <= ageSlider.getHighValue()))
                 .filter(a -> (genderComboBox.getValue().equals("BOTH")) || a.getGender().equals(genderComboBox.getValue()))
-                .filter(a -> (aliveComboBox.getValue().equals("BOTH")) || a.isAlive().equals(aliveComboBox.getValue())).collect(Collectors.toList());
+                .filter(a -> (aliveComboBox.getValue().equals("BOTH")) || a.isAlive().equals(aliveComboBox.getValue()))
+                .filter(a -> (nationalityComboBox.getValue().equals("ALL")) || a.getNationality().equals(nationalityComboBox.getValue())).collect(Collectors.toList());
 
         actorTable.getItems().clear();
         actorTable.getItems().addAll(filteredActors);
@@ -128,6 +137,7 @@ public class ActorStatisticsDialogController {
 
         genderComboBox.setValue("BOTH");
         aliveComboBox.setValue("BOTH");
+        nationalityComboBox.setValue("ALL");
 
         actorTable.getItems().clear();
         actorTable.getItems().addAll(actorData);
