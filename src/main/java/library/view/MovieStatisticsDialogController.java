@@ -128,15 +128,13 @@ public class MovieStatisticsDialogController {
             directors.add(director.getName());
         }
 
-        directorComboBox.setItems(directors);
+        directorComboBox.getItems().add("ALL");
+        directorComboBox.getItems().addAll(directors);
+        directorComboBox.getSelectionModel().select("ALL");
 
         countries.addAll(mDao.getAllCountries());
-
-        countryComboBox.setItems(countries);
-
-        directorComboBox.getItems().add("ALL");
         countryComboBox.getItems().add("ALL");
-        directorComboBox.getSelectionModel().select("ALL");
+        countryComboBox.getItems().addAll(countries);
         countryComboBox.getSelectionModel().select("ALL");
 
         rateSlider = new RangeSlider(0f, 10f, 0f, 10f);
@@ -185,8 +183,8 @@ public class MovieStatisticsDialogController {
                 .filter(m -> !Collections.disjoint(new ArrayList<>(Arrays.asList(m.getGenre().split(", "))), genreSet))
                 .filter(m -> (directorComboBox.getValue().equals("ALL")) || (m.getDirector().getName().equals(directorComboBox.getValue())))
                 .filter(m -> (countryComboBox.getValue().equals("ALL")) || (m.getCountry().equals(countryComboBox.getValue())))
-                .filter(m -> (m.getRate() >= rateSlider.getLowValue() &&
-                        m.getRate() <= rateSlider.getHighValue())).collect(Collectors.toList());
+                .filter(m -> (m.getRate() >= rateSlider.getLowValue() && m.getRate() <= rateSlider.getHighValue()))
+                .collect(Collectors.toList());
 
         movieTable.getItems().clear();
         movieTable.getItems().addAll(filteredMovies);
@@ -208,8 +206,8 @@ public class MovieStatisticsDialogController {
 
         rateSlider.setLowValue(0);
         rateSlider.setHighValue(10);
-        rateLabelLowValue.setText(String.valueOf(0));
-        rateLabelHighValue.setText(String.valueOf(10));
+        rateLabelLowValue.setText("0.00");
+        rateLabelHighValue.setText("10.00");
 
         movieTable.getItems().clear();
         movieTable.getItems().addAll(movieData);

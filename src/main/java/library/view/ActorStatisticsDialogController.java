@@ -65,8 +65,8 @@ public class ActorStatisticsDialogController {
 
     private ObservableList<Actor> actorData = FXCollections.observableArrayList();
 
-    ObservableList<String> genders = FXCollections.observableArrayList("Male", "Female", "BOTH");
-    ObservableList<String> isAlive = FXCollections.observableArrayList("Yes", "No", "BOTH");
+    ObservableList<String> genders = FXCollections.observableArrayList("BOTH", "Male", "Female");
+    ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
     ObservableList<String> nationalities = FXCollections.observableArrayList();
 
     private MainApp mainApp;
@@ -102,17 +102,41 @@ public class ActorStatisticsDialogController {
             }
         });
 
-        genderComboBox.setItems(genders);
         genderComboBox.getSelectionModel().select("BOTH");
+        genderComboBox.setItems(genders);
 
-        aliveComboBox.setItems(isAlive);
         aliveComboBox.getSelectionModel().select("BOTH");
+        aliveComboBox.setItems(isAlive);
 
         ActorDao aDao = new ActorDao();
         nationalities.addAll(aDao.getAllNationalities());
-        nationalityComboBox.setItems(nationalities);
         nationalityComboBox.getItems().add("ALL");
+        nationalityComboBox.getItems().addAll(nationalities);
         nationalityComboBox.getSelectionModel().select("ALL");
+
+        avgRateSlider = new RangeSlider(0f, 10f, 0f, 10f);
+        avgRateSlider.setShowTickLabels(true);
+        avgRateSlider.setMajorTickUnit(0.05);
+        avgRateSlider.setMinorTickCount(0);
+        avgRateSlider.setShowTickLabels(false);
+        avgRateSlider.setPrefWidth(660);
+        avgRateSlider.setSnapToTicks(true);
+
+        avgRateHBox.getChildren().add(avgRateSlider);
+
+        avgRateSlider.lowValueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                avgRateSlider.setLowValue(new_val.floatValue());
+                avgRateLabelLowValue.setText(String.format("%.2f", new_val.floatValue()));
+            }
+        });
+
+        avgRateSlider.highValueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                avgRateSlider.setHighValue(new_val.floatValue());
+                avgRateLabelHighValue.setText(String.format("%.2f", new_val.floatValue()));
+            }
+        });
     }
 
     @FXML
@@ -122,7 +146,9 @@ public class ActorStatisticsDialogController {
                         a.calculateAge() <= ageSlider.getHighValue()))
                 .filter(a -> (genderComboBox.getValue().equals("BOTH")) || a.getGender().equals(genderComboBox.getValue()))
                 .filter(a -> (aliveComboBox.getValue().equals("BOTH")) || a.isAlive().equals(aliveComboBox.getValue()))
-                .filter(a -> (nationalityComboBox.getValue().equals("ALL")) || a.getNationality().equals(nationalityComboBox.getValue())).collect(Collectors.toList());
+                .filter(a -> (nationalityComboBox.getValue().equals("ALL")) || a.getNationality().equals(nationalityComboBox.getValue()))
+                .filter(a -> a.getAverageRate() >= avgRateSlider.getLowValue() && a.getAverageRate() <= avgRateSlider.getHighValue())
+                .collect(Collectors.toList());
 
         actorTable.getItems().clear();
         actorTable.getItems().addAll(filteredActors);
@@ -138,6 +164,11 @@ public class ActorStatisticsDialogController {
         genderComboBox.setValue("BOTH");
         aliveComboBox.setValue("BOTH");
         nationalityComboBox.setValue("ALL");
+
+        avgRateSlider.setLowValue(0);
+        avgRateSlider.setHighValue(10);
+        avgRateLabelLowValue.setText("0.00");
+        avgRateLabelHighValue.setText("10.00");
 
         actorTable.getItems().clear();
         actorTable.getItems().addAll(actorData);
