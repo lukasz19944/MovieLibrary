@@ -60,10 +60,10 @@ public class MovieStatisticsDialogController {
     private TextField genreField;
 
     @FXML
-    private ComboBox directorComboBox;
+    private ComboBox<String> directorComboBox;
 
     @FXML
-    private ComboBox countryComboBox;
+    private ComboBox<String> countryComboBox;
 
     @FXML
     private HBox rateHBox;
@@ -179,7 +179,7 @@ public class MovieStatisticsDialogController {
             genreSet.addAll(genres);
         }
 
-        List<Movie> moviesByYear = movieData.stream()
+        List<Movie> filteredMovies = movieData.stream()
                 .filter(m -> (m.getReleaseDate() >= dateOfReleaseSlider.getLowValue() &&
                         m.getReleaseDate() <= dateOfReleaseSlider.getHighValue()))
                 .filter(m -> !Collections.disjoint(new ArrayList<>(Arrays.asList(m.getGenre().split(", "))), genreSet))
@@ -189,7 +189,7 @@ public class MovieStatisticsDialogController {
                         m.getRate() <= rateSlider.getHighValue())).collect(Collectors.toList());
 
         movieTable.getItems().clear();
-        movieTable.getItems().addAll(moviesByYear);
+        movieTable.getItems().addAll(filteredMovies);
 
     }
 

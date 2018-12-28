@@ -23,6 +23,8 @@ public class NewActorDialogController {
     private TextField nationalityField;
     @FXML
     private TextField dateOfBirthField;
+    @FXML
+    private TextField dateOfDeathField;
 
     private Stage dialogStage;
     private Actor actor;
@@ -45,6 +47,7 @@ public class NewActorDialogController {
         actor.setGender(genderComboBox.getValue().toString());
         actor.setNationality(nationalityField.getText());
         actor.setDateOfBirth(DateUtil.parse(dateOfBirthField.getText()));
+        actor.setDateOfDeath(DateUtil.parse(dateOfDeathField.getText()));
 
         if (!dao.actorExists(actor)) {
             saveClicked = true;
