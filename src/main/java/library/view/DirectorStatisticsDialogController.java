@@ -113,6 +113,30 @@ public class DirectorStatisticsDialogController {
         nationalityComboBox.getItems().add("ALL");
         nationalityComboBox.getItems().addAll(nationalities);
         nationalityComboBox.getSelectionModel().select("ALL");
+
+        avgRateSlider = new RangeSlider(0f, 10f, 0f, 10f);
+        avgRateSlider.setShowTickLabels(true);
+        avgRateSlider.setMajorTickUnit(0.05);
+        avgRateSlider.setMinorTickCount(0);
+        avgRateSlider.setShowTickLabels(false);
+        avgRateSlider.setPrefWidth(660);
+        avgRateSlider.setSnapToTicks(true);
+
+        avgRateHBox.getChildren().add(avgRateSlider);
+
+        avgRateSlider.lowValueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                avgRateSlider.setLowValue(new_val.floatValue());
+                avgRateLabelLowValue.setText(String.format("%.2f", new_val.floatValue()));
+            }
+        });
+
+        avgRateSlider.highValueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                avgRateSlider.setHighValue(new_val.floatValue());
+                avgRateLabelHighValue.setText(String.format("%.2f", new_val.floatValue()));
+            }
+        });
     }
 
     @FXML
@@ -123,6 +147,7 @@ public class DirectorStatisticsDialogController {
                 .filter(d -> (genderComboBox.getValue().equals("BOTH")) || d.getGender().equals(genderComboBox.getValue()))
                 .filter(d -> (aliveComboBox.getValue().equals("BOTH")) || d.isAlive().equals(aliveComboBox.getValue()))
                 .filter(d -> (nationalityComboBox.getValue().equals("ALL")) || d.getNationality().equals(nationalityComboBox.getValue()))
+                .filter(a -> a.getAverageRate() >= avgRateSlider.getLowValue() && a.getAverageRate() <= avgRateSlider.getHighValue())
                 .collect(Collectors.toList());
 
 
@@ -140,6 +165,11 @@ public class DirectorStatisticsDialogController {
         genderComboBox.setValue("BOTH");
         aliveComboBox.setValue("BOTH");
         nationalityComboBox.setValue("ALL");
+
+        avgRateSlider.setLowValue(0);
+        avgRateSlider.setHighValue(10);
+        avgRateLabelLowValue.setText("0.00");
+        avgRateLabelHighValue.setText("10.00");
 
         directorTable.getItems().clear();
         directorTable.getItems().addAll(directorData);
