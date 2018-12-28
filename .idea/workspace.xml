@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="72ec9956-cb61-440a-9648-677bc2027ae3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/model/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/model/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialog.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/NewActorDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/NewActorDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/NewActorDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/NewActorDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/actor.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/actor.hbm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/actor.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/actor.hbm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/library/view/MovieStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/MovieStatisticsDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/library/view/NewActorDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/NewActorDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/library/view/ActorStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/ActorStatisticsDialog.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,8 +35,8 @@
       <file leaf-file-name="MovieStatisticsDialogController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="213" column="38" lean-forward="true" selection-start-line="213" selection-start-column="38" selection-end-line="213" selection-end-column="38" />
+            <state relative-caret-position="-33">
+              <caret line="195" column="9" lean-forward="true" selection-start-line="195" selection-start-column="9" selection-end-line="195" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="185">
-              <caret line="116" column="55" lean-forward="true" selection-start-line="116" selection-start-column="55" selection-end-line="116" selection-end-column="55" />
+              <caret line="119" column="36" lean-forward="true" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -388,7 +379,7 @@
       <workItem from="1545845702697" duration="6549000" />
       <workItem from="1545904263175" duration="9517000" />
       <workItem from="1545925432332" duration="4440000" />
-      <workItem from="1545993156381" duration="3836000" />
+      <workItem from="1545993156381" duration="4539000" />
     </task>
     <task id="LOCAL-00001" summary="usprawnione ocenianie aktorów w filmach">
       <created>1545513449942</created>
@@ -439,11 +430,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545927732372</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="dodanie nowego pola dla aktora (data śmierci), poprawne obliczanie wieku w przypadku podanej daty śmierci, filtrowanie aktorów według wieku">
+      <created>1545998930090</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1545998930090</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210282000" />
+    <option name="totallyTimeSpent" value="210985000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-20" y="148" width="1364" height="636" extended-state="0" />
@@ -505,7 +503,8 @@
     <MESSAGE value="reset filtrów" />
     <MESSAGE value="filtrowanie według reżysera, kraju i oceny (nie działa jeszcze dla wartości ALL), usprawnione filtrowanie według gatunku (możliwość wybrania kilku gatunków)" />
     <MESSAGE value="filtrowanie według reżysera i kraju działa już przy wyborze 'ALL'" />
-    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie według reżysera i kraju działa już przy wyborze 'ALL'" />
+    <MESSAGE value="dodanie nowego pola dla aktora (data śmierci), poprawne obliczanie wieku w przypadku podanej daty śmierci, filtrowanie aktorów według wieku" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodanie nowego pola dla aktora (data śmierci), poprawne obliczanie wieku w przypadku podanej daty śmierci, filtrowanie aktorów według wieku" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -828,13 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/library/view/NewDirectorDialogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieOverviewController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1670">
@@ -845,10 +837,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/view/NewDirectorDialogController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="213" column="38" lean-forward="true" selection-start-line="213" selection-start-column="38" selection-end-line="213" selection-end-column="38" />
+        <state relative-caret-position="-33">
+          <caret line="195" column="9" lean-forward="true" selection-start-line="195" selection-start-column="9" selection-end-line="195" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -858,7 +857,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
-          <caret line="116" column="55" lean-forward="true" selection-start-line="116" selection-start-column="55" selection-end-line="116" selection-end-column="55" />
+          <caret line="119" column="36" lean-forward="true" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
