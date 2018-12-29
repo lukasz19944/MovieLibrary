@@ -101,8 +101,7 @@ public class MovieEditDialogController {
 
 
         TableColumn deleteColumn = new TableColumn("Delete");
-        deleteColumn.setStyle("-fx-alignment: CENTER;");
-        deleteColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.17));
+        deleteColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.14));
 
 
         rateColumn.prefWidthProperty().bind(actorTable.widthProperty().multiply(0.18));
@@ -385,7 +384,7 @@ public class MovieEditDialogController {
 
 
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
-        final Button cellButton = new Button("X");
+        final Button cellButton = new Button("✖");
 
         ButtonCell(){
             cellButton.setOnAction(new EventHandler<ActionEvent>(){
