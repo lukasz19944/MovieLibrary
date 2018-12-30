@@ -220,7 +220,13 @@ public class MovieStatisticsDialogController {
                 HBox box = new HBox();
                 box.setAlignment(Pos.CENTER_LEFT);
                 Label label = new Label(genreField.getText());
-                Button button = new Button("X");
+                Button button = new Button("✖");
+
+                box.setStyle(
+                    "-fx-border-radius: 15 15 15 15;" +
+                    "-fx-background-radius: 15 15 15 15;" + "-fx-padding: 0 3 0 8;" +
+                    "-fx-background-color: #4a8ef9;"
+                );
 
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override

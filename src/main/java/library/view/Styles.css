@@ -10,6 +10,19 @@
     -fx-background-color: #455e77;
 }
 
+.split-pane-stats {
+    -fx-padding: 0;
+}
+
+.anchor-pane-left-stats {
+    -fx-background-color: #3a5066;
+
+}
+
+.anchor-pane-right-stats {
+    -fx-background-color: #455e77;
+}
+
 .split-pane-divider {
     -fx-background-color: #2f4356;
 }
@@ -30,6 +43,13 @@
 
 .label-header {
     -fx-font-size: 32pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.label-header-new {
+    -fx-font-size: 22pt;
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
     -fx-opacity: 1;
@@ -116,8 +136,27 @@
     -fx-font-family: "Segoe UI Semibold";
 }
 
-.grid-pane-edit .table-view .column-header .label{
-    -fx-font-size: 10pt;
+.grid-pane-stats .label {
+    -fx-padding: 4;
+}
+
+.grid-pane-stats .button {
+    -fx-background-color: #ceccca;
+    -fx-border-style: none;
+    -fx-padding: 5;
+    -fx-opacity: 0.6;
+    -fx-background-radius: 0 0 0 0;
+    -fx-font-size: 12px;
+    -fx-text-fill: black;
+    -fx-font-weight: 700;
+}
+
+.grid-pane-stats .combo-box {
+    -fx-side: 20;
+}
+
+.table-view-stats .column-header .label{
+    -fx-font-size: 12pt;
 }
 
 .grid-pane-edit .table-view .column-header .label{
@@ -136,7 +175,30 @@
 }
 
 .grid-pane-edit .button {
-    -fx-background-color: white;
+     -fx-background-color: white;
+     -fx-font-weight: 500;
+     -fx-padding: 0;
+     -fx-font-size: 18px;
+     -fx-text-fill: black;
+     -fx-background-radius: 15, 15;
+     -fx-border-radius: 15;
+     -fx-border-width: 2;
+ }
+
+.anchor-pane-left-stats .button {
+    -fx-background-color: transparent;
+    -fx-border-style: none;
+    -fx-padding: 5 5 5 5;
+    -fx-opacity: 0.6;
+    -fx-background-radius: 0 0 0 0;
+    -fx-font-size: 18px;
+    -fx-text-fill: black;
+    -fx-font-weight: 700;
+}
+
+
+.grid-pane-edit .button:hover {
+    -fx-background-color: #c9ddff;
     -fx-font-weight: 500;
     -fx-padding: 0;
     -fx-font-size: 18px;
@@ -155,6 +217,10 @@
     -fx-font-size: 18px;
     -fx-text-fill: black;
     -fx-font-weight: 700;
+}
+
+.anchor-pane-new {
+    -fx-background-color: #2f4356;
 }
 
 
