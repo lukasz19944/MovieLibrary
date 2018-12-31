@@ -3,16 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="72ec9956-cb61-440a-9648-677bc2027ae3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/ActorStatisticsDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/DirectorStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/DirectorStatisticsDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/MovieEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/MovieEditDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/NewActorDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/NewActorDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/NewDirectorDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/NewDirectorDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/Styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/library/view/MovieEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/MovieEditDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/library/view/MovieOverview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/MovieOverview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/util/ActorSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/util/ActorSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/MovieOverview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/MovieOverview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/library/view/ActorStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/ActorStatisticsDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/library/view/DirectorStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/DirectorStatisticsDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/library/view/MovieStatisticsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/MovieStatisticsDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/library/view/NewActorDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/NewActorDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/library/view/NewDirectorDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/NewDirectorDialog.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,8 +28,17 @@
       <file leaf-file-name="MovieOverviewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieOverviewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="782">
               <caret line="107" column="50" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActorSet.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/library/util/ActorSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -40,7 +46,7 @@
       <file leaf-file-name="NewActorDialogController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/NewActorDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="561">
               <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
               <folding>
                 <element signature="e#1976#1977#0" expanded="true" />
@@ -53,21 +59,17 @@
       <file leaf-file-name="Styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/Styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="197" lean-forward="true" selection-start-line="197" selection-end-line="197" />
+            <state relative-caret-position="3349">
+              <caret line="197" selection-start-line="197" selection-end-line="197" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MovieStatisticsDialogController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MovieStatisticsDialogController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="226" column="77" selection-start-line="226" selection-start-column="77" selection-end-line="226" selection-end-column="77" />
-              <folding>
-                <element signature="e#8956#8957#0" expanded="true" />
-                <element signature="e#9043#9044#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="134">
+              <caret line="222" column="31" selection-start-line="222" selection-start-column="31" selection-end-line="222" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -105,7 +107,6 @@
         <option value="$PROJECT_DIR$/src/main/java/library/util/WarningAlert.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/util/ActorList.java" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/library/util/ActorSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/EditActorsDialog.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/ShowActorDialog.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/ShowActorDialogController.java" />
@@ -137,6 +138,7 @@
         <option value="$PROJECT_DIR$/src/main/java/library/view/MovieEditDialogController.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/Styles.css" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/library/util/ActorSet.java" />
       </list>
     </option>
   </component>
@@ -157,8 +159,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-163" />
-    <option name="y" value="187" />
+    <option name="x" value="53" />
+    <option name="y" value="135" />
     <option name="width" value="1705" />
     <option name="height" value="795" />
   </component>
@@ -170,9 +172,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -253,6 +252,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -389,7 +391,8 @@
       <workItem from="1546030323981" duration="626000" />
       <workItem from="1546084570086" duration="10335000" />
       <workItem from="1546113600890" duration="1280000" />
-      <workItem from="1546200724765" duration="7083000" />
+      <workItem from="1546200724765" duration="7899000" />
+      <workItem from="1546267311359" duration="2503000" />
     </task>
     <task id="LOCAL-00001" summary="usprawnione ocenianie aktorów w filmach">
       <created>1545513449942</created>
@@ -524,14 +527,21 @@
       <option name="project" value="LOCAL" />
       <updated>1546095586467</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="style do reszty widoków">
+      <created>1546208711022</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1546208711022</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245148000" />
+    <option name="totallyTimeSpent" value="248467000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="240" y="185" width="1364" height="636" extended-state="0" />
+    <frame x="43" y="108" width="1364" height="636" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -550,7 +560,7 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Persistence" order="2" sideWeight="0.50793654" side_tool="true" weight="0.24693252" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4920635" visible="true" weight="0.27530676" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4920635" visible="true" weight="0.27990797" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" sideWeight="0.50793654" side_tool="true" weight="0.24693252" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -602,7 +612,8 @@
     <MESSAGE value="walidacja danych przy tworzeniu nowych aktorów i reżyserów" />
     <MESSAGE value="poprawiona metoda usuwająca wszystko z bazy" />
     <MESSAGE value="style do niektórych widoków" />
-    <option name="LAST_COMMIT_MESSAGE" value="style do niektórych widoków" />
+    <MESSAGE value="style do reszty widoków" />
+    <option name="LAST_COMMIT_MESSAGE" value="style do reszty widoków" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -798,13 +809,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/ActorEditDialogController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/EditActorsDialogController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/library/util/ActorSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/model/Actor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -918,16 +922,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieOverviewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="107" column="50" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/NewActorDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="561">
           <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
           <folding>
             <element signature="e#1976#1977#0" expanded="true" />
@@ -938,19 +935,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/Styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="197" lean-forward="true" selection-start-line="197" selection-end-line="197" />
+        <state relative-caret-position="3349">
+          <caret line="197" selection-start-line="197" selection-end-line="197" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieStatisticsDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="226" column="77" selection-start-line="226" selection-start-column="77" selection-end-line="226" selection-end-column="77" />
-          <folding>
-            <element signature="e#8956#8957#0" expanded="true" />
-            <element signature="e#9043#9044#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="134">
+          <caret line="222" column="31" selection-start-line="222" selection-start-column="31" selection-end-line="222" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieOverviewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="107" column="50" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/util/ActorSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
         </state>
       </provider>
     </entry>

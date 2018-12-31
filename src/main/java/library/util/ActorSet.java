@@ -2,17 +2,16 @@ package library.util;
 
 import library.model.Actor;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class ActorSet {
 
     public static String listActors(Set<Actor> actors) {
-        String result = "";
+        List<String> actorsList = actors.stream().map(a -> a.getName()).collect(Collectors.toList());
 
-        for (Actor actor : actors) {
-            result += actor.getFirstName() + " " + actor.getLastName() + " | ";
-        }
-
-        return result;
+        return String.join(", ", actorsList);
     }
 }
