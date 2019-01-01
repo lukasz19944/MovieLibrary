@@ -33,27 +33,27 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Title" />
-                        <Label text="Director" GridPane.rowIndex="1" />
-                        <Label text="Release date" GridPane.rowIndex="2" />
-                        <Label text="Rate" GridPane.rowIndex="5" />
+                        <Label text="%title_label" />
+                        <Label text="%director_label" GridPane.rowIndex="1" />
+                        <Label text="%release_date_label" GridPane.rowIndex="2" />
+                        <Label text="%rate_label" GridPane.rowIndex="5" />
                         <Label fx:id="titleLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" />
                         <Label fx:id="directorLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="releaseDateLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="rateLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label text="Actors" GridPane.rowIndex="6" />
+                        <Label text="%actors_label" GridPane.rowIndex="6" />
                         <Label fx:id="actorsLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label text="Genre" GridPane.rowIndex="3" />
-                        <Label text="Country" GridPane.rowIndex="4" />
+                        <Label text="%genre_label" GridPane.rowIndex="3" />
+                        <Label text="%country_label" GridPane.rowIndex="4" />
                         <Label fx:id="genreLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label fx:id="countryLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                   <ToolBar layoutX="398.0" layoutY="30.0" orientation="VERTICAL" prefHeight="166.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <items>
-                      <Button mnemonicParsing="false" onAction="#handleNewMovie" prefHeight="40.0" prefWidth="100.0" text="NEW" />
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleEditMovie" prefHeight="40.0" prefWidth="100.0" text="EDIT" />
-                        <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleDeleteMovie" prefHeight="40.0" prefWidth="100.0" text="DELETE" />
+                      <Button mnemonicParsing="false" onAction="#handleNewMovie" prefHeight="40.0" prefWidth="100.0" text="%new_button" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleEditMovie" prefHeight="40.0" prefWidth="100.0" text="%edit_button" />
+                        <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleDeleteMovie" prefHeight="40.0" prefWidth="100.0" text="%delete_button" />
                     </items>
                      <padding>
                         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
@@ -65,8 +65,8 @@
                <children>
                   <TableView fx:id="movieTable" prefHeight="386.4" prefWidth="598.4" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
                     <columns>
-                      <TableColumn fx:id="titleColumn" prefWidth="403.20006561279297" text="Title" />
-                      <TableColumn fx:id="rateColumn" prefWidth="295.99993896484375" text="Rate" />
+                      <TableColumn fx:id="titleColumn" prefWidth="403.20006561279297" text="%title_label" />
+                      <TableColumn fx:id="rateColumn" prefWidth="295.99993896484375" text="%rate_label" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

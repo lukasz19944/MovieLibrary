@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="600.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.MovieEditDialogController">
    <children>
-      <Label styleClass="label-header" text="Edit Movie" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+      <Label styleClass="label-header" text="%movie_edit_header" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
       <GridPane prefHeight="176.0" prefWidth="480.0" styleClass="grid-pane-edit" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.20001220703125" minWidth="10.0" percentWidth="30.0" prefWidth="194.4000244140625" />
@@ -33,10 +33,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Title" />
-            <Label text="Director" GridPane.rowIndex="1" />
-            <Label text="Release date" GridPane.rowIndex="2" />
-            <Label text="Rate" GridPane.rowIndex="5" />
+            <Label text="%title_label" />
+            <Label text="%director_label" GridPane.rowIndex="1" />
+            <Label text="%release_date_label" GridPane.rowIndex="2" />
+            <Label text="%rate_label" GridPane.rowIndex="5" />
             <TextField fx:id="titleField" GridPane.columnIndex="1" />
             <TextField fx:id="directorField" prefWidth="254.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
@@ -57,15 +57,15 @@
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Label text="Actors" GridPane.rowIndex="6" />
-            <Label text="Genre" GridPane.rowIndex="3" />
-            <Label text="Country" GridPane.rowIndex="4" />
+            <Label text="%actors_label" GridPane.rowIndex="6" />
+            <Label text="%genre_label" GridPane.rowIndex="3" />
+            <Label text="%country_label" GridPane.rowIndex="4" />
             <TextField fx:id="genreField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="countryField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TableView fx:id="actorTable" prefHeight="274.0" prefWidth="406.0" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
               <columns>
-                <TableColumn fx:id="firstNameColumn" prefWidth="126.3999695777893" text="First Name" />
-                <TableColumn fx:id="lastNameColumn" prefWidth="168.80010986328125" text="Last Name" />
+                <TableColumn fx:id="firstNameColumn" prefWidth="126.3999695777893" text="%first_name_label" />
+                <TableColumn fx:id="lastNameColumn" prefWidth="168.80010986328125" text="%last_name_label" />
               </columns>
             </TableView>
             <TextField fx:id="actorField" onKeyPressed="#handleEnter" GridPane.columnIndex="1" GridPane.rowIndex="7">
@@ -85,8 +85,8 @@
       </GridPane>
       <ButtonBar buttonMinWidth="100.0" layoutX="286.0" layoutY="246.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
         <buttons>
-          <Button mnemonicParsing="false" onAction="#handleSave" styleClass="button-default" text="Save" />
-            <Button layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleCancel" styleClass="button-default" text="Cancel" />
+          <Button mnemonicParsing="false" onAction="#handleSave" styleClass="button-default" text="%save_button" />
+            <Button layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleCancel" styleClass="button-default" text="%cancel_button" />
         </buttons>
       </ButtonBar>
    </children>

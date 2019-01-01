@@ -8,6 +8,8 @@
     <artifactId>movie-library</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
+
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -25,4 +27,5 @@
             <version>8.40.14</version>
         </dependency>
     </dependencies>
+
 </project>

@@ -18,10 +18,13 @@ import library.model.Movie;
 import library.view.*;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
+
+    private ResourceBundle bundle;
 
     private ObservableList<Movie> movieData = FXCollections.observableArrayList();
     private ObservableList<Director> directorData = FXCollections.observableArrayList();
@@ -43,7 +46,8 @@ public class MainApp extends Application {
 
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Movie Library");
+
+        bundle = ResourceBundle.getBundle("bundles/messages");
 
         initRootLayout();
 
@@ -53,11 +57,14 @@ public class MainApp extends Application {
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             rootLayout = loader.load();
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+
+            primaryStage.setTitle(bundle.getString("application_title"));
 
             RootLayoutController controller = loader.getController();
             controller.setMainApp(this);
@@ -71,6 +78,7 @@ public class MainApp extends Application {
     public void showMovieOverview() {
         try {
             FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
             loader.setLocation(MainApp.class.getResource("view/MovieOverview.fxml"));
             AnchorPane movieOverview = loader.load();
 
@@ -86,11 +94,12 @@ public class MainApp extends Application {
     public boolean showMovieEditDialog(Movie movie) {
         try {
             FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
             loader.setLocation(MainApp.class.getResource("view/MovieEditDialog.fxml"));
             AnchorPane page = loader.load();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Movie");
+            dialogStage.setTitle(bundle.getString("movie_edit_title"));
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -119,11 +128,12 @@ public class MainApp extends Application {
     public boolean showNewDirectorDialog(Director director) {
         try {
             FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
             loader.setLocation(MainApp.class.getResource("view/NewDirectorDialog.fxml"));
             AnchorPane page = loader.load();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Add Director");
+            dialogStage.setTitle(bundle.getString("director_add_title"));
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -146,11 +156,12 @@ public class MainApp extends Application {
     public boolean showNewActorDialog(Actor actor) {
         try {
             FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
             loader.setLocation(MainApp.class.getResource("view/NewActorDialog.fxml"));
             AnchorPane page = loader.load();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Add Actor");
+            dialogStage.setTitle(bundle.getString("actor_add_title"));
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -173,10 +184,11 @@ public class MainApp extends Application {
     public void showMovieStatistics() {
         try {
             FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
             loader.setLocation(MainApp.class.getResource("view/MovieStatisticsDialog.fxml"));
             AnchorPane page = loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Movie Statistics");
+            dialogStage.setTitle(bundle.getString("movie_stats_title"));
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -195,10 +207,11 @@ public class MainApp extends Application {
     public void showDirectorStatistics() {
         try {
             FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
             loader.setLocation(MainApp.class.getResource("view/DirectorStatisticsDialog.fxml"));
             AnchorPane page = loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Director Statistics");
+            dialogStage.setTitle(bundle.getString("director_stats_title"));
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -217,10 +230,11 @@ public class MainApp extends Application {
     public void showActorStatistics() {
         try {
             FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
             loader.setLocation(MainApp.class.getResource("view/ActorStatisticsDialog.fxml"));
             AnchorPane page = loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Actor Statistics");
+            dialogStage.setTitle(bundle.getString("actor_stats_title"));
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);

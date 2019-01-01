@@ -17,7 +17,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="800.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.ActorStatisticsDialogController">
    <children>
-      <Label styleClass="label-header" text="Actor Statistics" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <Label styleClass="label-header" text="%actor_stats_header" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -72,13 +72,13 @@
                               <Label fx:id="ageLabelHighValue" alignment="TOP_LEFT" text="100" />
                            </children>
                         </HBox>
-                        <Label text="Age" />
-                        <Label text="Alive" GridPane.rowIndex="1" />
-                        <Label text="Gender" GridPane.rowIndex="2" />
+                        <Label text="%age_label" />
+                        <Label text="%alive_label" GridPane.rowIndex="1" />
+                        <Label text="%gender_label" GridPane.rowIndex="2" />
                         <ComboBox fx:id="genderComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Nationality" GridPane.rowIndex="3" />
+                        <Label text="%nationality_label" GridPane.rowIndex="3" />
                         <ComboBox fx:id="nationalityComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Average Rate" GridPane.rowIndex="4" />
+                        <Label text="%average_rate_label" GridPane.rowIndex="4" />
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
                               <Label fx:id="avgRateLabelLowValue" text="0.00" />
@@ -88,8 +88,8 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handleFilterButton" prefWidth="70.0" text="Filter" />
-                              <Button mnemonicParsing="false" onAction="#handleResetFilter" prefWidth="70.0" text="Reset" />
+                              <Button mnemonicParsing="false" onAction="#handleFilterButton" prefWidth="70.0" text="%filter_button" />
+                              <Button mnemonicParsing="false" onAction="#handleResetFilter" prefWidth="70.0" text="%reset_button" />
                            </children>
                         </HBox>
                         <ComboBox fx:id="aliveComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -101,12 +101,12 @@
       </SplitPane>
       <TableView fx:id="actorTable" layoutX="14.0" layoutY="55.0" styleClass="table-view-stats" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0">
          <columns>
-            <TableColumn fx:id="firstNameColumn" minWidth="185.0" prefWidth="-1.0" text="First Name" />
-            <TableColumn fx:id="lastNameColumn" minWidth="185.0" prefWidth="-1.0" text="Last Name" />
-            <TableColumn fx:id="genderColumn" minWidth="80.0" prefWidth="-1.0" text="Gender" />
-            <TableColumn fx:id="nationalityColumn" minWidth="140.0" prefWidth="-1.0" text="Nationality" />
-            <TableColumn fx:id="ageColumn" minWidth="70.0" prefWidth="-1.0" text="Age" />
-            <TableColumn fx:id="averageRateColumn" minWidth="110.0" prefWidth="-1.0" text="Average Rate" />
+            <TableColumn fx:id="firstNameColumn" minWidth="185.0" prefWidth="-1.0" text="%first_name_label" />
+            <TableColumn fx:id="lastNameColumn" minWidth="185.0" prefWidth="-1.0" text="%last_name_label" />
+            <TableColumn fx:id="genderColumn" minWidth="80.0" prefWidth="-1.0" text="%gender_label" />
+            <TableColumn fx:id="nationalityColumn" minWidth="140.0" prefWidth="-1.0" text="%nationality_label" />
+            <TableColumn fx:id="ageColumn" minWidth="70.0" prefWidth="-1.0" text="%age_label" />
+            <TableColumn fx:id="averageRateColumn" minWidth="110.0" prefWidth="-1.0" text="%average_rate_label" />
          </columns>
       </TableView>
    </children>

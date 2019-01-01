@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="500.0" styleClass="anchor-pane-new" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.NewActorDialogController">
    <children>
-      <Label styleClass="label-header-new" text="Add Actor" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Label styleClass="label-header-new" text="%actor_add_header" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
       <GridPane prefHeight="176.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
@@ -29,17 +29,17 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="First Name" />
-            <Label text="Last Name" GridPane.rowIndex="1" />
-            <Label text="Gender" GridPane.rowIndex="2" />
-            <Label text="Nationality" GridPane.rowIndex="3" />
+            <Label text="%first_name_label" />
+            <Label text="%last_name_label" GridPane.rowIndex="1" />
+            <Label text="%gender_label" GridPane.rowIndex="2" />
+            <Label text="%nationality_label" GridPane.rowIndex="3" />
             <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
             <TextField fx:id="lastNameField" prefWidth="288.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="nationalityField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ComboBox fx:id="genderComboBox" prefHeight="37.6" prefWidth="288.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Date Of Birth" GridPane.rowIndex="4" />
+            <Label text="%dob_label" GridPane.rowIndex="4" />
             <TextField fx:id="dateOfBirthField" promptText="dd.mm.yyyy" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label text="Date Of Death *" GridPane.rowIndex="5" />
+            <Label text="%dod_label" GridPane.rowIndex="5" />
             <TextField fx:id="dateOfDeathField" promptText="dd.mm.yyyy" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="4.0" />
@@ -48,11 +48,11 @@
       </GridPane>
       <ButtonBar buttonMinWidth="100.0" layoutX="286.0" layoutY="246.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <buttons>
-            <Button mnemonicParsing="false" onAction="#handleSave" styleClass="button-default" text="Save" />
-            <Button layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleCancel" styleClass="button-default" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#handleSave" styleClass="button-default" text="%save_button" />
+            <Button layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleCancel" styleClass="button-default" text="%cancel_button" />
          </buttons>
       </ButtonBar>
-      <Label layoutX="-10.0" layoutY="280.0" text="* not required" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0">
+      <Label layoutX="-10.0" layoutY="280.0" text="%require_label" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0">
          <font>
             <Font size="9.0" />
          </font>
