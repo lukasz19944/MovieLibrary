@@ -59,6 +59,20 @@ public class RootLayoutController {
     }
 
     @FXML
+    private void handleChangeLanguagePolish() {
+        mainApp.changeLanguagePolish();
+        mainApp.initRootLayout();
+        mainApp.showMovieOverview();
+    }
+
+    @FXML
+    private void handleChangeLanguageEnglish() {
+        mainApp.changeLanguageEnglish();
+        mainApp.initRootLayout();
+        mainApp.showMovieOverview();
+    }
+
+    @FXML
     private void handleDirectorStatistics() {
         mainApp.showDirectorStatistics();
     }

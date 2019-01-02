@@ -5,7 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.RootLayoutController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.RootLayoutController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -17,6 +17,12 @@
           <Menu mnemonicParsing="false" text="%menu_edit">
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#handleDeleteAll" text="%menu_delete" />
+                  <Menu mnemonicParsing="false" text="%menu_language">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#handleChangeLanguageEnglish" text="%menu_language_en" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleChangeLanguagePolish" text="%menu_language_pl" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="%menu_database">

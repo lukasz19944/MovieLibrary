@@ -18,6 +18,7 @@ import library.model.Movie;
 import library.view.*;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class MainApp extends Application {
@@ -25,6 +26,8 @@ public class MainApp extends Application {
     private BorderPane rootLayout;
 
     private ResourceBundle bundle;
+
+    private Locale locale = Locale.ENGLISH;
 
     private ObservableList<Movie> movieData = FXCollections.observableArrayList();
     private ObservableList<Director> directorData = FXCollections.observableArrayList();
@@ -47,8 +50,6 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
 
-        bundle = ResourceBundle.getBundle("bundles/messages");
-
         initRootLayout();
 
         showMovieOverview();
@@ -57,6 +58,7 @@ public class MainApp extends Application {
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
+            bundle = ResourceBundle.getBundle("bundles/messages", locale);
             loader.setResources(bundle);
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             rootLayout = loader.load();
@@ -248,6 +250,14 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void changeLanguagePolish() {
+        this.locale = new Locale("pl", "PL");
+    }
+
+    public void changeLanguageEnglish() {
+        this.locale = new Locale("en", "GB");
     }
 
     public Stage getPrimaryStage() {

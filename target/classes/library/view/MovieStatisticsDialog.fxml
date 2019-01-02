@@ -19,7 +19,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="800.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.MovieStatisticsDialogController">
    <children>
-      <Label styleClass="label-header" text="Movie Statistics" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <Label styleClass="label-header" text="%movie_stats_header" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -73,13 +73,13 @@
                            </children>
                         </HBox>
                         <TextField fx:id="genreField" onKeyPressed="#handleEnter" prefHeight="26.0" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Release date" />
-                        <Label text="Genre" GridPane.rowIndex="1" />
-                        <Label text="Director" GridPane.rowIndex="2" />
+                        <Label text="%release_date_label" />
+                        <Label text="%genre_label" GridPane.rowIndex="1" />
+                        <Label text="%director_label" GridPane.rowIndex="2" />
                         <ComboBox fx:id="directorComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Country" GridPane.rowIndex="3" />
+                        <Label text="%country_label" GridPane.rowIndex="3" />
                         <ComboBox fx:id="countryComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Rate" GridPane.rowIndex="4" />
+                        <Label text="%rate_label" GridPane.rowIndex="4" />
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
                               <Label fx:id="rateLabelLowValue" text="0.00" />
@@ -89,8 +89,8 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handleFilterButton" prefHeight="26.0" prefWidth="70.0" text="Filter" />
-                              <Button mnemonicParsing="false" onAction="#handleResetFilter" prefWidth="70.0" text="Reset" />
+                              <Button mnemonicParsing="false" onAction="#handleFilterButton" prefHeight="26.0" prefWidth="70.0" text="%filter_button" />
+                              <Button mnemonicParsing="false" onAction="#handleResetFilter" prefWidth="70.0" text="%reset_button" />
                            </children>
                         </HBox>
                      </children>
@@ -101,12 +101,12 @@
       </SplitPane>
       <TableView fx:id="movieTable" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" styleClass="table-view-stats" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0">
         <columns>
-          <TableColumn fx:id="titleColumn" minWidth="200.0" prefWidth="-1.0" resizable="false" text="Title" />
-          <TableColumn fx:id="releaseDateColumn" minWidth="110.0" prefWidth="-1.0" resizable="false" text="Release date" />
-            <TableColumn fx:id="directorColumn" minWidth="160.0" prefWidth="-1.0" resizable="false" text="Director" />
-            <TableColumn fx:id="genreColumn" minWidth="145.0" prefWidth="-1.0" resizable="false" text="Genre" />
-            <TableColumn fx:id="countryColumn" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Country" />
-            <TableColumn fx:id="rateColumn" minWidth="55.0" prefWidth="-1.0" resizable="false" text="Rate" />
+          <TableColumn fx:id="titleColumn" minWidth="200.0" prefWidth="-1.0" resizable="false" text="%title_label" />
+          <TableColumn fx:id="releaseDateColumn" minWidth="110.0" prefWidth="-1.0" resizable="false" text="%release_date_label" />
+            <TableColumn fx:id="directorColumn" minWidth="160.0" prefWidth="-1.0" resizable="false" text="%director_label" />
+            <TableColumn fx:id="genreColumn" minWidth="145.0" prefWidth="-1.0" resizable="false" text="%genre_label" />
+            <TableColumn fx:id="countryColumn" minWidth="100.0" prefWidth="-1.0" resizable="false" text="%country_label" />
+            <TableColumn fx:id="rateColumn" minWidth="55.0" prefWidth="-1.0" resizable="false" text="%rate_label" />
         </columns>
       </TableView>
    </children>

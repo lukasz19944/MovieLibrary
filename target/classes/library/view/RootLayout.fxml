@@ -3,32 +3,41 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.RootLayoutController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.RootLayoutController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="%menu_file">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#handleClose" text="%menu_close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="%menu_edit">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleDeleteAll" text="Delete all" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleDeleteAll" text="%menu_delete" />
+                  <Menu mnemonicParsing="false" text="%menu_language">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#handleChangeLanguageEnglish" text="%menu_language_en" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleChangeLanguagePolish" text="%menu_language_pl" />
+                        <RadioMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                        <RadioMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Database">
+            <Menu mnemonicParsing="false" text="%menu_database">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleMovieStatistics" text="Movies" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleDirectorStatistics" text="Directors" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleActorStatistics" text="Actors" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMovieStatistics" text="%menu_movies" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleDirectorStatistics" text="%menu_directors" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleActorStatistics" text="%menu_actors" />
                </items>
             </Menu>
-          <Menu mnemonicParsing="false" onAction="#handleAbout" text="Help">
+          <Menu mnemonicParsing="false" onAction="#handleAbout" text="%menu_help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" text="%menu_about" />
             </items>
           </Menu>
         </menus>
