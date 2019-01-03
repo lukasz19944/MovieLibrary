@@ -172,7 +172,7 @@ public class MovieDao {
         return String.join(", ", genres);
     }
 
-    public List<String> getAllCountries() {
+    public String getAllCountries() {
         List<String> countries = null;
 
         Transaction transaction = null;
@@ -191,6 +191,6 @@ public class MovieDao {
             session.close();
         }
 
-        return countries;
+        return String.join(", ", countries);
     }
 }

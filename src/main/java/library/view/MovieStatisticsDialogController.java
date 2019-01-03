@@ -76,8 +76,8 @@ public class MovieStatisticsDialogController {
 
     private ObservableList<Movie> movieData = FXCollections.observableArrayList();
     private ObservableList<String> directors = FXCollections.observableArrayList();
-    private ObservableList<String> countries = FXCollections.observableArrayList();
 
+    private Set<String> countries;
     private Set<String> genres;
     private Set<String> genreSet;
 
@@ -118,6 +118,7 @@ public class MovieStatisticsDialogController {
         MovieDao mDao = new MovieDao();
         DirectorDao dDao = new DirectorDao();
 
+        countries = new HashSet<>(Arrays.asList(mDao.getAllCountries().split(", ")));
         genres = new HashSet<>(Arrays.asList(mDao.getAllGenres().split(", ")));
 
         genreSet = new HashSet<>();
@@ -132,7 +133,6 @@ public class MovieStatisticsDialogController {
         directorComboBox.getItems().addAll(directors);
         directorComboBox.getSelectionModel().select("ALL");
 
-        countries.addAll(mDao.getAllCountries());
         countryComboBox.getItems().add("ALL");
         countryComboBox.getItems().addAll(countries);
         countryComboBox.getSelectionModel().select("ALL");
@@ -182,7 +182,7 @@ public class MovieStatisticsDialogController {
                         m.getReleaseDate() <= dateOfReleaseSlider.getHighValue()))
                 .filter(m -> !Collections.disjoint(new ArrayList<>(Arrays.asList(m.getGenre().split(", "))), genreSet))
                 .filter(m -> (directorComboBox.getValue().equals("ALL")) || (m.getDirector().getName().equals(directorComboBox.getValue())))
-                .filter(m -> (countryComboBox.getValue().equals("ALL")) || (m.getCountry().equals(countryComboBox.getValue())))
+                .filter(m -> (countryComboBox.getValue().equals("ALL")) || (m.getCountry().contains(countryComboBox.getValue())))
                 .filter(m -> (m.getRate() >= rateSlider.getLowValue() && m.getRate() <= rateSlider.getHighValue()))
                 .collect(Collectors.toList());
 
