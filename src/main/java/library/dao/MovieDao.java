@@ -35,7 +35,7 @@ public class MovieDao {
 
         try {
             transaction = session.beginTransaction();
-            Movie movie = (Movie) session.load(Movie.class, new Integer(movieId));
+            Movie movie = session.load(Movie.class, movieId);
             session.delete(movie);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
@@ -67,7 +67,7 @@ public class MovieDao {
     }
 
     public List<Movie> getAllMovies() {
-        List<Movie> movies = new ArrayList<Movie>();
+        List<Movie> movies = new ArrayList<>();
 
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();

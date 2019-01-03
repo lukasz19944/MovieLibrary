@@ -1,6 +1,5 @@
 package library.view;
 
-import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -46,8 +45,6 @@ public class ActorStatisticsDialogController {
     @FXML
     private Label ageLabelHighValue;
 
-    RangeSlider ageSlider;
-
     @FXML
     private ComboBox<String> aliveComboBox;
 
@@ -64,14 +61,13 @@ public class ActorStatisticsDialogController {
     @FXML
     private Label avgRateLabelHighValue;
 
+    private RangeSlider ageSlider;
     private RangeSlider avgRateSlider;
 
     private ObservableList<Actor> actorData = FXCollections.observableArrayList();
 
     private ObservableList<String> genders = FXCollections.observableArrayList("BOTH", "Male", "Female");
     private ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
-
-    private Set<String> nationalities;
 
     private MainApp mainApp;
 
@@ -114,7 +110,7 @@ public class ActorStatisticsDialogController {
 
         ActorDao aDao = new ActorDao();
 
-        nationalities = new HashSet<>(Arrays.asList(aDao.getAllNationalities().split(", ")));
+        Set<String> nationalities = new HashSet<>(Arrays.asList(aDao.getAllNationalities().split(", ")));
 
         nationalityComboBox.getItems().add("ALL");
         nationalityComboBox.getItems().addAll(nationalities);
@@ -183,7 +179,7 @@ public class ActorStatisticsDialogController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
-        actorTable.setItems(mainApp.getActorData());
+        actorTable.setItems(this.mainApp.getActorData());
 
         actorData.addAll(actorTable.getItems());
     }

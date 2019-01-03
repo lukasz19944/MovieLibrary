@@ -71,7 +71,7 @@ public class MovieEditDialogController {
     private List<String> directors = new ArrayList<>();
     private List<String> actors = new ArrayList<>();
 
-    TableColumn<Actor, Float> rateColumn = new TableColumn("Rate");
+    private TableColumn<Actor, Float> rateColumn = new TableColumn("Rate");
 
     @FXML
     private void initialize() {
@@ -377,11 +377,6 @@ public class MovieEditDialogController {
     public void setMovieExist(boolean movieExist) {
         this.movieExist = movieExist;
     }
-
-    public List<String> getActors() {
-        return actors;
-    }
-
 
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
         final Button cellButton = new Button("✖");

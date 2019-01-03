@@ -12,8 +12,6 @@ import library.model.Director;
 import library.util.DateUtil;
 import library.util.WarningAlert;
 
-import java.time.Year;
-
 public class NewDirectorDialogController {
     @FXML
     private TextField firstNameField;
@@ -34,7 +32,7 @@ public class NewDirectorDialogController {
 
     private MainApp mainApp;
 
-    ObservableList<String> genders = FXCollections.observableArrayList("Male", "Female");
+    private ObservableList<String> genders = FXCollections.observableArrayList("Male", "Female");
 
     @FXML
     private void initialize() {

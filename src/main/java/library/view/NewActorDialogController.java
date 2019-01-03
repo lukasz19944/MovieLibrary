@@ -32,7 +32,7 @@ public class NewActorDialogController {
 
     private MainApp mainApp;
 
-    ObservableList<String> genders = FXCollections.observableArrayList("Male", "Female");
+    private ObservableList<String> genders = FXCollections.observableArrayList("Male", "Female");
 
     @FXML
     private void initialize() {

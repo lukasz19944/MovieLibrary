@@ -35,7 +35,7 @@ public class DirectorDao {
 
         try {
             transaction = session.beginTransaction();
-            Director director = (Director) session.load(Director.class, new Integer(directorId));
+            Director director = session.load(Director.class, directorId);
             session.delete(director);
             session.getTransaction().commit();
         } catch (RuntimeException e) {

@@ -52,8 +52,6 @@ public class MovieStatisticsDialogController {
     @FXML
     private Label dateLabelHighValue;
 
-    RangeSlider dateOfReleaseSlider;
-
     @FXML
     private FlowPane genreFlowPane;
     @FXML
@@ -72,12 +70,12 @@ public class MovieStatisticsDialogController {
     @FXML
     private Label rateLabelHighValue;
 
-    RangeSlider rateSlider;
+    private RangeSlider dateOfReleaseSlider;
+    private RangeSlider rateSlider;
 
     private ObservableList<Movie> movieData = FXCollections.observableArrayList();
     private ObservableList<String> directors = FXCollections.observableArrayList();
 
-    private Set<String> countries;
     private Set<String> genres;
     private Set<String> genreSet;
 
@@ -118,7 +116,7 @@ public class MovieStatisticsDialogController {
         MovieDao mDao = new MovieDao();
         DirectorDao dDao = new DirectorDao();
 
-        countries = new HashSet<>(Arrays.asList(mDao.getAllCountries().split(", ")));
+        Set<String> countries = new HashSet<>(Arrays.asList(mDao.getAllCountries().split(", ")));
         genres = new HashSet<>(Arrays.asList(mDao.getAllGenres().split(", ")));
 
         genreSet = new HashSet<>();

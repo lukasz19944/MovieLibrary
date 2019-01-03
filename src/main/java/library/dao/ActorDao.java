@@ -35,7 +35,7 @@ public class ActorDao {
 
         try {
             transaction = session.beginTransaction();
-            Actor actor = (Actor) session.load(Actor.class, new Integer(actorId));
+            Actor actor = session.load(Actor.class, actorId);
             session.delete(actor);
             session.getTransaction().commit();
         } catch (RuntimeException e) {

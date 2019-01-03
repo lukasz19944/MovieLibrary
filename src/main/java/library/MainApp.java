@@ -47,7 +47,7 @@ public class MainApp extends Application {
         launch(args);
     }
 
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
 
         initRootLayout();

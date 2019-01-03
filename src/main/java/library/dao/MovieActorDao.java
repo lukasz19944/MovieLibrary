@@ -1,7 +1,6 @@
 package library.dao;
 
 import library.model.Actor;
-import library.model.Movie;
 import library.model.MovieActor;
 import library.util.HibernateUtil;
 import org.hibernate.Session;

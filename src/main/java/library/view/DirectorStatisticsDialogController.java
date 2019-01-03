@@ -1,6 +1,5 @@
 package library.view;
 
-import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -46,8 +45,6 @@ public class DirectorStatisticsDialogController {
     @FXML
     private Label ageLabelHighValue;
 
-    RangeSlider ageSlider;
-
     @FXML
     private ComboBox<String> aliveComboBox;
 
@@ -64,14 +61,13 @@ public class DirectorStatisticsDialogController {
     @FXML
     private Label avgRateLabelHighValue;
 
+    private RangeSlider ageSlider;
     private RangeSlider avgRateSlider;
 
     private ObservableList<Director> directorData = FXCollections.observableArrayList();
 
     private ObservableList<String> genders = FXCollections.observableArrayList("BOTH", "Male", "Female");
     private ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
-
-    private Set<String> nationalities;
 
     private MainApp mainApp;
 
@@ -114,7 +110,7 @@ public class DirectorStatisticsDialogController {
 
         DirectorDao dDao = new DirectorDao();
 
-        nationalities = new HashSet<>(Arrays.asList(dDao.getAllNationalities().split(", ")));
+        Set<String> nationalities = new HashSet<>(Arrays.asList(dDao.getAllNationalities().split(", ")));
 
         nationalityComboBox.getItems().add("ALL");
         nationalityComboBox.getItems().addAll(nationalities);
@@ -184,7 +180,7 @@ public class DirectorStatisticsDialogController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
-        directorTable.setItems(mainApp.getDirectorData());
+        directorTable.setItems(this.mainApp.getDirectorData());
 
         directorData.addAll(directorTable.getItems());
     }

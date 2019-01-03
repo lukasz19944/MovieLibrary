@@ -1,8 +1,6 @@
 package library.model;
 
 import library.dao.ActorDao;
-import library.dao.MovieActorDao;
-
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
