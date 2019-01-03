@@ -198,7 +198,7 @@ public class ActorDao {
         }
     }
 
-    public List<String> getAllNationalities() {
+    public String getAllNationalities() {
         List<String> nationalities = null;
 
         Transaction transaction = null;
@@ -215,6 +215,6 @@ public class ActorDao {
             session.close();
         }
 
-        return nationalities;
+        return String.join(", ", nationalities);
     }
 }

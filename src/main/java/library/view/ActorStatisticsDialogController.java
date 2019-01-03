@@ -17,7 +17,10 @@ import library.dao.ActorDao;
 import library.model.Actor;
 import org.controlsfx.control.RangeSlider;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ActorStatisticsDialogController {
@@ -67,7 +70,8 @@ public class ActorStatisticsDialogController {
 
     private ObservableList<String> genders = FXCollections.observableArrayList("BOTH", "Male", "Female");
     private ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
-    private ObservableList<String> nationalities = FXCollections.observableArrayList();
+
+    private Set<String> nationalities;
 
     private MainApp mainApp;
 
@@ -109,7 +113,9 @@ public class ActorStatisticsDialogController {
         aliveComboBox.setItems(isAlive);
 
         ActorDao aDao = new ActorDao();
-        nationalities.addAll(aDao.getAllNationalities());
+
+        nationalities = new HashSet<>(Arrays.asList(aDao.getAllNationalities().split(", ")));
+
         nationalityComboBox.getItems().add("ALL");
         nationalityComboBox.getItems().addAll(nationalities);
         nationalityComboBox.getSelectionModel().select("ALL");
@@ -146,7 +152,7 @@ public class ActorStatisticsDialogController {
                         a.calculateAge() <= ageSlider.getHighValue()))
                 .filter(a -> (genderComboBox.getValue().equals("BOTH")) || a.getGender().equals(genderComboBox.getValue()))
                 .filter(a -> (aliveComboBox.getValue().equals("BOTH")) || a.isAlive().equals(aliveComboBox.getValue()))
-                .filter(a -> (nationalityComboBox.getValue().equals("ALL")) || a.getNationality().equals(nationalityComboBox.getValue()))
+                .filter(a -> (nationalityComboBox.getValue().equals("ALL")) || a.getNationality().contains(nationalityComboBox.getValue()))
                 .filter(a -> a.getAverageRate() >= avgRateSlider.getLowValue() && a.getAverageRate() <= avgRateSlider.getHighValue())
                 .collect(Collectors.toList());
 
