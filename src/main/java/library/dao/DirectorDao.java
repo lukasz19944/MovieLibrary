@@ -196,7 +196,7 @@ public class DirectorDao {
         }
     }
 
-    public List<String> getAllNationalities() {
+    public String getAllNationalities() {
         List<String> nationalities = null;
 
         Transaction transaction = null;
@@ -213,6 +213,6 @@ public class DirectorDao {
             session.close();
         }
 
-        return nationalities;
+        return String.join(", ", nationalities);
     }
 }

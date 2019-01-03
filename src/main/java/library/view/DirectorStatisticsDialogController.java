@@ -17,7 +17,10 @@ import library.dao.DirectorDao;
 import library.model.Director;
 import org.controlsfx.control.RangeSlider;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DirectorStatisticsDialogController {
@@ -67,7 +70,8 @@ public class DirectorStatisticsDialogController {
 
     private ObservableList<String> genders = FXCollections.observableArrayList("BOTH", "Male", "Female");
     private ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
-    private ObservableList<String> nationalities = FXCollections.observableArrayList();
+
+    private Set<String> nationalities;
 
     private MainApp mainApp;
 
@@ -109,7 +113,9 @@ public class DirectorStatisticsDialogController {
         aliveComboBox.setItems(isAlive);
 
         DirectorDao dDao = new DirectorDao();
-        nationalities.addAll(dDao.getAllNationalities());
+
+        nationalities = new HashSet<>(Arrays.asList(dDao.getAllNationalities().split(", ")));
+
         nationalityComboBox.getItems().add("ALL");
         nationalityComboBox.getItems().addAll(nationalities);
         nationalityComboBox.getSelectionModel().select("ALL");
@@ -146,7 +152,7 @@ public class DirectorStatisticsDialogController {
                         d.calculateAge() <= ageSlider.getHighValue()))
                 .filter(d -> (genderComboBox.getValue().equals("BOTH")) || d.getGender().equals(genderComboBox.getValue()))
                 .filter(d -> (aliveComboBox.getValue().equals("BOTH")) || d.isAlive().equals(aliveComboBox.getValue()))
-                .filter(d -> (nationalityComboBox.getValue().equals("ALL")) || d.getNationality().equals(nationalityComboBox.getValue()))
+                .filter(d -> (nationalityComboBox.getValue().equals("ALL")) || d.getNationality().contains(nationalityComboBox.getValue()))
                 .filter(a -> a.getAverageRate() >= avgRateSlider.getLowValue() && a.getAverageRate() <= avgRateSlider.getHighValue())
                 .collect(Collectors.toList());
 
