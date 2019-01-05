@@ -97,6 +97,12 @@ public class Director {
         return dao.averageDirectorRate(this);
     }
 
+    public Integer getDirectorRateCount() {
+        DirectorDao dao = new DirectorDao();
+
+        return dao.directorRateCount(this);
+    }
+
     public Integer calculateAge() {
         Date currentDate = new Date();
         if (dateOfBirth != null) {
