@@ -104,9 +104,10 @@
             <TableColumn fx:id="firstNameColumn" minWidth="185.0" prefWidth="-1.0" text="%first_name_label" />
             <TableColumn fx:id="lastNameColumn" minWidth="185.0" prefWidth="-1.0" text="%last_name_label" />
             <TableColumn fx:id="genderColumn" minWidth="80.0" prefWidth="-1.0" text="%gender_label" />
-            <TableColumn fx:id="nationalityColumn" minWidth="140.0" prefWidth="-1.0" text="%nationality_label" />
-            <TableColumn fx:id="ageColumn" minWidth="70.0" prefWidth="-1.0" text="%age_label" />
-            <TableColumn fx:id="averageRateColumn" minWidth="110.0" prefWidth="-1.0" text="%average_rate_label" />
+            <TableColumn fx:id="nationalityColumn" minWidth="108.0" prefWidth="108.0" text="%nationality_label" />
+            <TableColumn fx:id="ageColumn" minWidth="57.60003662109375" prefWidth="63.20001220703125" text="%age_label" />
+            <TableColumn fx:id="averageRateColumn" minWidth="73.5999755859375" prefWidth="85.5999755859375" text="%average_rate_label_short" />
+            <TableColumn fx:id="rateCountColumn" minWidth="39.199951171875" prefWidth="68.0" text="%rate_count_label_short" />
          </columns>
       </TableView>
    </children>

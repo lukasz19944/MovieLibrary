@@ -98,12 +98,13 @@
       </SplitPane>
       <TableView fx:id="directorTable" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" styleClass="table-view-stats" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0">
          <columns>
-            <TableColumn fx:id="firstNameColumn" minWidth="185.0" prefWidth="-1.0" text="%first_name_label" />
-            <TableColumn fx:id="lastNameColumn" minWidth="185.0" prefWidth="-1.0" text="%last_name_label" />
-            <TableColumn fx:id="genderColumn" minWidth="80.0" prefWidth="-1.0" text="%gender_label" />
-            <TableColumn fx:id="nationalityColumn" minWidth="140.0" prefWidth="-1.0" text="%nationality_label" />
-            <TableColumn fx:id="ageColumn" minWidth="70.0" prefWidth="-1.0" text="%age_label" />
-            <TableColumn fx:id="averageRateColumn" minWidth="110.0" prefWidth="-1.0" text="%average_rate_label" />
+            <TableColumn fx:id="firstNameColumn" minWidth="150.0" prefWidth="164.0" text="%first_name_label" />
+            <TableColumn fx:id="lastNameColumn" minWidth="150.0" prefWidth="164.0" text="%last_name_label" />
+            <TableColumn fx:id="genderColumn" minWidth="70.0" prefWidth="75.20001220703125" text="%gender_label" />
+            <TableColumn fx:id="nationalityColumn" minWidth="115.0" prefWidth="140.79998779296875" text="%nationality_label" />
+            <TableColumn fx:id="ageColumn" minWidth="48.0" prefWidth="64.800048828125" text="%age_label" />
+            <TableColumn fx:id="averageRateColumn" minWidth="76.00006103515625" prefWidth="96.7999267578125" text="%average_rate_label_short" />
+            <TableColumn fx:id="rateCountColumn" minWidth="73.60003662109375" prefWidth="75.99993896484375" text="%rate_count_label_short" />
          </columns>
       </TableView>
    </children>

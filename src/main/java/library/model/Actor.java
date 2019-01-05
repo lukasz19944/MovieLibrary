@@ -1,6 +1,8 @@
 package library.model;
 
 import library.dao.ActorDao;
+import library.dao.MovieActorDao;
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
@@ -111,6 +113,12 @@ public class Actor {
         ActorDao dao = new ActorDao();
 
         return dao.averageActorRate(this);
+    }
+
+    public Integer getActorRateCount() {
+        ActorDao dao = new ActorDao();
+
+        return dao.actorRateCount(this);
     }
 
     public String isAlive() {

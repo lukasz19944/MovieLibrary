@@ -198,6 +198,31 @@ public class ActorDao {
         }
     }
 
+    public Integer actorRateCount(Actor actor) {
+        Long rateCount = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            String hql = "select count(rate) from MovieActor where actor = :act";
+            Query query = session.createQuery(hql);
+            query.setEntity("act", actor);
+            rateCount = (Long) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        if (rateCount != null) {
+            return rateCount.intValue();
+        } else {
+            return 0;
+        }
+    }
+
     public String getAllNationalities() {
         List<String> nationalities = null;
 

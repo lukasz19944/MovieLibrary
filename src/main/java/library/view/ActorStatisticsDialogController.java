@@ -37,6 +37,8 @@ public class ActorStatisticsDialogController {
     private TableColumn<Actor, String> ageColumn;
     @FXML
     private TableColumn<Actor, String> averageRateColumn;
+    @FXML
+    private TableColumn<Actor, String> rateCountColumn;
 
     @FXML
     private HBox ageHBox;
@@ -79,6 +81,7 @@ public class ActorStatisticsDialogController {
         nationalityColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNationality()));
         ageColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().calculateAge().toString() + cellData.getValue().deathSign()));
         averageRateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getAverageRate())));
+        rateCountColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getActorRateCount().toString()));
 
         ageSlider = new RangeSlider(0, 100, 0, 100);
         ageSlider.setShowTickLabels(true);
