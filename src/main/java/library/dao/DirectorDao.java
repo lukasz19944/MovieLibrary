@@ -221,6 +221,33 @@ public class DirectorDao {
         }
     }
 
+    public Integer maxDirectorRateCount() {
+        Long max = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+
+            String hql = "select count(rate) from Movie " +
+                    "group by director order by count(rate) desc";
+            Query query = session.createQuery(hql);
+            max = (Long) query.getResultList().get(0);
+
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return max.intValue();
+    }
+
     public String getAllNationalities() {
         List<String> nationalities = null;
 

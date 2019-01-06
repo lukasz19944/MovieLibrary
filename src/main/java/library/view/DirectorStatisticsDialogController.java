@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import library.MainApp;
 import library.dao.DirectorDao;
+import library.dao.MovieActorDao;
 import library.model.Director;
 import org.controlsfx.control.RangeSlider;
 
@@ -63,8 +64,16 @@ public class DirectorStatisticsDialogController {
     @FXML
     private Label avgRateLabelHighValue;
 
+    @FXML
+    private HBox rateCountHBox;
+    @FXML
+    private Label rateCountLabelLowValue;
+    @FXML
+    private Label rateCountLabelHighValue;
+
     private RangeSlider ageSlider;
     private RangeSlider avgRateSlider;
+    private RangeSlider rateCountSlider;
 
     private ObservableList<Director> directorData = FXCollections.observableArrayList();
 
@@ -72,6 +81,8 @@ public class DirectorStatisticsDialogController {
     private ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
 
     private MainApp mainApp;
+
+    private int maxRateCount;
 
     @FXML
     private void initialize() {
@@ -142,6 +153,34 @@ public class DirectorStatisticsDialogController {
                 avgRateLabelHighValue.setText(String.format("%.2f", new_val.floatValue()));
             }
         });
+
+        DirectorDao maDao = new DirectorDao();
+
+        maxRateCount = maDao.maxDirectorRateCount();
+
+        rateCountLabelHighValue.setText(String.valueOf(maxRateCount));
+
+        rateCountSlider = new RangeSlider(0, maxRateCount, 0, maxRateCount);
+        rateCountSlider.setShowTickLabels(true);
+        rateCountSlider.setMajorTickUnit(1);
+        rateCountSlider.setShowTickLabels(false);
+        rateCountSlider.setPrefWidth(660);
+
+        rateCountHBox.getChildren().add(rateCountSlider);
+
+        rateCountSlider.lowValueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                rateCountSlider.setLowValue(new_val.intValue());
+                rateCountLabelLowValue.setText(Integer.toString(new_val.intValue()));
+            }
+        });
+
+        rateCountSlider.highValueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                rateCountSlider.setHighValue(new_val.intValue());
+                rateCountLabelHighValue.setText(Integer.toString(new_val.intValue()));
+            }
+        });
     }
 
     @FXML
@@ -152,7 +191,9 @@ public class DirectorStatisticsDialogController {
                 .filter(d -> (genderComboBox.getValue().equals("BOTH")) || d.getGender().equals(genderComboBox.getValue()))
                 .filter(d -> (aliveComboBox.getValue().equals("BOTH")) || d.isAlive().equals(aliveComboBox.getValue()))
                 .filter(d -> (nationalityComboBox.getValue().equals("ALL")) || d.getNationality().contains(nationalityComboBox.getValue()))
-                .filter(a -> a.getAverageRate() >= avgRateSlider.getLowValue() && a.getAverageRate() <= avgRateSlider.getHighValue())
+                .filter(d -> d.getAverageRate() >= avgRateSlider.getLowValue() && d.getAverageRate() <= avgRateSlider.getHighValue())
+                .filter(d -> (d.getDirectorRateCount() >= rateCountSlider.getLowValue() &&
+                        d.getDirectorRateCount() <= rateCountSlider.getHighValue()))
                 .collect(Collectors.toList());
 
 
@@ -175,6 +216,11 @@ public class DirectorStatisticsDialogController {
         avgRateSlider.setHighValue(10);
         avgRateLabelLowValue.setText("0.00");
         avgRateLabelHighValue.setText("10.00");
+
+        rateCountSlider.setLowValue(0);
+        rateCountSlider.setHighValue(maxRateCount);
+        rateCountLabelLowValue.setText(String.valueOf(maxRateCount));
+        rateCountLabelHighValue.setText(String.valueOf(maxRateCount));
 
         directorTable.getItems().clear();
         directorTable.getItems().addAll(directorData);

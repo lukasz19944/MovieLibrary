@@ -26,8 +26,8 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="178.0" prefWidth="582.0" styleClass="anchor-pane-left-stats">
                <children>
                   <HBox fx:id="ageHBox" alignment="CENTER" prefHeight="100.0" prefWidth="712.0" AnchorPane.bottomAnchor="162.5" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="2.5" />
-                  <HBox fx:id="avgRateHBox" alignment="CENTER" layoutY="122.0" prefHeight="100.0" prefWidth="712.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="115.0" />
-                  <HBox fx:id="rateCountHBox" alignment="CENTER" layoutX="10.0" layoutY="125.0" prefHeight="100.0" prefWidth="712.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="135.0" />
+                  <HBox fx:id="avgRateHBox" alignment="CENTER" layoutY="122.0" prefHeight="100.0" prefWidth="712.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="115.0" />
+                  <HBox fx:id="rateCountHBox" alignment="CENTER" layoutX="10.0" layoutY="125.0" prefHeight="100.0" prefWidth="712.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="135.0" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -78,7 +78,7 @@
                            </children>
                         </HBox>
                         <ComboBox fx:id="aliveComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Rate Count" GridPane.rowIndex="5" />
+                        <Label text="%rate_count_label" GridPane.rowIndex="5" />
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <children>
                               <Label fx:id="rateCountLabelLowValue" text="0" />
