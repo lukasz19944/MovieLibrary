@@ -192,4 +192,32 @@ public class MovieActorDao {
             session.close();
         }
     }
+
+    public Integer maxActorRateCount() {
+        Long max = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+
+            String hql = "select count(rate) from MovieActor " +
+                    "group by actor order by count(rate) desc";
+            Query query = session.createQuery(hql);
+            max = (Long) query.getResultList().get(0);
+
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return max.intValue();
+    }
+
 }

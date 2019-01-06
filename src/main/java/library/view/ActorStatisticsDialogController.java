@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import library.MainApp;
 import library.dao.ActorDao;
+import library.dao.MovieActorDao;
 import library.model.Actor;
 import org.controlsfx.control.RangeSlider;
 
@@ -63,8 +64,16 @@ public class ActorStatisticsDialogController {
     @FXML
     private Label avgRateLabelHighValue;
 
+    @FXML
+    private HBox rateCountHBox;
+    @FXML
+    private Label rateCountLabelLowValue;
+    @FXML
+    private Label rateCountLabelHighValue;
+
     private RangeSlider ageSlider;
     private RangeSlider avgRateSlider;
+    private RangeSlider rateCountSlider;
 
     private ObservableList<Actor> actorData = FXCollections.observableArrayList();
 
@@ -72,6 +81,8 @@ public class ActorStatisticsDialogController {
     private ObservableList<String> isAlive = FXCollections.observableArrayList("BOTH", "Yes", "No");
 
     private MainApp mainApp;
+
+    private int maxRateCount;
 
     @FXML
     private void initialize() {
@@ -142,6 +153,34 @@ public class ActorStatisticsDialogController {
                 avgRateLabelHighValue.setText(String.format("%.2f", new_val.floatValue()));
             }
         });
+
+        MovieActorDao maDao = new MovieActorDao();
+
+        maxRateCount = maDao.maxActorRateCount();
+
+        rateCountLabelHighValue.setText(String.valueOf(maxRateCount));
+
+        rateCountSlider = new RangeSlider(0, maxRateCount, 0, maxRateCount);
+        rateCountSlider.setShowTickLabels(true);
+        rateCountSlider.setMajorTickUnit(1);
+        rateCountSlider.setShowTickLabels(false);
+        rateCountSlider.setPrefWidth(660);
+
+        rateCountHBox.getChildren().add(rateCountSlider);
+
+        rateCountSlider.lowValueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                rateCountSlider.setLowValue(new_val.intValue());
+                rateCountLabelLowValue.setText(Integer.toString(new_val.intValue()));
+            }
+        });
+
+        rateCountSlider.highValueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                rateCountSlider.setHighValue(new_val.intValue());
+                rateCountLabelHighValue.setText(Integer.toString(new_val.intValue()));
+            }
+        });
     }
 
     @FXML
@@ -153,6 +192,8 @@ public class ActorStatisticsDialogController {
                 .filter(a -> (aliveComboBox.getValue().equals("BOTH")) || a.isAlive().equals(aliveComboBox.getValue()))
                 .filter(a -> (nationalityComboBox.getValue().equals("ALL")) || a.getNationality().contains(nationalityComboBox.getValue()))
                 .filter(a -> a.getAverageRate() >= avgRateSlider.getLowValue() && a.getAverageRate() <= avgRateSlider.getHighValue())
+                .filter(a -> (a.getActorRateCount() >= rateCountSlider.getLowValue() &&
+                        a.getActorRateCount() <= rateCountSlider.getHighValue()))
                 .collect(Collectors.toList());
 
         actorTable.getItems().clear();
@@ -174,6 +215,11 @@ public class ActorStatisticsDialogController {
         avgRateSlider.setHighValue(10);
         avgRateLabelLowValue.setText("0.00");
         avgRateLabelHighValue.setText("10.00");
+
+        rateCountSlider.setLowValue(0);
+        rateCountSlider.setHighValue(maxRateCount);
+        rateCountLabelLowValue.setText(String.valueOf(maxRateCount));
+        rateCountLabelHighValue.setText(String.valueOf(maxRateCount));
 
         actorTable.getItems().clear();
         actorTable.getItems().addAll(actorData);
