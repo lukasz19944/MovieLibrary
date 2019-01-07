@@ -219,7 +219,7 @@ public class DirectorStatisticsDialogController {
 
         rateCountSlider.setLowValue(0);
         rateCountSlider.setHighValue(maxRateCount);
-        rateCountLabelLowValue.setText(String.valueOf(maxRateCount));
+        rateCountLabelLowValue.setText("0");
         rateCountLabelHighValue.setText(String.valueOf(maxRateCount));
 
         directorTable.getItems().clear();
