@@ -11,10 +11,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import library.dao.ActorDao;
 import library.dao.DirectorDao;
+import library.dao.MovieActorDao;
 import library.dao.MovieDao;
 import library.model.Actor;
 import library.model.Director;
 import library.model.Movie;
+import library.model.MovieActor;
 import library.view.*;
 
 import java.io.IOException;
@@ -32,15 +34,20 @@ public class MainApp extends Application {
     private ObservableList<Movie> movieData = FXCollections.observableArrayList();
     private ObservableList<Director> directorData = FXCollections.observableArrayList();
     private ObservableList<Actor> actorData = FXCollections.observableArrayList();
+    private ObservableList<MovieActor> maleRoleData = FXCollections.observableArrayList();
+    private ObservableList<MovieActor> femaleRoleData = FXCollections.observableArrayList();
 
     public MainApp() {
-        MovieDao dao = new MovieDao();
+        MovieDao mdao = new MovieDao();
         DirectorDao dDao = new DirectorDao();
         ActorDao aDao = new ActorDao();
+        MovieActorDao maDao = new MovieActorDao();
 
-        movieData.addAll(dao.getAllMovies());
+        movieData.addAll(mdao.getAllMovies());
         directorData.addAll(dDao.getAllDirectors());
         actorData.addAll(aDao.getAllActors());
+        maleRoleData.addAll(maDao.getBestRoles("Male").subList(0, 10));
+        femaleRoleData.addAll(maDao.getBestRoles("Female").subList(0, 10));
     }
 
     public static void main(String[] args) {
@@ -252,6 +259,29 @@ public class MainApp extends Application {
         }
     }
 
+    public void showBestRolesDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
+            loader.setLocation(MainApp.class.getResource("view/BestRolesDialog.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle(bundle.getString("best_roles_title"));
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            BestRolesDialogController controller = loader.getController();
+            controller.setMainApp(this);
+
+            dialogStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void changeLanguagePolish() {
         this.locale = new Locale("pl", "PL");
     }
@@ -274,5 +304,13 @@ public class MainApp extends Application {
 
     public ObservableList<Actor> getActorData() {
         return actorData;
+    }
+
+    public ObservableList<MovieActor> getMaleRoleData() {
+        return maleRoleData;
+    }
+
+    public ObservableList<MovieActor> getFemaleRoleData() {
+        return femaleRoleData;
     }
 }

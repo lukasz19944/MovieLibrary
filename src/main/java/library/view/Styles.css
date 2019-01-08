@@ -10,6 +10,10 @@
     -fx-background-color: #455e77;
 }
 
+.split-pane-roles {
+    -fx-background-color: #455e77;
+}
+
 .split-pane-stats {
     -fx-padding: 0;
 }

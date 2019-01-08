@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class MovieActorDao {
@@ -218,6 +219,38 @@ public class MovieActorDao {
         }
 
         return max.intValue();
+    }
+
+    public List<MovieActor> getBestRoles(String gender) {
+        List<MovieActor> maleRoles = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        //
+
+        try {
+            transaction = session.beginTransaction();
+
+            String hql = "from MovieActor m " +
+                    "where m.actor.gender = :g " +
+                    "order by m.rate desc";
+            Query query = session.createQuery(hql, MovieActor.class);
+            query.setString("g", gender);
+
+            maleRoles = query.getResultList();
+
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return maleRoles;
     }
 
 }

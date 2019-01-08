@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="800.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.BestRolesDialogController">
+   <children>
+      <Label styleClass="label-header" text="%best_roles_header" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <SplitPane dividerPositions="0.5" layoutX="119.0" layoutY="157.0" prefHeight="160.0" prefWidth="200.0" styleClass="split-pane-roles" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="119.0" layoutY="45.0" text="%best_roles_male_label" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                  <TableView fx:id="maleRoleTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
+                    <columns>
+                      <TableColumn fx:id="maleActorColumn" minWidth="150.0" prefWidth="-1.0" text="%best_roles_actor" />
+                      <TableColumn fx:id="maleMovieColumn" minWidth="150.0" prefWidth="-1.0" text="%best_roles_movie" />
+                        <TableColumn fx:id="maleRateColumn" prefWidth="70.79996337890623" text="%best_roles_rate" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="121.0" layoutY="48.0" styleClass="label-roles" text="%best_roles_female_label" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                  <TableView fx:id="femaleRoleTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
+                    <columns>
+                      <TableColumn fx:id="femaleActorColumn" minWidth="150.0" prefWidth="-1.0" text="%best_roles_actor" />
+                      <TableColumn fx:id="femaleMovieColumn" minWidth="150.0" prefWidth="-1.0" text="%best_roles_movie" />
+                        <TableColumn fx:id="femaleRateColumn" minWidth="62.4000244140625" prefWidth="70.79996337890623" text="%best_roles_rate" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
