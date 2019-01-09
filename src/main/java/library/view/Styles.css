@@ -27,6 +27,18 @@
     -fx-background-color: #455e77;
 }
 
+.line-chart {
+    -fx-background-color: #455e77;
+}
+
+.chart-plot-background {
+    -fx-background-color: #455e77;
+}
+
+.axis {
+    -fx-tick-label-fill: white;
+}
+
 .split-pane-divider {
     -fx-background-color: #2f4356;
 }

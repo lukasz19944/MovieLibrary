@@ -193,4 +193,31 @@ public class MovieDao {
 
         return String.join(", ", countries);
     }
+
+    public Integer getMinYear() {
+        Integer min = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+
+            String hql = "select distinct(releaseDate) from Movie " +
+                    "order by releaseDate asc";
+            Query query = session.createQuery(hql);
+            min = (Integer) query.getResultList().get(0);
+
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return min;
+    }
 }

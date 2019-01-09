@@ -30,6 +30,8 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleMovieStatistics" text="%menu_movies" />
                   <MenuItem mnemonicParsing="false" onAction="#handleDirectorStatistics" text="%menu_directors" />
                   <MenuItem mnemonicParsing="false" onAction="#handleActorStatistics" text="%menu_actors" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleBestRoles" text="%menu_best_roles" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleDiagram" text="%menu_diagram" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" onAction="#handleAbout" text="%menu_help">

@@ -86,4 +86,9 @@ public class RootLayoutController {
     private void handleBestRoles() {
         mainApp.showBestRolesDialog();
     }
+
+    @FXML
+    private void handleDiagram() {
+        mainApp.showDiagramDialog();
+    }
 }

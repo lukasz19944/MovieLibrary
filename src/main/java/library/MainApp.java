@@ -282,6 +282,29 @@ public class MainApp extends Application {
         }
     }
 
+    public void showDiagramDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
+            loader.setLocation(MainApp.class.getResource("view/DiagramDialog.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle(bundle.getString("diagram_title"));
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            DiagramDialogController controller = loader.getController();
+            controller.setAverageRateForYear(movieData);
+
+            dialogStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void changeLanguagePolish() {
         this.locale = new Locale("pl", "PL");
     }
