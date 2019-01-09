@@ -3,12 +3,12 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane prefHeight="650.0" prefWidth="800.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.DiagramDialogController">
    <children>
-      <LineChart fx:id="lineChart" legendVisible="false" styleClass="line-chart" title="%diagram_header" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
+      <LineChart fx:id="lineChart" animated="false" legendVisible="false" styleClass="line-chart" title="%diagram_header" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>
@@ -16,5 +16,6 @@
           <NumberAxis minorTickCount="1" prefHeight="446.0" prefWidth="22.0" side="LEFT" styleClass="axis-label" tickLabelGap="0.0" upperBound="10.0" />
         </yAxis>
       </LineChart>
+      <CheckBox fx:id="checkBox" layoutX="713.0" layoutY="14.0" mnemonicParsing="false" text="%diagram_zero" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
    </children>
 </AnchorPane>

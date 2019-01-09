@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72ec9956-cb61-440a-9648-677bc2027ae3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/view/DiagramDialog.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/view/DiagramDialogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/library/util/ArrayUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/MainApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/dao/MovieDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/dao/MovieDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/RootLayout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/RootLayout.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/RootLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/RootLayoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/DiagramDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/DiagramDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/view/DiagramDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/DiagramDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/view/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/view/Styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/bundles/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bundles/messages_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/bundles/messages_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bundles/messages_pl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/library/view/RootLayout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/library/view/RootLayout.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,10 +29,26 @@
       <file leaf-file-name="MainApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/MainApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="245">
+              <caret line="297" column="72" selection-start-line="297" selection-start-column="72" selection-end-line="297" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#10898#10899#0" expanded="true" />
+                <element signature="e#10950#10951#0" expanded="true" />
+                <element signature="e#10993#10994#0" expanded="true" />
+                <element signature="e#11045#11046#0" expanded="true" />
+                <element signature="e#11083#11084#0" expanded="true" />
+                <element signature="e#11118#11119#0" expanded="true" />
+                <element signature="e#11169#11170#0" expanded="true" />
+                <element signature="e#11201#11202#0" expanded="true" />
+                <element signature="e#11258#11259#0" expanded="true" />
+                <element signature="e#11293#11294#0" expanded="true" />
+                <element signature="e#11344#11345#0" expanded="true" />
+                <element signature="e#11376#11377#0" expanded="true" />
+                <element signature="e#11435#11436#0" expanded="true" />
+                <element signature="e#11470#11471#0" expanded="true" />
+                <element signature="e#11531#11532#0" expanded="true" />
+                <element signature="e#11568#11569#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,8 +57,8 @@
       <file leaf-file-name="DiagramDialogController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/DiagramDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+            <state relative-caret-position="40">
+              <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,8 +69,35 @@
       <file leaf-file-name="Styles.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/Styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+            <state relative-caret-position="204">
+              <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DateUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/library/util/DateUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArrayUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/library/util/ArrayUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="24" column="58" lean-forward="true" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MovieDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/MovieDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="259" column="41" selection-start-line="259" selection-start-column="41" selection-end-line="259" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -67,52 +108,11 @@
           <provider selected="true" editor-type-id="ResourceBundle" />
         </entry>
       </file>
-      <file leaf-file-name="MovieEditDialogController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieEditDialogController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="320" column="4" lean-forward="true" selection-start-line="320" selection-start-column="4" selection-end-line="322" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4631#4645#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MovieDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/MovieDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="207" column="51" lean-forward="true" selection-start-line="207" selection-start-column="51" selection-end-line="207" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Movie.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/library/model/Movie.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DiagramDialog.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/library/view/DiagramDialog.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RootLayoutController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/library/view/RootLayoutController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="91" column="36" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+            <state relative-caret-position="165">
+              <caret line="71" column="28" lean-forward="true" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
               <folding>
                 <element signature="e#1801#1802#0" expanded="true" />
                 <element signature="e#1849#1850#0" expanded="true" />
@@ -133,8 +133,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -193,10 +193,11 @@
         <option value="$PROJECT_DIR$/src/main/java/library/view/BestRolesDialogController.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/DiagramDialogController.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/DiagramDialog.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/library/MainApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/RootLayoutController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/library/dao/MovieDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/library/MainApp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/library/util/ArrayUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/DiagramDialogController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/library/dao/MovieDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/bundles/messages_en.properties" />
         <option value="$PROJECT_DIR$/src/main/java/library/view/Styles.css" />
       </list>
@@ -290,6 +291,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MovieLibrary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MovieLibrary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -332,7 +342,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
@@ -473,7 +483,7 @@
       <workItem from="1546852094764" duration="2562000" />
       <workItem from="1546888452108" duration="339000" />
       <workItem from="1546974104598" duration="8131000" />
-      <workItem from="1547036139689" duration="7023000" />
+      <workItem from="1547036139689" duration="15058000" />
     </task>
     <task id="LOCAL-00001" summary="usprawnione ocenianie aktorów w filmach">
       <created>1545513449942</created>
@@ -713,11 +723,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546982749120</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="widok z diagramem przedstawiajacym średnią ocen filmów według daty premiery">
+      <created>1547043733710</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1547043733711</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291165000" />
+    <option name="totallyTimeSpent" value="299200000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="68" width="1364" height="740" extended-state="0" />
@@ -741,10 +758,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49923313" visible="true" weight="0.26821193" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49923313" visible="true" weight="0.26821193" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.328" />
       <window_info id="Persistence" order="2" sideWeight="0.50793654" side_tool="true" weight="0.24693252" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4920635" visible="true" weight="0.34815952" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4920635" visible="true" weight="0.34815952" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3245033" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" sideWeight="0.50396824" side_tool="true" weight="0.24693252" />
@@ -772,7 +789,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="filtrowanie aktorów w zależności czy wciąż żyją" />
     <MESSAGE value="filtrowanie aktorów według narodowości" />
     <MESSAGE value="filtrowanie aktorów według średniej ocen" />
     <MESSAGE value="filtrowanie reżyserów według wieku" />
@@ -797,7 +813,8 @@
     <MESSAGE value="readme" />
     <MESSAGE value="readme i zrzuty ekranu z aplikacji" />
     <MESSAGE value="widok z 10 najlepszymi rolami aktorów z podziałem na płeć" />
-    <option name="LAST_COMMIT_MESSAGE" value="widok z 10 najlepszymi rolami aktorów z podziałem na płeć" />
+    <MESSAGE value="widok z diagramem przedstawiajacym średnią ocen filmów według daty premiery" />
+    <option name="LAST_COMMIT_MESSAGE" value="widok z diagramem przedstawiajacym średnią ocen filmów według daty premiery" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -812,13 +829,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/movie.hbm.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/model/Movie.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
@@ -958,13 +968,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/library/util/DateUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/util/HibernateUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1060,14 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/library/view/DiagramDialog.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/ActorDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2500">
@@ -1084,7 +1079,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/MovieEditDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
+        <state relative-caret-position="-801">
           <caret line="320" column="4" lean-forward="true" selection-start-line="320" selection-start-column="4" selection-end-line="322" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1093,10 +1088,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/view/DiagramDialog.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/model/Movie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/RootLayoutController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="91" column="36" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+        <state relative-caret-position="165">
+          <caret line="71" column="28" lean-forward="true" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
           <folding>
             <element signature="e#1801#1802#0" expanded="true" />
             <element signature="e#1849#1850#0" expanded="true" />
@@ -1112,35 +1122,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/MainApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="245">
+          <caret line="297" column="72" selection-start-line="297" selection-start-column="72" selection-end-line="297" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#10898#10899#0" expanded="true" />
+            <element signature="e#10950#10951#0" expanded="true" />
+            <element signature="e#10993#10994#0" expanded="true" />
+            <element signature="e#11045#11046#0" expanded="true" />
+            <element signature="e#11083#11084#0" expanded="true" />
+            <element signature="e#11118#11119#0" expanded="true" />
+            <element signature="e#11169#11170#0" expanded="true" />
+            <element signature="e#11201#11202#0" expanded="true" />
+            <element signature="e#11258#11259#0" expanded="true" />
+            <element signature="e#11293#11294#0" expanded="true" />
+            <element signature="e#11344#11345#0" expanded="true" />
+            <element signature="e#11376#11377#0" expanded="true" />
+            <element signature="e#11435#11436#0" expanded="true" />
+            <element signature="e#11470#11471#0" expanded="true" />
+            <element signature="e#11531#11532#0" expanded="true" />
+            <element signature="e#11568#11569#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/library/model/Movie.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/util/DateUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/MovieDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="207" column="51" lean-forward="true" selection-start-line="207" selection-start-column="51" selection-end-line="207" selection-end-column="51" />
+        <state relative-caret-position="289">
+          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/DiagramDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        <state relative-caret-position="40">
+          <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/util/ArrayUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="24" column="58" lean-forward="true" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/library/dao/MovieDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="259" column="41" selection-start-line="259" selection-start-column="41" selection-end-line="259" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1150,8 +1183,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/library/view/Styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+        <state relative-caret-position="204">
+          <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
         </state>
       </provider>
     </entry>

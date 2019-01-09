@@ -296,7 +296,10 @@ public class MainApp extends Application {
             dialogStage.setScene(scene);
 
             DiagramDialogController controller = loader.getController();
+
             controller.setAverageRateForYear(movieData);
+            controller.setAverageRateForYearWithoutZeroes(movieData);
+
 
             dialogStage.showAndWait();
 

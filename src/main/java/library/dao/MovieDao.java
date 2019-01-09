@@ -220,4 +220,57 @@ public class MovieDao {
 
         return min;
     }
+
+    public Integer getYearCount() {
+        Long count = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+
+            String hql = "select count(distinct releaseDate) from Movie";
+            Query query = session.createQuery(hql);
+            count = (Long) query.getSingleResult();
+
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return count.intValue();
+    }
+
+    public List<Integer> getAllYears() {
+        List<Integer> list = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+
+            String hql = "select distinct releaseDate from Movie " +
+                    "order by releaseDate";
+            Query query = session.createQuery(hql);
+            list = query.getResultList();
+
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return list;
+    }
 }

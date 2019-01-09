@@ -39,6 +39,13 @@
     -fx-tick-label-fill: white;
 }
 
+.check-box {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 0.6;
+}
+
 .split-pane-divider {
     -fx-background-color: #2f4356;
 }
