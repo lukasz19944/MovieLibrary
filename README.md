@@ -74,36 +74,3 @@ CREATE TABLE IF NOT EXISTS movie_actor
 <property name="hibernate.connection.password">password</property>
 ```
 
-## Widok aplikacji
-
-### Przegląd filmów
-![Widok główny](/screenshots/view_main.png?raw=true)
-
-### Dodawanie nowego filmu
-![Dodawanie filmu](/screenshots/view_add_movie.png?raw=true)
-
-### Edycja filmu
-![Edycja filmu](/screenshots/view_edit_movie.png?raw=true)
-
-### Dodawanie nowego rezysera
-![Dodawanie reżysera](/screenshots/view_add_director.png?raw=true)
-
-### Dodawanie nowego aktora
-![Dodawanie aktora](/screenshots/view_add_actor.png?raw=true)
-
-### Ocenianie roli aktora w filmie
-![Ocenianie roli](/screenshots/view_rate_actor.png?raw=true)
-
-### Statystyki filmów
-![Statystyki filmów](/screenshots/view_movies.png?raw=true)
-
-### Statystyki reżyserów
-![Statystyki reżyserów](/screenshots/view_directors.png?raw=true)
-
-### Statystyki aktorów
-![Statystyki aktorów](/screenshots/view_actors.png?raw=true)
-
-
-## Do zrobienia
-- Optymalizacja!
-- Film może mieć kilku reżyserów
